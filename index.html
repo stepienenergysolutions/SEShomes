@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SES Homes | Energy-Efficient Windows & Doors in Virginia</title>
+  <title>SES Custom Homes | Premium Windows & Custom Homes in Virginia</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -13,89 +13,107 @@
       background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.65)), 
                   url('hero.jpg') center/cover no-repeat fixed;
     }
+    .navy { color: #0a2540; }
+    .gold { color: #c9a96b; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-  <!-- HERO -->
-  <header class="hero-bg text-white py-24 min-h-screen flex items-center">
+  <!-- NAV -->
+  <header class="hero-bg text-white py-6 sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex justify-between items-center">
+        <!-- Logo -->
         <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl">🏠</div>
-          <div>
-            <h1 class="text-4xl font-bold tracking-tight">SES Homes</h1>
-            <p class="text-emerald-300 text-lg">Stepien Energy Solutions</p>
-          </div>
+          <img src="logo.png" alt="SES Custom Homes" class="h-14 w-auto">
         </div>
-        <nav class="hidden md:flex gap-8 text-lg">
-          <a href="#" class="hover:text-emerald-300 transition">Home</a>
-          <a href="#" class="hover:text-emerald-300 transition">Windows</a>
-          <a href="#" class="hover:text-emerald-300 transition">Doors</a>
-          <a href="#" class="hover:text-emerald-300 transition">About</a>
-          <a href="#" class="hover:text-emerald-300 transition">Contact</a>
-        </nav>
-        <a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-semibold text-lg transition">Get Free Quote</a>
-      </div>
 
-      <div class="max-w-3xl mx-auto text-center mt-20">
-        <p class="uppercase tracking-[3px] text-emerald-300 text-sm font-medium">Mechanicsville • Richmond • Central Virginia</p>
-        <h2 class="text-6xl md:text-7xl font-bold leading-none mt-4">Premium Windows & Doors<br>for Luxury Virginia Homes</h2>
-        <p class="mt-8 text-2xl text-gray-200">Lower energy bills. Superior comfort. Lifetime performance.</p>
-        
-        <div class="mt-12 flex flex-col sm:flex-row gap-6 justify-center">
-          <a href="#contact" class="bg-white text-emerald-700 hover:bg-emerald-100 px-12 py-6 rounded-3xl text-2xl font-semibold inline-flex items-center justify-center gap-3 transition">
-            <i class="fas fa-phone"></i> Call or Text Us
-          </a>
-          <a href="#contact" class="border-2 border-white hover:bg-white/10 px-12 py-6 rounded-3xl text-2xl font-semibold transition">Get Your Free Quote Today</a>
-        </div>
+        <nav class="hidden md:flex gap-8 text-lg">
+          <a href="#" class="hover:text-amber-300 transition">Home</a>
+          <a href="#" class="hover:text-amber-300 transition">Windows</a>
+          <a href="#" class="hover:text-amber-300 transition">Doors</a>
+          <a href="#" class="hover:text-amber-300 transition">Custom Homes</a>
+          <a href="#" class="hover:text-amber-300 transition">Gallery</a>
+          <a href="#contact" class="hover:text-amber-300 transition">Contact</a>
+        </nav>
+
+        <a href="#contact" class="bg-[#0a2540] hover:bg-[#08203a] px-8 py-4 rounded-2xl font-semibold text-lg transition">
+          Get Free Quote
+        </a>
       </div>
     </div>
   </header>
+
+  <!-- HERO -->
+  <section class="hero-bg text-white min-h-screen flex items-center pt-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="uppercase tracking-[3px] text-amber-300 text-sm font-medium">Mechanicsville • Richmond • Central Virginia</p>
+        <h2 class="text-6xl md:text-7xl font-bold leading-none mt-6">
+          Premium Windows.<br>
+          Custom Homes.<br>
+          Built in Virginia.
+        </h2>
+        <p class="mt-8 text-2xl text-gray-200">
+          Energy-efficient replacement windows are our specialty —<br>
+          and we build stunning custom homes from the ground up.
+        </p>
+        
+        <div class="mt-12 flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="#contact" class="bg-white text-[#0a2540] hover:bg-amber-100 px-12 py-6 rounded-3xl text-2xl font-semibold inline-flex items-center justify-center gap-3 transition">
+            <i class="fas fa-phone"></i> Call or Text
+          </a>
+          <a href="#contact" class="border-2 border-white hover:bg-white/10 px-12 py-6 rounded-3xl text-2xl font-semibold transition">
+            Get Your Free Quote Today
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- TRUST BAR -->
   <div class="bg-white py-6 border-b">
     <div class="max-w-6xl mx-auto px-6 flex flex-wrap justify-center items-center gap-x-12 gap-y-4 text-gray-600 text-lg">
       <div class="flex items-center gap-3"><i class="fas fa-medal text-3xl text-amber-500"></i> Lifetime Warranty</div>
-      <div class="flex items-center gap-3"><i class="fas fa-truck text-3xl text-emerald-500"></i> Expert Installation</div>
-      <div class="flex items-center gap-3"><i class="fas fa-dollar-sign text-3xl text-emerald-500"></i> Up to 40% Energy Savings</div>
-      <div class="flex items-center gap-3"><i class="fas fa-shield-alt text-3xl text-emerald-500"></i> A+ Rated</div>
+      <div class="flex items-center gap-3"><i class="fas fa-truck text-3xl text-[#0a2540]"></i> Expert Installation</div>
+      <div class="flex items-center gap-3"><i class="fas fa-dollar-sign text-3xl text-amber-500"></i> Up to 40% Energy Savings</div>
+      <div class="flex items-center gap-3"><i class="fas fa-shield-alt text-3xl text-[#0a2540]"></i> A+ Rated</div>
     </div>
   </div>
 
   <!-- SERVICES -->
   <section class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-5xl font-bold text-center">Our Services</h2>
+      <h2 class="text-5xl font-bold text-center navy">What We Do Best</h2>
       <div class="grid md:grid-cols-3 gap-8 mt-12">
         <div class="bg-gray-50 p-8 rounded-3xl hover:shadow-xl transition">
-          <i class="fas fa-window-maximize text-6xl text-emerald-600 mb-6"></i>
-          <h3 class="text-3xl font-semibold">Replacement Windows</h3>
-          <p class="mt-4 text-gray-600">Double-pane, triple-pane, vinyl, fiberglass — the most energy-efficient windows in Virginia.</p>
+          <i class="fas fa-window-maximize text-6xl text-[#0a2540] mb-6"></i>
+          <h3 class="text-3xl font-semibold">Premium Windows</h3>
+          <p class="mt-4 text-gray-600">Double & triple-pane, vinyl, fiberglass — the highest performing replacement windows in Virginia.</p>
         </div>
         <div class="bg-gray-50 p-8 rounded-3xl hover:shadow-xl transition">
-          <i class="fas fa-door-open text-6xl text-emerald-600 mb-6"></i>
+          <i class="fas fa-door-open text-6xl text-[#0a2540] mb-6"></i>
           <h3 class="text-3xl font-semibold">Entry & Patio Doors</h3>
-          <p class="mt-4 text-gray-600">Beautiful, secure, and energy-saving doors with lifetime warranties.</p>
+          <p class="mt-4 text-gray-600">Beautiful, secure, energy-efficient doors that complete any custom home.</p>
         </div>
         <div class="bg-gray-50 p-8 rounded-3xl hover:shadow-xl transition">
-          <i class="fas fa-home text-6xl text-emerald-600 mb-6"></i>
-          <h3 class="text-3xl font-semibold">Full Home Upgrades</h3>
-          <p class="mt-4 text-gray-600">Siding, gutters, insulation & complete energy audits.</p>
+          <i class="fas fa-home text-6xl text-[#0a2540] mb-6"></i>
+          <h3 class="text-3xl font-semibold">Custom Home Building</h3>
+          <p class="mt-4 text-gray-600">From the ground up — luxury custom homes designed and built to your vision.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT / FOOTER -->
-  <section id="contact" class="bg-emerald-800 text-white py-20">
+  <!-- CONTACT -->
+  <section id="contact" class="bg-[#0a2540] text-white py-20">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-5xl font-bold">Ready for lower energy bills?</h2>
-      <p class="mt-6 text-2xl text-emerald-200">Call or text us today for a FREE in-home quote.</p>
+      <h2 class="text-5xl font-bold">Ready to Build or Upgrade?</h2>
+      <p class="mt-6 text-2xl text-amber-200">Call or text us today for a FREE in-home consultation or quote.</p>
       
-      <div class="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center text-3xl">
-        <a href="tel:8045551234" class="flex items-center gap-4 hover:text-emerald-200 transition">
-          <i class="fas fa-phone text-4xl"></i>
+      <div class="mt-12">
+        <a href="tel:8045551234" class="inline-flex items-center gap-4 text-4xl hover:text-amber-300 transition">
+          <i class="fas fa-phone"></i>
           <div>
             <div class="text-sm uppercase tracking-widest">Call or Text</div>
             <div class="font-semibold">(804) 555-1234</div>
@@ -103,7 +121,7 @@
         </a>
       </div>
 
-      <p class="mt-16 text-emerald-300">Stepien Energy Solutions • Mechanicsville, VA</p>
+      <p class="mt-16 text-amber-200">SES Custom Homes • Mechanicsville, VA</p>
     </div>
   </section>
 
