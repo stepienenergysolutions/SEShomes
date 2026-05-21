@@ -10,30 +10,33 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link rel="stylesheet"
+<link
+rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-body{
-font-family:'Inter',sans-serif;
-}
-
 html{
 scroll-behavior:smooth;
 }
 
-.hero{
+body{
+font-family:'Inter',system-ui,sans-serif;
+}
 
+.hero-bg{
 background:
-linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
-url('windows-hero.jpg');
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.60)),
+url('windows-hero.jpg')
+center/cover no-repeat;
+}
 
-background-size:cover;
-background-position:center;
-
+.dropdown:hover .dropdown-menu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
 }
 
 </style>
@@ -44,56 +47,103 @@ background-position:center;
 
 <!-- NAV -->
 
-<header
-class="bg-[#0a2540]
-text-white
-sticky
-top-0
-z-50
-shadow-lg">
+<header class="hero-bg text-white py-2 sticky top-0 z-50">
 
-<div
-class="max-w-7xl
-mx-auto
-px-6
-py-4
-flex
-justify-between
-items-center">
+<div class="max-w-6xl mx-auto px-6">
 
-<a
-href="index.html"
-class="flex items-center">
+<div class="flex items-center justify-between">
+
+<div class="flex-shrink-0">
+
+<a href="index.html">
 
 <img
 src="logo.png"
 alt="SES Custom Homes"
-class="h-16">
+class="h-16 md:h-24 w-auto drop-shadow-2xl">
 
 </a>
 
-<nav
-class="hidden md:flex gap-8 text-lg">
+</div>
+
+<nav class="hidden md:flex gap-10 text-lg items-center mx-auto">
 
 <a
 href="index.html"
-class="hover:text-amber-300">
+class="hover:text-amber-300 transition">
 
 Home
 
 </a>
 
+<div class="relative group dropdown">
+
 <a
-href="index.html#services"
-class="hover:text-amber-300">
+href="#"
+class="hover:text-amber-300 transition flex items-center gap-1">
 
 Services
 
+<i class="fas fa-chevron-down text-xs"></i>
+
 </a>
+
+<div
+class="dropdown-menu
+absolute
+hidden
+group-hover:block
+pt-2">
+
+<div
+class="bg-white
+text-gray-900
+rounded-3xl
+shadow-2xl
+py-4
+w-64">
+
+<a href="windows.html" class="block px-6 py-3 hover:bg-gray-100">
+Windows
+</a>
+
+<a href="doors.html" class="block px-6 py-3 hover:bg-gray-100">
+Doors
+</a>
+
+<a href="roofing.html" class="block px-6 py-3 hover:bg-gray-100">
+Roofing
+</a>
+
+<a href="siding.html" class="block px-6 py-3 hover:bg-gray-100">
+Siding
+</a>
+
+<a href="decks.html" class="block px-6 py-3 hover:bg-gray-100">
+Decks
+</a>
+
+<a href="porches.html" class="block px-6 py-3 hover:bg-gray-100">
+Porches
+</a>
+
+<a href="additions.html" class="block px-6 py-3 hover:bg-gray-100">
+Additions
+</a>
+
+<a href="patios.html" class="block px-6 py-3 hover:bg-gray-100">
+Patios
+</a>
+
+</div>
+
+</div>
+
+</div>
 
 <a
 href="index.html#about"
-class="hover:text-amber-300">
+class="hover:text-amber-300 transition">
 
 About
 
@@ -101,7 +151,7 @@ About
 
 <a
 href="index.html#contact"
-class="hover:text-amber-300">
+class="hover:text-amber-300 transition">
 
 Contact
 
@@ -111,17 +161,21 @@ Contact
 
 <a
 href="#quote"
-class="bg-amber-500
-hover:bg-amber-600
-px-6
-py-3
-rounded-xl
+class="bg-[#0a2540]
+hover:bg-[#08203a]
+px-8
+py-4
+rounded-2xl
 font-semibold
-transition">
+text-lg
+transition
+whitespace-nowrap">
 
-Free Estimate
+Get Free Design and Estimate
 
 </a>
+
+</div>
 
 </div>
 
@@ -130,67 +184,70 @@ Free Estimate
 <!-- HERO -->
 
 <section
-class="hero
-min-h-[80vh]
+class="hero-bg
+min-h-[85vh]
 flex
 items-center
 text-white">
 
 <div
-class="max-w-7xl
+class="max-w-6xl
 mx-auto
 px-6">
 
-<div
-class="max-w-3xl">
+<div class="max-w-3xl">
 
 <p
 class="uppercase
-tracking-[4px]
+tracking-[3px]
 text-amber-300
-font-semibold">
+font-medium">
 
-Energy Efficient • Lifetime Warranty
+Energy Efficient • Premium Installation
 
 </p>
 
 <h1
 class="text-6xl
+md:text-7xl
 font-bold
-mt-6
-leading-tight">
+leading-tight
+mt-6">
 
-Premium Replacement Windows Built For Comfort, Beauty & Efficiency
+Replacement Windows Built For Comfort, Efficiency & Beauty
 
 </h1>
 
 <p
-class="mt-8
-text-2xl
-text-gray-200">
+class="text-2xl
+text-gray-200
+mt-8">
 
-Beautiful windows designed to improve comfort,
-reduce energy costs, increase curb appeal,
-and protect your home for years to come.
+Premium energy-efficient replacement windows designed
+to lower utility costs, improve curb appeal,
+increase comfort, and protect your home for years to come.
 
 </p>
 
 <div
 class="mt-12
 flex
-flex-wrap
+flex-col
+sm:flex-row
 gap-6">
 
 <a
 href="#quote"
 class="bg-white
 text-[#0a2540]
-font-bold
+hover:bg-amber-100
 px-10
 py-5
-rounded-2xl
-hover:bg-gray-100
-transition">
+rounded-3xl
+font-bold
+text-xl
+transition
+whitespace-nowrap">
 
 Get Free Design & Estimate
 
@@ -202,10 +259,14 @@ class="border-2
 border-white
 px-10
 py-5
-rounded-2xl
+rounded-3xl
 font-bold
+text-xl
 hover:bg-white/10
-transition">
+transition
+whitespace-nowrap">
+
+<i class="fas fa-phone mr-3"></i>
 
 (513) 706-4589
 
@@ -221,14 +282,9 @@ transition">
 
 <!-- BENEFITS -->
 
-<section
-class="py-24
-bg-white">
+<section class="py-24 bg-white">
 
-<div
-class="max-w-7xl
-mx-auto
-px-6">
+<div class="max-w-6xl mx-auto px-6">
 
 <div class="text-center">
 
@@ -242,11 +298,11 @@ Why Upgrade Your Windows?
 </h2>
 
 <p
-class="mt-4
+class="text-gray-600
 text-xl
-text-gray-600">
+mt-4">
 
-More comfort. More savings. Better performance.
+Built for comfort, savings, and long-term performance.
 
 </p>
 
@@ -259,10 +315,7 @@ lg:grid-cols-4
 gap-8
 mt-16">
 
-<div
-class="bg-gray-50
-rounded-3xl
-p-8">
+<div class="bg-gray-50 p-8 rounded-3xl">
 
 <i
 class="fas fa-dollar-sign
@@ -271,29 +324,22 @@ text-amber-500">
 
 </i>
 
-<h3
-class="font-bold
-text-2xl
-mt-6">
+<h3 class="text-2xl font-bold mt-6">
 
-Lower Energy Bills
+Energy Savings
 
 </h3>
 
-<p
-class="text-gray-600
-mt-3">
+<p class="mt-3 text-gray-600">
 
-Reduce heating and cooling costs with modern energy-efficient glass.
+Reduce heating and cooling costs with
+modern insulated glass technology.
 
 </p>
 
 </div>
 
-<div
-class="bg-gray-50
-rounded-3xl
-p-8">
+<div class="bg-gray-50 p-8 rounded-3xl">
 
 <i
 class="fas fa-temperature-low
@@ -302,29 +348,22 @@ text-[#0a2540]">
 
 </i>
 
-<h3
-class="font-bold
-text-2xl
-mt-6">
+<h3 class="text-2xl font-bold mt-6">
 
-Year Round Comfort
+Year-Round Comfort
 
 </h3>
 
-<p
-class="text-gray-600
-mt-3">
+<p class="mt-3 text-gray-600">
 
-Keep your home cooler in summer and warmer in winter.
+Better insulation helps keep your home
+comfortable every season.
 
 </p>
 
 </div>
 
-<div
-class="bg-gray-50
-rounded-3xl
-p-8">
+<div class="bg-gray-50 p-8 rounded-3xl">
 
 <i
 class="fas fa-volume-mute
@@ -333,29 +372,22 @@ text-amber-500">
 
 </i>
 
-<h3
-class="font-bold
-text-2xl
-mt-6">
+<h3 class="text-2xl font-bold mt-6">
 
 Noise Reduction
 
 </h3>
 
-<p
-class="text-gray-600
-mt-3">
+<p class="mt-3 text-gray-600">
 
-Create a quieter, more peaceful home environment.
+Enjoy a quieter home with advanced
+window technology.
 
 </p>
 
 </div>
 
-<div
-class="bg-gray-50
-rounded-3xl
-p-8">
+<div class="bg-gray-50 p-8 rounded-3xl">
 
 <i
 class="fas fa-home
@@ -364,20 +396,16 @@ text-[#0a2540]">
 
 </i>
 
-<h3
-class="font-bold
-text-2xl
-mt-6">
+<h3 class="text-2xl font-bold mt-6">
 
 Curb Appeal
 
 </h3>
 
-<p
-class="text-gray-600
-mt-3">
+<p class="mt-3 text-gray-600">
 
-Modern windows instantly improve your home's appearance.
+Beautiful windows instantly upgrade
+the look of your home.
 
 </p>
 
@@ -391,14 +419,9 @@ Modern windows instantly improve your home's appearance.
 
 <!-- WINDOW TYPES -->
 
-<section
-class="py-24
-bg-gray-100">
+<section class="py-24 bg-gray-100">
 
-<div
-class="max-w-7xl
-mx-auto
-px-6">
+<div class="max-w-6xl mx-auto px-6">
 
 <h2
 class="text-5xl
@@ -416,9 +439,9 @@ md:grid-cols-3
 gap-8
 mt-16">
 
-<div class="bg-white rounded-3xl p-8 shadow">
+<div class="bg-white p-8 rounded-3xl shadow-lg">
 
-<h3 class="text-2xl font-bold">
+<h3 class="font-bold text-2xl">
 
 Double Hung
 
@@ -426,15 +449,15 @@ Double Hung
 
 <p class="mt-4 text-gray-600">
 
-Classic style with easy cleaning and ventilation.
+Classic operation with timeless style.
 
 </p>
 
 </div>
 
-<div class="bg-white rounded-3xl p-8 shadow">
+<div class="bg-white p-8 rounded-3xl shadow-lg">
 
-<h3 class="text-2xl font-bold">
+<h3 class="font-bold text-2xl">
 
 Casement
 
@@ -442,15 +465,15 @@ Casement
 
 <p class="mt-4 text-gray-600">
 
-Modern performance with excellent airflow.
+Excellent airflow and modern performance.
 
 </p>
 
 </div>
 
-<div class="bg-white rounded-3xl p-8 shadow">
+<div class="bg-white p-8 rounded-3xl shadow-lg">
 
-<h3 class="text-2xl font-bold">
+<h3 class="font-bold text-2xl">
 
 Picture Windows
 
@@ -458,15 +481,15 @@ Picture Windows
 
 <p class="mt-4 text-gray-600">
 
-Large beautiful views with maximum efficiency.
+Expand views while maximizing efficiency.
 
 </p>
 
 </div>
 
-<div class="bg-white rounded-3xl p-8 shadow">
+<div class="bg-white p-8 rounded-3xl shadow-lg">
 
-<h3 class="text-2xl font-bold">
+<h3 class="font-bold text-2xl">
 
 Sliding Windows
 
@@ -474,15 +497,15 @@ Sliding Windows
 
 <p class="mt-4 text-gray-600">
 
-Smooth operation and modern styling.
+Smooth operation and clean styling.
 
 </p>
 
 </div>
 
-<div class="bg-white rounded-3xl p-8 shadow">
+<div class="bg-white p-8 rounded-3xl shadow-lg">
 
-<h3 class="text-2xl font-bold">
+<h3 class="font-bold text-2xl">
 
 Bay & Bow
 
@@ -490,15 +513,15 @@ Bay & Bow
 
 <p class="mt-4 text-gray-600">
 
-Expand views and create elegant spaces.
+Create elegant spaces and natural light.
 
 </p>
 
 </div>
 
-<div class="bg-white rounded-3xl p-8 shadow">
+<div class="bg-white p-8 rounded-3xl shadow-lg">
 
-<h3 class="text-2xl font-bold">
+<h3 class="font-bold text-2xl">
 
 Custom Shapes
 
@@ -506,7 +529,8 @@ Custom Shapes
 
 <p class="mt-4 text-gray-600">
 
-Unique designs built specifically for your home.
+Unique window designs built specifically
+for your home.
 
 </p>
 
@@ -520,14 +544,9 @@ Unique designs built specifically for your home.
 
 <!-- GALLERY -->
 
-<section
-class="py-24
-bg-white">
+<section class="py-24 bg-white">
 
-<div
-class="max-w-7xl
-mx-auto
-px-6">
+<div class="max-w-6xl mx-auto px-6">
 
 <h2
 class="text-5xl
@@ -535,18 +554,9 @@ font-bold
 text-center
 text-[#0a2540]">
 
-Recent Projects
+Recent Window Projects
 
 </h2>
-
-<p
-class="text-center
-text-gray-600
-mt-4">
-
-Replace these placeholders with your photos.
-
-</p>
 
 <div
 class="grid
@@ -554,14 +564,26 @@ md:grid-cols-3
 gap-8
 mt-16">
 
-<img src="window1.jpg"
-class="rounded-3xl h-[350px] object-cover w-full">
+<img
+src="window1.jpg"
+class="rounded-3xl
+h-[350px]
+object-cover
+w-full">
 
-<img src="window2.jpg"
-class="rounded-3xl h-[350px] object-cover w-full">
+<img
+src="window2.jpg"
+class="rounded-3xl
+h-[350px]
+object-cover
+w-full">
 
-<img src="window3.jpg"
-class="rounded-3xl h-[350px] object-cover w-full">
+<img
+src="window3.jpg"
+class="rounded-3xl
+h-[350px]
+object-cover
+w-full">
 
 </div>
 
@@ -593,10 +615,10 @@ Ready To Upgrade Your Windows?
 
 <p
 class="text-2xl
-text-gray-300
+text-amber-200
 mt-6">
 
-Get your free design consultation and estimate today.
+Schedule your FREE design consultation today.
 
 </p>
 
@@ -611,7 +633,8 @@ py-6
 rounded-3xl
 font-bold
 text-2xl
-transition">
+transition
+whitespace-nowrap">
 
 Call (513) 706-4589
 
@@ -622,4 +645,5 @@ Call (513) 706-4589
 </section>
 
 </body>
+
 </html>
