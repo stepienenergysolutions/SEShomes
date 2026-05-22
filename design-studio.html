@@ -14,23 +14,17 @@ body{font-family:'Inter',system-ui,sans-serif;}
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-<!-- NAV -->
+<!-- NAV (same as before) -->
 <header class="bg-[#0a2540] text-white py-2 sticky top-0 z-50">
 <div class="max-w-6xl mx-auto px-6">
 <div class="flex items-center justify-between">
 <div class="flex-shrink-0">
-<a href="index.html">
-<img src="logo.png" alt="SES Custom Homes" class="h-16 md:h-24 w-auto drop-shadow-2xl">
-</a>
+<a href="index.html"><img src="logo.png" alt="SES Custom Homes" class="h-16 md:h-24 w-auto drop-shadow-2xl"></a>
 </div>
 <nav class="hidden md:flex gap-10 text-lg items-center mx-auto">
 <a href="index.html" class="hover:text-amber-300 transition">Home</a>
-
 <div class="relative group dropdown">
-<a href="#" class="hover:text-amber-300 transition flex items-center gap-1">
-Services 
-<i class="fas fa-chevron-down text-xs"></i>
-</a>
+<a href="#" class="hover:text-amber-300 transition flex items-center gap-1">Services <i class="fas fa-chevron-down text-xs"></i></a>
 <div class="dropdown-menu absolute hidden group-hover:block pt-2">
 <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-64">
 <a href="windows.html" class="block px-6 py-3 hover:bg-gray-100">Windows</a>
@@ -45,14 +39,12 @@ Services
 </div>
 </div>
 </div>
-
 <a href="gallery.html" class="hover:text-amber-300 transition">Gallery</a>
 <a href="design-studio.html" class="text-amber-300 font-semibold">Design Studio</a>
 <a href="#" class="hover:text-amber-300 transition">About</a>
 <a href="index.html#contact" class="hover:text-amber-300 transition">Contact</a>
 </nav>
-
-<a href="#quote" class="bg-white text-[#0a2540] hover:bg-amber-100 px-8 py-4 rounded-2xl font-semibold transition whitespace-nowrap">
+<a href="#quote" class="bg-[#0a2540] hover:bg-[#08203a] px-8 py-4 rounded-2xl font-semibold transition whitespace-nowrap">
 Get Free Design and Estimate
 </a>
 </div>
@@ -63,7 +55,7 @@ Get Free Design and Estimate
 <section class="bg-[#0a2540] text-white py-20">
 <div class="max-w-6xl mx-auto px-6 text-center">
   <h1 class="text-5xl md:text-6xl font-bold">Design Studio</h1>
-  <p class="mt-6 text-2xl text-amber-300">Design it yourself or let us design it for you.</p>
+  <p class="mt-6 text-2xl text-amber-300">Design it yourself or let our team design it for you.</p>
 </div>
 </section>
 
@@ -72,75 +64,50 @@ Get Free Design and Estimate
 <div class="max-w-6xl mx-auto px-6">
   <div class="grid md:grid-cols-2 gap-12">
 
-    <!-- Option 1: DIY Visualizer -->
-    <div class="border border-gray-200 rounded-3xl p-10">
-      <div class="text-center mb-8">
-        <i class="fas fa-laptop text-6xl text-[#0a2540]"></i>
-        <h2 class="text-3xl font-bold mt-6">Design It Yourself</h2>
-        <p class="text-gray-600 mt-3">Use our Alside Visualizer to see how different siding, windows, and colors would look on your home.</p>
-      </div>
-      <iframe 
-        src="https://alside.renoworks.com/" 
-        width="100%" 
-        height="700" 
-        style="border: none; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"
-        allowfullscreen>
-      </iframe>
+    <!-- DIY Visualizer -->
+    <div class="border border-gray-200 rounded-3xl p-10 text-center">
+      <i class="fas fa-laptop text-6xl text-[#0a2540] mb-6"></i>
+      <h2 class="text-3xl font-bold">Design It Yourself</h2>
+      <p class="text-gray-600 mt-3 mb-10">Upload a photo of your home and instantly try different siding, windows, and colors.</p>
+      
+      <a href="https://alside.renoworks.com/" target="_blank" 
+         class="inline-block bg-[#0a2540] text-white px-10 py-5 rounded-3xl font-semibold text-xl hover:bg-black transition">
+        Launch Alside Visualizer →
+      </a>
     </div>
 
-    <!-- Option 2: Professional Design -->
-    <div class="border border-gray-200 rounded-3xl p-10 bg-gray-50">
-      <div class="text-center mb-8">
-        <i class="fas fa-drafting-compass text-6xl text-[#0a2540]"></i>
-        <h2 class="text-3xl font-bold mt-6">Let Us Design It For You</h2>
-        <p class="text-gray-600 mt-3">Our professional designers will create custom 3D renderings using Chief Architect software tailored to your vision and budget.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl text-center">
-        <p class="text-xl font-semibold">Get a professional custom design package</p>
-        <a href="#contact" class="mt-8 inline-block bg-[#0a2540] text-white px-10 py-4 rounded-2xl font-semibold hover:bg-black transition">
-          Request Professional Design
-        </a>
-      </div>
+    <!-- Professional Design -->
+    <div class="border border-gray-200 rounded-3xl p-10 bg-gray-50 text-center">
+      <i class="fas fa-drafting-compass text-6xl text-[#0a2540] mb-6"></i>
+      <h2 class="text-3xl font-bold">Professional Design</h2>
+      <p class="text-gray-600 mt-3 mb-10">Our designers will create full custom 3D renderings using Chief Architect tailored to your home and budget.</p>
+      
+      <a href="#quote" 
+         class="inline-block bg-[#0a2540] text-white px-10 py-5 rounded-3xl font-semibold text-xl hover:bg-black transition">
+        Request Professional Design
+      </a>
     </div>
 
   </div>
 </div>
 </section>
 
-<!-- PREVIOUS DESIGNS GALLERY -->
+<!-- EXAMPLE DESIGNS -->
 <section class="py-20 bg-gray-100">
 <div class="max-w-6xl mx-auto px-6">
-  <h2 class="text-5xl font-bold text-center text-[#0a2540] mb-4">Previous Designs</h2>
-  <p class="text-center text-gray-600 mb-12">Real projects our team has designed and built</p>
+  <h2 class="text-5xl font-bold text-center text-[#0a2540] mb-4">Example Designs</h2>
+  <p class="text-center text-gray-600 mb-12">Real custom designs created by our team</p>
   
-  <div class="grid md:grid-cols-3 gap-6">
-    <img src="addition1.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
-    <img src="addition2.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
-    <img src="addition3.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
-    <img src="sunroom.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
-    <img src="porch1.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
-    <img src="porch2.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
-    <img src="deck1.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
-    <img src="deck2.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
-    <img src="patio1.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
+  <div class="grid md:grid-cols-3 gap-8">
+    <img src="design1.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
+    <img src="design2.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
+    <img src="design3.jpg" class="rounded-3xl shadow-md hover:shadow-xl transition">
   </div>
 </div>
 </section>
 
-<!-- CONTACT / FINAL CTA -->
-<section id="contact" class="bg-[#0a2540] text-white py-20">
-<div class="max-w-4xl mx-auto px-6 text-center">
-  <h2 class="text-5xl font-bold">Ready to start designing your dream exterior?</h2>
-  <p class="mt-6 text-2xl text-amber-200">Call or text us to schedule your free professional design consultation.</p>
-  <a href="tel:5137064589" class="inline-flex items-center gap-4 text-4xl mt-12 hover:text-amber-300 transition">
-    <i class="fas fa-phone"></i>
-    <div>
-      <div class="text-sm uppercase tracking-widest">Call or Text</div>
-      <div class="font-semibold">(513) 706-4589</div>
-    </div>
-  </a>
-</div>
-</section>
-
-</body>
-</html>
+<!-- FINAL CTA -->
+<section id="quote" class="bg-[#0a2540] text-white py-24">
+<div class="max-w-4xl mx-auto text-center px-6">
+  <h2 class="text-5xl font-bold">Ready to design your dream exterior?</h2>
+  <p class="mt-
