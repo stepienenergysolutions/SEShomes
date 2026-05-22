@@ -44,106 +44,58 @@ transform:translateY(0);
 
 <!-- NAV -->
 
-<header class="hero-bg text-white py-2 sticky top-0 z-50">
+<!-- HEADER - Fixed spacing (logo far left, button far right) -->
+<header class="bg-[#0a2540] text-white py-2 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="flex items-center justify-between">
+      
+      <!-- Logo - Pushed to far left -->
+      <div class="flex-shrink-0">
+        <a href="index.html">
+          <img src="logo.png" alt="SES Custom Homes" class="h-16 md:h-24 w-auto drop-shadow-2xl">
+        </a>
+      </div>
 
-<div class="max-w-6xl mx-auto px-6">
+      <!-- Navigation - Centered -->
+      <nav class="hidden md:flex gap-8 lg:gap-12 text-lg items-center mx-auto">
+        <a href="index.html" class="hover:text-amber-300 transition">Home</a>
+        
+        <div class="relative group dropdown">
+          <a href="#" class="hover:text-amber-300 transition flex items-center gap-1">
+            Services 
+            <i class="fas fa-chevron-down text-xs"></i>
+          </a>
+          <div class="dropdown-menu absolute hidden group-hover:block pt-2">
+            <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-64">
+              <a href="windows.html" class="block px-6 py-3 hover:bg-gray-100">Windows</a>
+              <a href="doors.html" class="block px-6 py-3 hover:bg-gray-100">Doors</a>
+              <a href="roofing.html" class="block px-6 py-3 hover:bg-gray-100">Roofing</a>
+              <a href="siding.html" class="block px-6 py-3 hover:bg-gray-100">Siding</a>
+              <a href="decks.html" class="block px-6 py-3 hover:bg-gray-100">Decks</a>
+              <a href="porches.html" class="block px-6 py-3 hover:bg-gray-100">Porches</a>
+              <a href="additions.html" class="block px-6 py-3 hover:bg-gray-100">Additions</a>
+              <a href="patios.html" class="block px-6 py-3 hover:bg-gray-100">Patios</a>
+              <a href="fencing.html" class="block px-6 py-3 hover:bg-gray-100">Fencing</a>
+            </div>
+          </div>
+        </div>
 
-<div class="flex items-center justify-between">
+        <a href="gallery.html" class="hover:text-amber-300 transition">Gallery</a>
+        <a href="design-studio.html" class="hover:text-amber-300 transition font-semibold">Design Studio</a>
+        <a href="#" class="hover:text-amber-300 transition">About</a>
+        <a href="index.html#contact" class="hover:text-amber-300 transition">Contact</a>
+      </nav>
 
-<div class="flex-shrink-0">
-
-<img
-src="logo.png"
-alt="SES Custom Homes"
-class="h-16 md:h-24 w-auto drop-shadow-2xl">
-
-</div>
-
-<nav class="hidden md:flex gap-10 text-lg items-center mx-auto">
-
-<a href="#" class="hover:text-amber-300 transition">
-Home
-</a>
-
-<div class="relative group dropdown">
-
-<a
-href="#services"
-class="hover:text-amber-300 transition flex items-center gap-1">
-
-Services
-
-<i class="fas fa-chevron-down text-xs"></i>
-
-</a>
-
-<div
-class="dropdown-menu absolute hidden group-hover:block pt-2">
-
-<div
-class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-64">
-
-<a href="windows.html" class="block px-6 py-3 hover:bg-gray-100">
-Windows
-</a>
-
-<a href="doors.html" class="block px-6 py-3 hover:bg-gray-100">
-Doors
-</a>
-
-<a
-href="roofing.html"
-class="block px-6 py-3 hover:bg-gray-100">
-
-Roofing
-
-</a>
-
-<a href="siding.html" class="block px-6 py-3 hover:bg-gray-100">
-Siding
-</a>
-
-<a href="decks.html" class="block px-6 py-3 hover:bg-gray-100">Decks</a>
-
-<a href="porches.html" class="block px-6 py-3 hover:bg-gray-100">Porches</a>
-
-<a href="additions.html" class="block px-6 py-3 hover:bg-gray-100">Additions</a>
-
-<a href="patios.html" class="block px-6 py-3 hover:bg-gray-100">Patios</a>
-<a href="fencing.html" class="block px-6 py-3 hover:bg-gray-100">Fencing</a>
-
-</div>
-
-</div>
-
-</div>
-
-<a href="gallery.html" class="hover:text-amber-300 transition">Gallery</a>
-  <a href="#" class="hover:text-amber-300 transition">About</a>
-  <a href="index.html#contact" class="hover:text-amber-300 transition">Contact</a>
-  <a href="design-studio.html" class="hover:text-amber-300 transition">Design Studio</a>
-
-
-</nav>
-
-<a
-href="#contact"
-class="bg-[#0a2540]
-hover:bg-[#08203a]
-px-8 py-4
-rounded-2xl
-font-semibold
-text-lg
-transition">
-
-Get Free Design and Estimate
-
-</a>
-
-</div>
-
-</div>
-
+      <!-- CTA Button - Pushed to far right -->
+      <div class="flex-shrink-0">
+        <a href="#quote" 
+           class="bg-[#0a2540] hover:bg-[#08203a] px-8 py-4 rounded-2xl font-semibold transition whitespace-nowrap">
+          Get Free Design and Estimate
+        </a>
+      </div>
+      
+    </div>
+  </div>
 </header>
 
 <!-- HERO -->
