@@ -57,84 +57,85 @@ transform:translateY(0);
       </div>
 
       <!-- Navigation - Centered -->
-      <nav class="hidden md:flex gap-8 lg:gap-12 text-lg items-center mx-auto">
-        <a href="index.html" class="hover:text-amber-300 transition">Home</a>
-        
-        <!-- UPDATED SERVICES DROPDOWN (with nested Windows menu) -->
-<!-- FULL SERVICES DROPDOWN - All window types pre-added -->
-<!-- FULL SERVICES DROPDOWN WITH NESTED MENUS -->
-<div class="relative group dropdown">
-  <a href="#" class="hover:text-amber-300 transition flex items-center gap-1">
-    Services 
-    <i class="fas fa-chevron-down text-xs"></i>
-  </a>
-  <div class="dropdown-menu absolute hidden group-hover:block pt-2">
-    <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-72">
+      <nav class="hidden md:flex gap-10 text-lg items-center mx-auto">
+  <a href="index.html" class="hover:text-amber-300 transition">Home</a>
 
-      <!-- WINDOWS (nested) -->
-      <div class="relative group/nested px-6 py-3 hover:bg-gray-100 flex items-center justify-between cursor-pointer">
-        <a href="windows.html" class="flex-1">Windows</a>
-        <i class="fas fa-chevron-right text-xs"></i>
-        <div class="nested-menu absolute left-full top-0 hidden group-hover/nested:block bg-white rounded-3xl shadow-2xl py-4 w-64 ml-2">
-          <a href="double-hung-windows.html" class="block px-6 py-3 hover:bg-gray-100">Double Hung Windows</a>
-          <a href="picture-windows.html" class="block px-6 py-3 hover:bg-gray-100">Picture Windows</a>
-          <a href="bay-windows.html" class="block px-6 py-3 hover:bg-gray-100">Bay Windows</a>
-          <a href="bow-windows.html" class="block px-6 py-3 hover:bg-gray-100">Bow Windows</a>
-          <a href="casement-windows.html" class="block px-6 py-3 hover:bg-gray-100">Casement Windows</a>
-          <a href="slider-windows.html" class="block px-6 py-3 hover:bg-gray-100">Slider Windows</a>
-          <a href="awning-windows.html" class="block px-6 py-3 hover:bg-gray-100">Awning Windows</a>
-          <a href="hopper-windows.html" class="block px-6 py-3 hover:bg-gray-100">Hopper Windows</a>
-          <a href="new-construction-windows.html" class="block px-6 py-3 hover:bg-gray-100">New Construction Windows</a>
+  <!-- SERVICES DROPDOWN -->
+  <div class="relative group dropdown">
+    <a href="#" class="hover:text-amber-300 transition flex items-center gap-1">
+      Services 
+      <i class="fas fa-chevron-down text-xs"></i>
+    </a>
+    <div class="dropdown-menu absolute hidden group-hover:block pt-2">
+      <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-72">
+
+        <!-- Windows -->
+        <div class="relative group/nested px-6 py-3 hover:bg-gray-100 flex items-center justify-between cursor-pointer">
+          <a href="windows.html" class="flex-1">Windows</a>
+          <i class="fas fa-chevron-right text-xs"></i>
+          <div class="nested-menu absolute left-full top-0 hidden group-hover/nested:block bg-white rounded-3xl shadow-2xl py-4 w-64 ml-2">
+            <a href="double-hung-windows.html" class="block px-6 py-3 hover:bg-gray-100">Double Hung Windows</a>
+            <a href="picture-windows.html" class="block px-6 py-3 hover:bg-gray-100">Picture Windows</a>
+            <a href="bay-windows.html" class="block px-6 py-3 hover:bg-gray-100">Bay Windows</a>
+            <a href="bow-windows.html" class="block px-6 py-3 hover:bg-gray-100">Bow Windows</a>
+            <a href="casement-windows.html" class="block px-6 py-3 hover:bg-gray-100">Casement Windows</a>
+            <a href="slider-windows.html" class="block px-6 py-3 hover:bg-gray-100">Slider Windows</a>
+            <a href="awning-windows.html" class="block px-6 py-3 hover:bg-gray-100">Awning Windows</a>
+            <a href="hopper-windows.html" class="block px-6 py-3 hover:bg-gray-100">Hopper Windows</a>
+            <a href="new-construction-windows.html" class="block px-6 py-3 hover:bg-gray-100">New Construction Windows</a>
+          </div>
         </div>
-      </div>
 
-      <!-- DOORS (nested) -->
-      <div class="relative group/nested px-6 py-3 hover:bg-gray-100 flex items-center justify-between cursor-pointer">
-        <a href="doors.html" class="flex-1">Doors</a>
-        <i class="fas fa-chevron-right text-xs"></i>
-        <div class="nested-menu absolute left-full top-0 hidden group-hover/nested:block bg-white rounded-3xl shadow-2xl py-4 w-64 ml-2">
-          <a href="fiberglass-doors.html" class="block px-6 py-3 hover:bg-gray-100">Fiberglass Doors</a>
-          <a href="steel-doors.html" class="block px-6 py-3 hover:bg-gray-100">Steel Doors</a>
-          <a href="wood-doors.html" class="block px-6 py-3 hover:bg-gray-100">Wood Doors</a>
+        <!-- Doors -->
+        <div class="relative group/nested px-6 py-3 hover:bg-gray-100 flex items-center justify-between cursor-pointer">
+          <a href="doors.html" class="flex-1">Doors</a>
+          <i class="fas fa-chevron-right text-xs"></i>
+          <div class="nested-menu absolute left-full top-0 hidden group-hover/nested:block bg-white rounded-3xl shadow-2xl py-4 w-64 ml-2">
+            <a href="fiberglass-doors.html" class="block px-6 py-3 hover:bg-gray-100">Fiberglass Doors</a>
+            <a href="steel-doors.html" class="block px-6 py-3 hover:bg-gray-100">Steel Doors</a>
+            <a href="wood-doors.html" class="block px-6 py-3 hover:bg-gray-100">Wood Doors</a>
+          </div>
         </div>
-      </div>
 
-      <!-- SIDING (nested) -->
-      <div class="relative group/nested px-6 py-3 hover:bg-gray-100 flex items-center justify-between cursor-pointer">
-        <a href="siding.html" class="flex-1">Siding</a>
-        <i class="fas fa-chevron-right text-xs"></i>
-        <div class="nested-menu absolute left-full top-0 hidden group-hover/nested:block bg-white rounded-3xl shadow-2xl py-4 w-64 ml-2">
-          <a href="vinyl-siding.html" class="block px-6 py-3 hover:bg-gray-100">Vinyl Siding</a>
-          <a href="fiberglass-siding.html" class="block px-6 py-3 hover:bg-gray-100">Fiberglass Siding</a>
-          <a href="fiber-cement-siding.html" class="block px-6 py-3 hover:bg-gray-100">Fiber Cement Siding</a>
+        <!-- Siding -->
+        <div class="relative group/nested px-6 py-3 hover:bg-gray-100 flex items-center justify-between cursor-pointer">
+          <a href="siding.html" class="flex-1">Siding</a>
+          <i class="fas fa-chevron-right text-xs"></i>
+          <div class="nested-menu absolute left-full top-0 hidden group-hover/nested:block bg-white rounded-3xl shadow-2xl py-4 w-64 ml-2">
+            <a href="vinyl-siding.html" class="block px-6 py-3 hover:bg-gray-100">Vinyl Siding</a>
+            <a href="fiberglass-siding.html" class="block px-6 py-3 hover:bg-gray-100">Fiberglass Siding</a>
+            <a href="fiber-cement-siding.html" class="block px-6 py-3 hover:bg-gray-100">Fiber Cement Siding</a>
+          </div>
         </div>
-      </div>
 
-      <!-- DECKS (nested) -->
-      <div class="relative group/nested px-6 py-3 hover:bg-gray-100 flex items-center justify-between cursor-pointer">
-        <a href="decks.html" class="flex-1">Decks</a>
-        <i class="fas fa-chevron-right text-xs"></i>
-        <div class="nested-menu absolute left-full top-0 hidden group-hover/nested:block bg-white rounded-3xl shadow-2xl py-4 w-64 ml-2">
-          <a href="composite-decks.html" class="block px-6 py-3 hover:bg-gray-100">Composite Decks</a>
-          <a href="wood-decks.html" class="block px-6 py-3 hover:bg-gray-100">Wood Decks</a>
+        <!-- Decks -->
+        <div class="relative group/nested px-6 py-3 hover:bg-gray-100 flex items-center justify-between cursor-pointer">
+          <a href="decks.html" class="flex-1">Decks</a>
+          <i class="fas fa-chevron-right text-xs"></i>
+          <div class="nested-menu absolute left-full top-0 hidden group-hover/nested:block bg-white rounded-3xl shadow-2xl py-4 w-64 ml-2">
+            <a href="wood-decks.html" class="block px-6 py-3 hover:bg-gray-100">Wood Decks</a>
+            <a href="composite-decks.html" class="block px-6 py-3 hover:bg-gray-100">Composite Decks</a>
+          </div>
         </div>
+
+        <!-- Roofing (now back) -->
+        <a href="roofing.html" class="block px-6 py-3 hover:bg-gray-100">Roofing</a>
+
+        <!-- Other flat services -->
+        <a href="porches.html" class="block px-6 py-3 hover:bg-gray-100">Porches</a>
+        <a href="additions.html" class="block px-6 py-3 hover:bg-gray-100">Additions</a>
+        <a href="patios.html" class="block px-6 py-3 hover:bg-gray-100">Patios</a>
+        <a href="fencing.html" class="block px-6 py-3 hover:bg-gray-100">Fencing</a>
       </div>
-
-      <!-- Flat links -->
-      <a href="porches.html" class="block px-6 py-3 hover:bg-gray-100">Porches</a>
-      <a href="additions.html" class="block px-6 py-3 hover:bg-gray-100">Additions</a>
-      <a href="patios.html" class="block px-6 py-3 hover:bg-gray-100">Patios</a>
-      <a href="fencing.html" class="block px-6 py-3 hover:bg-gray-100">Fencing</a>
-
     </div>
   </div>
-</div>
 
-        <a href="gallery.html" class="hover:text-amber-300 transition">Gallery</a>
-        <a href="design-studio.html" class="hover:text-amber-300 transition font-semibold">Design Studio</a>
-        <a href="#" class="hover:text-amber-300 transition">About</a>
-        <a href="index.html#contact" class="hover:text-amber-300 transition">Contact</a>
-      </nav>
+  <a href="gallery.html" class="hover:text-amber-300 transition">Gallery</a>
+  <a href="design-studio.html" class="hover:text-amber-300 transition">Design Studio</a>
+  <a href="careers.html" class="hover:text-amber-300 transition font-semibold">Careers</a>
+  <a href="#" class="hover:text-amber-300 transition">About</a>
+  <a href="index.html#contact" class="hover:text-amber-300 transition">Contact</a>
+</nav>
 
       <!-- CTA Button - Pushed to far right -->
       <div class="flex-shrink-0">
