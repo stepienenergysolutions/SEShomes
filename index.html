@@ -60,25 +60,38 @@ transform:translateY(0);
       <nav class="hidden md:flex gap-8 lg:gap-12 text-lg items-center mx-auto">
         <a href="index.html" class="hover:text-amber-300 transition">Home</a>
         
-        <div class="relative group dropdown">
-          <a href="#" class="hover:text-amber-300 transition flex items-center gap-1">
-            Services 
-            <i class="fas fa-chevron-down text-xs"></i>
-          </a>
-          <div class="dropdown-menu absolute hidden group-hover:block pt-2">
-            <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-64">
-              <a href="windows.html" class="block px-6 py-3 hover:bg-gray-100">Windows</a>
-              <a href="doors.html" class="block px-6 py-3 hover:bg-gray-100">Doors</a>
-              <a href="roofing.html" class="block px-6 py-3 hover:bg-gray-100">Roofing</a>
-              <a href="siding.html" class="block px-6 py-3 hover:bg-gray-100">Siding</a>
-              <a href="decks.html" class="block px-6 py-3 hover:bg-gray-100">Decks</a>
-              <a href="porches.html" class="block px-6 py-3 hover:bg-gray-100">Porches</a>
-              <a href="additions.html" class="block px-6 py-3 hover:bg-gray-100">Additions</a>
-              <a href="patios.html" class="block px-6 py-3 hover:bg-gray-100">Patios</a>
-              <a href="fencing.html" class="block px-6 py-3 hover:bg-gray-100">Fencing</a>
-            </div>
-          </div>
+        <!-- UPDATED SERVICES DROPDOWN (with nested Windows menu) -->
+<div class="relative group dropdown">
+  <a href="#" class="hover:text-amber-300 transition flex items-center gap-1">
+    Services 
+    <i class="fas fa-chevron-down text-xs"></i>
+  </a>
+  <div class="dropdown-menu absolute hidden group-hover:block pt-2">
+    <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-64">
+
+      <!-- Windows → Nested submenu -->
+      <div class="relative group/nested px-6 py-3 hover:bg-gray-100 flex items-center justify-between cursor-pointer">
+        <a href="windows.html" class="flex-1">Windows</a>
+        <i class="fas fa-chevron-right text-xs"></i>
+        
+        <!-- Nested submenu for window types -->
+        <div class="nested-menu absolute left-full top-0 hidden group-hover/nested:block bg-white rounded-3xl shadow-2xl py-4 w-56 ml-2">
+          <a href="double-hung-windows.html" class="block px-6 py-3 hover:bg-gray-100">Double Hung Windows</a>
+          <!-- Add more window types here later -->
         </div>
+      </div>
+
+      <a href="doors.html" class="block px-6 py-3 hover:bg-gray-100">Doors</a>
+      <a href="roofing.html" class="block px-6 py-3 hover:bg-gray-100">Roofing</a>
+      <a href="siding.html" class="block px-6 py-3 hover:bg-gray-100">Siding</a>
+      <a href="decks.html" class="block px-6 py-3 hover:bg-gray-100">Decks</a>
+      <a href="porches.html" class="block px-6 py-3 hover:bg-gray-100">Porches</a>
+      <a href="additions.html" class="block px-6 py-3 hover:bg-gray-100">Additions</a>
+      <a href="patios.html" class="block px-6 py-3 hover:bg-gray-100">Patios</a>
+      <a href="fencing.html" class="block px-6 py-3 hover:bg-gray-100">Fencing</a>
+    </div>
+  </div>
+</div>
 
         <a href="gallery.html" class="hover:text-amber-300 transition">Gallery</a>
         <a href="design-studio.html" class="hover:text-amber-300 transition font-semibold">Design Studio</a>
