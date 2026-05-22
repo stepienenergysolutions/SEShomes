@@ -19,8 +19,67 @@ url('double-hung-hero.jpg') center/cover no-repeat fixed;
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-<!-- === YOUR CURRENT WORKING HEADER === -->
-<!-- Paste your full header code here (the one you said works) -->
+<!-- =========================
+     FULL HEADER (your working version)
+========================= -->
+<header class="bg-[#0a2540] text-white sticky top-0 z-50 shadow-md">
+  <div class="max-w-[1600px] mx-auto px-6 lg:px-10">
+    <div class="grid grid-cols-[auto_1fr_auto] items-center gap-8 py-4">
+      <!-- LOGO -->
+      <div class="justify-self-start">
+        <a href="index.html" class="block">
+          <img src="logo.png" alt="SES Custom Homes" class="h-16 md:h-20 lg:h-24 w-auto drop-shadow-2xl">
+        </a>
+      </div>
+
+      <!-- NAVIGATION -->
+      <nav class="hidden lg:flex items-center justify-center gap-8 xl:gap-12 text-lg font-medium">
+        <a href="index.html" class="hover:text-amber-300 transition">Home</a>
+        
+        <!-- Services Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center gap-2 hover:text-amber-300 transition">
+            Services
+            <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <!-- Your full Services dropdown content goes here -->
+        </div>
+
+        <a href="gallery.html" class="hover:text-amber-300 transition">Gallery</a>
+        <a href="design-studio.html" class="hover:text-amber-300 transition">Design Studio</a>
+        <a href="careers.html" class="hover:text-amber-300 transition">Careers</a>
+
+        <!-- About Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center gap-2 hover:text-amber-300 transition">
+            About
+            <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+          <div class="absolute left-1/2 top-full -translate-x-1/2 pt-4 hidden group-hover:block z-50">
+            <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-64">
+              <a href="our-team.html" class="block px-6 py-3 hover:bg-gray-100">Our Team</a>
+              <a href="reviews.html" class="block px-6 py-3 hover:bg-gray-100">Reviews</a>
+              <a href="community-give-back.html" class="block px-6 py-3 hover:bg-gray-100 font-semibold">Community Give Back</a>
+              <a href="blog.html" class="block px-6 py-3 hover:bg-gray-100">Blog</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="index.html#contact" class="hover:text-amber-300 transition">Contact</a>
+      </nav>
+
+      <!-- CTA -->
+      <div class="flex items-center justify-self-end gap-4">
+        <a href="#quote" class="hidden md:inline-flex bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-7 py-3 rounded-2xl font-semibold transition whitespace-nowrap text-base lg:text-lg shadow-lg">
+          Get Free Estimate
+        </a>
+        <button class="lg:hidden text-3xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
 
 <!-- SHORTER HERO -->
 <section class="hero-bg text-white py-20">
@@ -43,7 +102,8 @@ url('double-hung-hero.jpg') center/cover no-repeat fixed;
     <h2 class="text-5xl font-bold text-[#0a2540]">How Our Give Back Program Works</h2>
     <div class="mt-12 max-w-2xl mx-auto">
       <p class="text-xl text-gray-700">
-        It’s simple: For <strong>every single window</strong> we install — whether it’s one replacement or an entire home — we donate <span class="font-bold text-[#c9a96b]">$1</span> to our non-profit partners. 
+        For <strong>every single window</strong> we install — whether it’s one replacement or an entire home — we donate 
+        <span class="font-bold text-[#c9a96b]">$1</span> to our non-profit partners. 
         No minimums. No limits. Every window makes an impact.
       </p>
     </div>
