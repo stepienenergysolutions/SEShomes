@@ -30,315 +30,16 @@ url('hero.jpg')
 center/cover no-repeat fixed;
 }
 
-.dropdown:hover .dropdown-menu{
-opacity:1;
-visibility:visible;
-transform:translateY(0);
-}
-
 </style>
 
 </head>
 
 <body class="bg-gray-50 text-gray-900">
 
-<!-- NAV -->
+<div id="site-nav"></div>
+<!-- Tailwind CDN seed: pre-registers arbitrary classes used in partials/nav.html -->
+<div aria-hidden="true" class="hidden bg-[#0a2540] bg-[#0b2d4e] bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] max-w-[1600px] grid-cols-[auto_1fr_auto]"></div>
 
-<!-- =========================
-     FULL HEADER
-========================= -->
-<header class="bg-[#0a2540] text-white sticky top-0 z-50 shadow-md">
-
-  <div class="max-w-[1600px] mx-auto px-6 lg:px-10">
-
-    <!-- HEADER GRID -->
-    <div class="grid grid-cols-[auto_1fr_auto] items-center gap-8 py-4">
-
-      <!-- =========================
-           LOGO
-      ========================= -->
-      <div class="justify-self-start">
-
-        <a href="index.html" class="block">
-          <img 
-            src="logo.png"
-            alt="SES Custom Homes"
-            class="h-16 md:h-20 lg:h-24 w-auto drop-shadow-2xl"
-          >
-        </a>
-
-      </div>
-
-      <!-- =========================
-           DESKTOP NAVIGATION
-      ========================= -->
-      <nav class="hidden lg:flex items-center justify-center gap-8 xl:gap-12 text-lg font-medium">
-
-        <a href="index.html" class="hover:text-amber-300 transition">
-          Home
-        </a>
-
-        <!-- SERVICES DROPDOWN -->
-        <div class="relative group">
-
-          <button class="flex items-center gap-2 hover:text-amber-300 transition">
-            Services
-            <i class="fas fa-chevron-down text-xs"></i>
-          </button>
-
-          <!-- DROPDOWN -->
-          <div class="absolute left-1/2 top-full -translate-x-1/2 pt-4 hidden group-hover:block z-50">
-
-            <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-72">
-
-              <!-- WINDOWS -->
-              <div class="relative group/windows">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="windows.html" class="flex-1">
-                    Windows
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <!-- SUBMENU -->
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/windows:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="double-hung-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Double Hung Windows
-                    </a>
-
-                    <a href="picture-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Picture Windows
-                    </a>
-
-                    <a href="bay-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Bay Windows
-                    </a>
-
-                    <a href="bow-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Bow Windows
-                    </a>
-
-                    <a href="casement-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Casement Windows
-                    </a>
-
-                    <a href="slider-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Slider Windows
-                    </a>
-
-                    <a href="awning-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Awning Windows
-                    </a>
-
-                    <a href="hopper-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Hopper Windows
-                    </a>
-
-                    <a href="new-construction-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      New Construction Windows
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- DOORS -->
-              <div class="relative group/doors">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="doors.html" class="flex-1">
-                    Doors
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/doors:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="fiberglass-doors.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Fiberglass Doors
-                    </a>
-
-                    <a href="steel-doors.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Steel Doors
-                    </a>
-
-                    <a href="wood-doors.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Wood Doors
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- SIDING -->
-              <div class="relative group/siding">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="siding.html" class="flex-1">
-                    Siding
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/siding:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="vinyl-siding.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Vinyl Siding
-                    </a>
-
-                    <a href="fiberglass-siding.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Fiberglass Siding
-                    </a>
-
-                    <a href="fiber-cement-siding.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Fiber Cement Siding
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- DECKS -->
-              <div class="relative group/decks">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="decks.html" class="flex-1">
-                    Decks
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/decks:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="wood-decks.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Wood Decks
-                    </a>
-
-                    <a href="composite-decks.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Composite Decks
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- SINGLE LINKS -->
-              <a href="roofing.html" class="block px-6 py-3 hover:bg-gray-100">
-                Roofing
-              </a>
-
-              <a href="porches.html" class="block px-6 py-3 hover:bg-gray-100">
-                Porches
-              </a>
-
-              <a href="additions.html" class="block px-6 py-3 hover:bg-gray-100">
-                Additions
-              </a>
-
-              <a href="patios.html" class="block px-6 py-3 hover:bg-gray-100">
-                Patios
-              </a>
-
-              <a href="fencing.html" class="block px-6 py-3 hover:bg-gray-100">
-                Fencing
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-        <a href="gallery.html" class="hover:text-amber-300 transition">
-          Gallery
-        </a>
-
-        <a href="design-studio.html" class="hover:text-amber-300 transition">
-          Design Studio
-        </a>
-
-        <a href="careers.html" class="hover:text-amber-300 transition">
-          Careers
-        </a>
-
-        <!-- ABOUT -->
-        <div class="relative group">
-
-          <button class="flex items-center gap-2 hover:text-amber-300 transition">
-            About
-            <i class="fas fa-chevron-down text-xs"></i>
-          </button>
-
-          <div class="absolute left-1/2 top-full -translate-x-1/2 pt-4 hidden group-hover:block z-50">
-
-            <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-64">
-
-              <a href="our-team.html" class="block px-6 py-3 hover:bg-gray-100">
-                Our Team
-              </a>
-
-              <a href="reviews.html" class="block px-6 py-3 hover:bg-gray-100">
-                Reviews
-              </a>
-
-              <a href="community-give-back.html" class="block px-6 py-3 hover:bg-gray-100">
-                Community Give Back
-              </a>
-
-              <a href="blog.html" class="block px-6 py-3 hover:bg-gray-100">
-                Blog
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-        <a href="index.html#contact" class="hover:text-amber-300 transition">
-          Contact
-        </a>
-
-      </nav>
-
-      <!-- =========================
-           CTA + MOBILE MENU
-      ========================= -->
-      <div class="flex items-center justify-self-end gap-4">
-
-        <!-- CTA -->
-        <a 
-          href="#quote"
-          class="hidden md:inline-flex bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-7 py-3 rounded-2xl font-semibold transition whitespace-nowrap text-base lg:text-lg shadow-lg"
-        >
-          Get Free Estimate
-        </a>
-
-        <!-- MOBILE MENU -->
-        <button class="lg:hidden text-3xl">
-          <i class="fas fa-bars"></i>
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</header>
-<!-- HERO -->
 <!-- HERO -->
 <section class="hero-bg text-white min-h-screen flex items-center">
   <div class="max-w-6xl mx-auto px-3 w-full">
@@ -376,6 +77,7 @@ transform:translateY(0);
     </div>
   </div>
 </section>
+
 <!-- SERVICES -->
 
 <section id="services" class="py-20 bg-white">
@@ -412,8 +114,6 @@ lg:grid-cols-4
 gap-8
 mt-12">
 
-<!-- KEEPING ALL 8 SERVICES -->
-
 <a
 href="windows.html"
 class="bg-gray-50
@@ -436,6 +136,8 @@ Energy-efficient replacement windows that lower bills and beautify your home.
 <p class="mt-6 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
 Learn More →
 </p>
+
+</a>
 
 <a
 href="doors.html"
@@ -538,8 +240,6 @@ Learn More →
   <i class="fas fa-tree text-6xl text-[#0a2540] mb-6"></i>
   <h3 class="text-2xl font-semibold">Decks</h3>
   <p class="mt-3 text-gray-600">Custom wood and composite decks designed for your lifestyle.</p>
-  
-  <!-- More vertical space here -->
   <a href="decks.html" class="mt-6 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
     Learn more →
   </a>
@@ -549,7 +249,6 @@ Learn More →
   <i class="fas fa-archway text-6xl text-[#0a2540] mb-6"></i>
   <h3 class="text-2xl font-semibold">Porches</h3>
   <p class="mt-3 text-gray-600">Covered porches and screened-in porches that expand your living space.</p>
-  
   <a href="porches.html" class="mt-6 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
     Learn more →
   </a>
@@ -559,7 +258,6 @@ Learn More →
   <i class="fas fa-home text-6xl text-[#0a2540] mb-6"></i>
   <h3 class="text-2xl font-semibold">Additions</h3>
   <p class="mt-3 text-gray-600">Room additions, sunrooms, and home expansions built to match your style.</p>
-  
   <a href="additions.html" class="mt-8 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
     Learn more →
   </a>
@@ -569,20 +267,20 @@ Learn More →
   <i class="fas fa-umbrella-beach text-6xl text-[#0a2540] mb-6"></i>
   <h3 class="text-2xl font-semibold">Patios</h3>
   <p class="mt-3 text-gray-600">Concrete, paver, and stone patios for outdoor living at its best.</p>
-  
   <a href="patios.html" class="mt-8 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
     Learn more →
   </a>
 </div>
+
 <div class="bg-gray-50 p-8 rounded-3xl hover:shadow-xl transition">
   <i class="fas fa-bars text-6xl text-[#0a2540] mb-6"></i>
   <h3 class="text-2xl font-semibold">Fencing</h3>
   <p class="mt-3 text-gray-600">Custom privacy, decorative, and security fencing for your property.</p>
-  
   <a href="fencing.html" class="mt-8 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
     Learn more →
   </a>
 </div>
+
 </div>
 
 </div>
@@ -734,6 +432,10 @@ Building Forever Homes
 
 </div>
 
+</div>
+
+</div>
+
 </section>
 
 <!-- CONTACT -->
@@ -792,6 +494,10 @@ Virginia • West Virginia • North Carolina
 </div>
 
 </section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/site.js"></script>
 
 </body>
 </html>
