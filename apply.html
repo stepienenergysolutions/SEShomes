@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply to Join SES Custom Homes | Careers</title>
+<meta name="description" content="Apply to join SES Custom Homes. Tell us about your experience and the role you are interested in.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', system-ui, sans-serif; }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+<div id="site-nav"></div>
+<div aria-hidden="true" class="hidden bg-[#0a2540] bg-[#0b2d4e] bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] max-w-[1600px] grid-cols-[auto_1fr_auto]"></div>
+
+<main>
+  <section class="bg-[#0a2540] text-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 md:py-20">
+      <p class="uppercase tracking-[4px] text-amber-300 text-xs font-bold">Careers</p>
+      <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">Apply to Join SES Custom Homes</h1>
+      <p class="mt-5 text-lg md:text-xl text-gray-200 leading-relaxed max-w-3xl">
+        Tell us about your experience and the role you are interested in.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-6 lg:px-10">
+      <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+        <div class="bg-[#fffaf0] border-b border-amber-100 px-6 sm:px-8 py-5">
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Share a few details and our team will review your application when hiring for the right role.
+          </p>
+        </div>
+
+        <!-- TODO: Replace action="#" with a live form endpoint that emails submissions to rickstepien@sescustomhomes.com and eventually creates a CRM recruiting/application record. -->
+        <form action="#" method="POST" class="p-6 sm:p-8">
+          <input type="hidden" name="form_type" value="career_application">
+          <input type="hidden" name="lead_source" value="website_careers">
+          <input type="hidden" name="_subject" value="New SES Custom Homes Career Application">
+
+          <div class="grid md:grid-cols-2 gap-5">
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Full name</span>
+              <input type="text" name="full_name" autocomplete="name" required class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Phone number</span>
+              <input type="tel" name="phone" autocomplete="tel" required class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Email</span>
+              <input type="email" name="email" autocomplete="email" required class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Position interested in</span>
+              <select id="position-select" name="position_interested_in" required class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 bg-white focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+                <option value="">Select a position</option>
+                <option value="sales-rep">Sales Representative</option>
+                <option value="marketing-rep">Marketing Representative</option>
+                <option value="installer">Installer</option>
+                <option value="subcontractor">Subcontractor / Crew</option>
+                <option value="project-manager">Project Manager</option>
+                <option value="admin">Office / Admin</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+
+            <label class="block md:col-span-2">
+              <span class="text-sm font-semibold text-[#0a2540]">City/state</span>
+              <input type="text" name="city_state" autocomplete="address-level2" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Are you available full-time?</span>
+              <select name="available_full_time" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 bg-white focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+                <option value="">Select an answer</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="open-to-discuss">Open to discuss</option>
+              </select>
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Do you have reliable transportation?</span>
+              <select name="reliable_transportation" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 bg-white focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+                <option value="">Select an answer</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Do you have your own tools? if applicable</span>
+              <select name="own_tools" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 bg-white focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+                <option value="">Select an answer</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="not-applicable">Not applicable</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="block mt-5">
+            <span class="text-sm font-semibold text-[#0a2540]">Relevant experience</span>
+            <textarea name="relevant_experience" rows="6" required class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100"></textarea>
+          </label>
+
+          <label class="block mt-5">
+            <span class="text-sm font-semibold text-[#0a2540]">Additional notes</span>
+            <textarea name="additional_notes" rows="4" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100"></textarea>
+          </label>
+
+          <div class="mt-8 border-t border-gray-100 pt-6 flex flex-col sm:flex-row sm:items-center gap-5 sm:justify-between">
+            <p class="text-sm text-gray-500 leading-relaxed max-w-xl">
+              After launch, this form will send your application to the SES Custom Homes team for review.
+            </p>
+            <button type="submit" class="inline-flex items-center justify-center gap-3 bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-8 py-4 rounded-2xl font-bold transition shadow-lg whitespace-nowrap">
+              Submit Application
+              <i class="fas fa-arrow-right text-sm"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var position = params.get('position');
+  var select = document.getElementById('position-select');
+  if (position && select) {
+    var normalized = position.toLowerCase();
+    var aliases = {
+      'sales-representative': 'sales-rep',
+      'marketing-representative': 'marketing-rep',
+      'subcontractor-crew': 'subcontractor',
+      'office-admin': 'admin'
+    };
+    normalized = aliases[normalized] || normalized;
+    var allowed = Array.prototype.some.call(select.options, function (option) {
+      return option.value === normalized;
+    });
+    if (allowed) select.value = normalized;
+  }
+})();
+</script>
+
+</body>
+</html>

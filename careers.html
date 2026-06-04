@@ -15,316 +15,24 @@ body{font-family:'Inter',system-ui,sans-serif;}
 background: linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.65)),
 url('career.jpg') center/cover no-repeat fixed;
 }
-.dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
 </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-<!-- NAV -->
-<!-- =========================
-     FULL HEADER
-========================= -->
-<header class="bg-[#0a2540] text-white sticky top-0 z-50 shadow-md">
+<div id="site-nav"></div>
+<!-- Tailwind CDN seed: pre-registers arbitrary classes used in partials/nav.html -->
+<div aria-hidden="true" class="hidden bg-[#0a2540] bg-[#0b2d4e] bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] max-w-[1600px] grid-cols-[auto_1fr_auto]"></div>
 
-  <div class="max-w-[1600px] mx-auto px-6 lg:px-10">
-
-    <!-- HEADER GRID -->
-    <div class="grid grid-cols-[auto_1fr_auto] items-center gap-8 py-4">
-
-      <!-- =========================
-           LOGO
-      ========================= -->
-      <div class="justify-self-start">
-
-        <a href="index.html" class="block">
-          <img 
-            src="logo.png"
-            alt="SES Custom Homes"
-            class="h-16 md:h-20 lg:h-24 w-auto drop-shadow-2xl"
-          >
-        </a>
-
-      </div>
-
-      <!-- =========================
-           DESKTOP NAVIGATION
-      ========================= -->
-      <nav class="hidden lg:flex items-center justify-center gap-8 xl:gap-12 text-lg font-medium">
-
-        <a href="index.html" class="hover:text-amber-300 transition">
-          Home
-        </a>
-
-        <!-- SERVICES DROPDOWN -->
-        <div class="relative group">
-
-          <button class="flex items-center gap-2 hover:text-amber-300 transition">
-            Services
-            <i class="fas fa-chevron-down text-xs"></i>
-          </button>
-
-          <!-- DROPDOWN -->
-          <div class="absolute left-1/2 top-full -translate-x-1/2 pt-4 hidden group-hover:block z-50">
-
-            <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-72">
-
-              <!-- WINDOWS -->
-              <div class="relative group/windows">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="windows.html" class="flex-1">
-                    Windows
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <!-- SUBMENU -->
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/windows:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="double-hung-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Double Hung Windows
-                    </a>
-
-                    <a href="picture-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Picture Windows
-                    </a>
-
-                    <a href="bay-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Bay Windows
-                    </a>
-
-                    <a href="bow-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Bow Windows
-                    </a>
-
-                    <a href="casement-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Casement Windows
-                    </a>
-
-                    <a href="slider-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Slider Windows
-                    </a>
-
-                    <a href="awning-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Awning Windows
-                    </a>
-
-                    <a href="hopper-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Hopper Windows
-                    </a>
-
-                    <a href="new-construction-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      New Construction Windows
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- DOORS -->
-              <div class="relative group/doors">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="doors.html" class="flex-1">
-                    Doors
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/doors:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="fiberglass-doors.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Fiberglass Doors
-                    </a>
-
-                    <a href="steel-doors.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Steel Doors
-                    </a>
-
-                    <a href="wood-doors.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Wood Doors
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- SIDING -->
-              <div class="relative group/siding">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="siding.html" class="flex-1">
-                    Siding
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/siding:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="vinyl-siding.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Vinyl Siding
-                    </a>
-
-                    <a href="fiberglass-siding.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Fiberglass Siding
-                    </a>
-
-                    <a href="fiber-cement-siding.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Fiber Cement Siding
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- DECKS -->
-              <div class="relative group/decks">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="decks.html" class="flex-1">
-                    Decks
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/decks:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="wood-decks.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Wood Decks
-                    </a>
-
-                    <a href="composite-decks.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Composite Decks
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- SINGLE LINKS -->
-              <a href="roofing.html" class="block px-6 py-3 hover:bg-gray-100">
-                Roofing
-              </a>
-
-              <a href="porches.html" class="block px-6 py-3 hover:bg-gray-100">
-                Porches
-              </a>
-
-              <a href="additions.html" class="block px-6 py-3 hover:bg-gray-100">
-                Additions
-              </a>
-
-              <a href="patios.html" class="block px-6 py-3 hover:bg-gray-100">
-                Patios
-              </a>
-
-              <a href="fencing.html" class="block px-6 py-3 hover:bg-gray-100">
-                Fencing
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-        <a href="gallery.html" class="hover:text-amber-300 transition">
-          Gallery
-        </a>
-
-        <a href="design-studio.html" class="hover:text-amber-300 transition">
-          Design Studio
-        </a>
-
-        <a href="careers.html" class="hover:text-amber-300 transition">
-          Careers
-        </a>
-
-        <!-- ABOUT -->
-        <div class="relative group">
-
-          <button class="flex items-center gap-2 hover:text-amber-300 transition">
-            About
-            <i class="fas fa-chevron-down text-xs"></i>
-          </button>
-
-          <div class="absolute left-1/2 top-full -translate-x-1/2 pt-4 hidden group-hover:block z-50">
-
-            <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-64">
-
-              <a href="our-team.html" class="block px-6 py-3 hover:bg-gray-100">
-                Our Team
-              </a>
-
-              <a href="reviews.html" class="block px-6 py-3 hover:bg-gray-100">
-                Reviews
-              </a>
-
-              <a href="community-give-back.html" class="block px-6 py-3 hover:bg-gray-100">
-                Community Give Back
-              </a>
-
-              <a href="blog.html" class="block px-6 py-3 hover:bg-gray-100">
-                Blog
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-        <a href="index.html#contact" class="hover:text-amber-300 transition">
-          Contact
-        </a>
-
-      </nav>
-
-      <!-- =========================
-           CTA + MOBILE MENU
-      ========================= -->
-      <div class="flex items-center justify-self-end gap-4">
-
-        <!-- CTA -->
-        <a 
-          href="#quote"
-          class="hidden md:inline-flex bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-7 py-3 rounded-2xl font-semibold transition whitespace-nowrap text-base lg:text-lg shadow-lg"
-        >
-          Get Free Estimate
-        </a>
-
-        <!-- MOBILE MENU -->
-        <button class="lg:hidden text-3xl">
-          <i class="fas fa-bars"></i>
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</header>
 
 <!-- HERO -->
 <section class="hero-bg text-white py-20">
   <div class="max-w-6xl mx-auto px-6">
     <div class="max-w-3xl">
       <p class="uppercase tracking-[3px] text-amber-300">Careers</p>
-      <h1 class="text-6xl md:text-7xl font-bold leading-none mt-6">
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold leading-none mt-6">
         Join the SES Custom Homes Family
       </h1>
-      <p class="mt-8 text-2xl text-gray-200">
+      <p class="mt-8 text-lg md:text-2xl text-gray-200">
         We're growing fast and looking for talented people who take pride in building beautiful homes across Virginia, West Virginia, and North Carolina.
       </p>
     </div>
@@ -334,21 +42,21 @@ url('career.jpg') center/cover no-repeat fixed;
 <!-- WHY JOIN US -->
 <section class="py-20 bg-white">
 <div class="max-w-6xl mx-auto px-6">
-<h2 class="text-5xl font-bold text-center text-[#0a2540]">Why Work With SES Custom Homes?</h2>
+<h2 class="text-4xl md:text-5xl font-bold text-center text-[#0a2540]">Why Work With SES Custom Homes?</h2>
 <div class="grid md:grid-cols-3 gap-8 mt-16">
   <div class="text-center">
     <i class="fas fa-users text-5xl text-[#0a2540]"></i>
-    <h3 class="font-bold text-2xl mt-6">Family-Owned Culture</h3>
+    <h3 class="font-bold text-lg mt-6">Family-Owned Culture</h3>
     <p class="mt-3 text-gray-600">Since 2013 we've grown as a true family business that values every team member.</p>
   </div>
   <div class="text-center">
     <i class="fas fa-briefcase text-5xl text-amber-500"></i>
-    <h3 class="font-bold text-2xl mt-6">Growth Opportunities</h3>
+    <h3 class="font-bold text-lg mt-6">Growth Opportunities</h3>
     <p class="mt-3 text-gray-600">We promote from within and invest in training and career development.</p>
   </div>
   <div class="text-center">
     <i class="fas fa-heart text-5xl text-[#0a2540]"></i>
-    <h3 class="font-bold text-2xl mt-6">Competitive Pay & Benefits</h3>
+    <h3 class="font-bold text-lg mt-6">Competitive Pay & Benefits</h3>
     <p class="mt-3 text-gray-600">Strong pay, health benefits, 401k matching, and performance bonuses.</p>
   </div>
 </div>
@@ -356,14 +64,14 @@ url('career.jpg') center/cover no-repeat fixed;
 </section>
 
 <!-- OPEN POSITIONS -->
-<section class="py-24 bg-gray-100">
+<section class="py-20 bg-gray-100">
 <div class="max-w-6xl mx-auto px-6">
-<h2 class="text-5xl font-bold text-center text-[#0a2540] mb-12">We're Hiring</h2>
+<h2 class="text-4xl md:text-5xl font-bold text-center text-[#0a2540] mb-12">We're Hiring</h2>
 
 <div class="grid md:grid-cols-2 gap-12">
 
   <!-- CONTRACTORS / INSTALLERS -->
-  <div class="bg-white rounded-3xl shadow-xl p-10">
+  <div class="bg-white rounded-2xl shadow-xl p-10">
     <div class="flex items-center gap-4 mb-6">
       <i class="fas fa-hammer text-5xl text-[#0a2540]"></i>
       <h3 class="text-3xl font-bold">Contractors & Installers</h3>
@@ -374,14 +82,14 @@ url('career.jpg') center/cover no-repeat fixed;
       <li class="flex items-center gap-2"><i class="fas fa-check text-amber-500"></i> Year-round work</li>
       <li class="flex items-center gap-2"><i class="fas fa-check text-amber-500"></i> Company vehicle & tools provided for qualified applicants</li>
     </ul>
-    <a href="mailto:careers@sescustomhomes.com?subject=Contractor%20Application" 
-       class="mt-10 block text-center bg-[#0a2540] text-white py-5 rounded-3xl font-semibold text-xl hover:bg-black transition">
+    <a href="apply.html?position=subcontractor" 
+       class="mt-10 block text-center bg-[#0a2540] text-white py-5 rounded-2xl font-semibold hover:bg-black transition">
       Apply as a Contractor →
     </a>
   </div>
 
   <!-- MARKETING & SALES -->
-  <div class="bg-white rounded-3xl shadow-xl p-10">
+  <div class="bg-white rounded-2xl shadow-xl p-10">
     <div class="flex items-center gap-4 mb-6">
       <i class="fas fa-chart-line text-5xl text-amber-500"></i>
       <h3 class="text-3xl font-bold">Marketing & Sales</h3>
@@ -392,8 +100,8 @@ url('career.jpg') center/cover no-repeat fixed;
       <li class="flex items-center gap-2"><i class="fas fa-check text-amber-500"></i> Flexible schedule & growth potential</li>
       <li class="flex items-center gap-2"><i class="fas fa-check text-amber-500"></i> Marketing, digital, and inside sales roles available</li>
     </ul>
-    <a href="mailto:careers@sescustomhomes.com?subject=Marketing%20%26%20Sales%20Application" 
-       class="mt-10 block text-center bg-[#0a2540] text-white py-5 rounded-3xl font-semibold text-xl hover:bg-black transition">
+    <a href="apply.html?position=marketing-rep" 
+       class="mt-10 block text-center bg-[#0a2540] text-white py-5 rounded-2xl font-semibold hover:bg-black transition">
       Apply for Marketing & Sales →
     </a>
   </div>
@@ -403,16 +111,21 @@ url('career.jpg') center/cover no-repeat fixed;
 </section>
 
 <!-- FINAL CTA -->
-<section class="bg-[#0a2540] text-white py-24">
+<section class="bg-[#0a2540] text-white py-20">
 <div class="max-w-4xl mx-auto text-center px-6">
-<h2 class="text-5xl font-bold">Ready to build your future with us?</h2>
-<p class="mt-6 text-2xl text-amber-200">Send your resume and a short message to:</p>
-<a href="mailto:careers@sescustomhomes.com" class="inline-block mt-10 text-3xl font-semibold underline hover:text-amber-300">
-careers@sescustomhomes.com
+<h2 class="text-4xl md:text-5xl font-bold">Ready to build your future with us?</h2>
+<p class="mt-6 text-lg md:text-2xl text-amber-200">Tell us about your experience and the role you are interested in.</p>
+<a href="apply.html" class="inline-block mt-10 bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-8 py-4 rounded-2xl font-bold transition">
+Apply Now
 </a>
-<p class="mt-12 text-lg">Or call us directly at <a href="tel:5137064589" class="font-bold">(513) 706-4589</a></p>
+<p class="mt-12 text-lg">Or call us directly at <a href="tel:+15137064589" class="font-bold">(513) 706-4589</a></p>
 </div>
 </section>
+
+
+<div id="site-footer"></div>
+
+<script src="assets/js/site.js"></script>
 
 </body>
 </html>

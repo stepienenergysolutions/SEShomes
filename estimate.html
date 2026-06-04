@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Your Free Design & Estimate | SES Custom Homes</title>
+<meta name="description" content="Request a free design and estimate from SES Custom Homes for windows, doors, roofing, siding, decks, porches, patios, additions, fencing, or custom home projects.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', system-ui, sans-serif; }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+<div id="site-nav"></div>
+<div aria-hidden="true" class="hidden bg-[#0a2540] bg-[#0b2d4e] bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] max-w-[1600px] grid-cols-[auto_1fr_auto]"></div>
+
+<main>
+  <section class="bg-[#0a2540] text-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 md:py-20">
+      <div class="grid lg:grid-cols-[1fr_auto] gap-8 items-end">
+        <div class="max-w-3xl">
+          <p class="uppercase tracking-[4px] text-amber-300 text-xs font-bold">Free Design & Estimate</p>
+          <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">Request Your Free Design &amp; Estimate</h1>
+          <p class="mt-5 text-lg md:text-xl text-gray-200 leading-relaxed">
+            Tell us about your project and our team will contact you to review the details and schedule an appointment.
+          </p>
+        </div>
+        <a href="tel:+15137064589" class="inline-flex items-center justify-center gap-3 bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-7 py-4 rounded-2xl font-bold transition shadow-lg whitespace-nowrap">
+          <i class="fas fa-phone text-sm"></i>
+          (513) 706-4589
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-6 lg:px-10">
+      <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+        <div class="bg-[#fffaf0] border-b border-amber-100 px-6 sm:px-8 py-5">
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Share the basics below. We will use this information to prepare for your consultation and help match you with the right next step.
+          </p>
+        </div>
+
+        <!-- TODO: Replace action="#" with a live form endpoint that emails submissions to rickstepien@sescustomhomes.com and eventually creates a CRM lead/appointment. -->
+        <form action="#" method="POST" class="p-6 sm:p-8">
+          <input type="hidden" name="form_type" value="estimate_request">
+          <input type="hidden" name="lead_source" value="website">
+          <input type="hidden" name="_subject" value="New SES Custom Homes Estimate Request">
+
+          <div class="grid md:grid-cols-2 gap-5">
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Full name</span>
+              <input type="text" name="full_name" autocomplete="name" required class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Phone number</span>
+              <input type="tel" name="phone" autocomplete="tel" required class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Email</span>
+              <input type="email" name="email" autocomplete="email" required class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Project address</span>
+              <input type="text" name="project_address" autocomplete="street-address" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">City</span>
+              <input type="text" name="city" autocomplete="address-level2" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+
+            <div class="grid grid-cols-[1fr_1fr] gap-4">
+              <label class="block">
+                <span class="text-sm font-semibold text-[#0a2540]">State</span>
+                <input type="text" name="state" autocomplete="address-level1" maxlength="2" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 uppercase focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+              </label>
+              <label class="block">
+                <span class="text-sm font-semibold text-[#0a2540]">ZIP</span>
+                <input type="text" name="zip" autocomplete="postal-code" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+              </label>
+            </div>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Service interested in</span>
+              <select id="service-select" name="service_interested_in" required class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 bg-white focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+                <option value="">Select a service</option>
+                <option value="windows">Windows</option>
+                <option value="doors">Doors</option>
+                <option value="roofing">Roofing</option>
+                <option value="siding">Siding</option>
+                <option value="decks">Decks</option>
+                <option value="porches">Porches</option>
+                <option value="patios">Patios</option>
+                <option value="additions">Additions</option>
+                <option value="fencing">Fencing</option>
+                <option value="complete-custom-home">Complete Custom Home</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Preferred appointment date</span>
+              <input type="date" name="preferred_appointment_date" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Preferred appointment time</span>
+              <input type="time" name="preferred_appointment_time" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">Preferred contact method</span>
+              <select name="preferred_contact_method" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 bg-white focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+                <option value="">Select a contact method</option>
+                <option value="phone">Phone call</option>
+                <option value="text">Text message</option>
+                <option value="email">Email</option>
+              </select>
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-[#0a2540]">How did you hear about us?</span>
+              <input type="text" name="how_did_you_hear_about_us" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+            </label>
+          </div>
+
+          <label class="block mt-5">
+            <span class="text-sm font-semibold text-[#0a2540]">Project details / notes</span>
+            <textarea name="project_details" rows="6" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100"></textarea>
+          </label>
+
+          <div class="mt-8 border-t border-gray-100 pt-6 flex flex-col lg:flex-row lg:items-center gap-5 lg:justify-between">
+            <p class="text-sm text-gray-500 leading-relaxed max-w-2xl">
+              After launch, this form will send your request to our scheduling team. We will contact you to confirm appointment availability.
+            </p>
+            <button type="submit" class="inline-flex items-center justify-center gap-3 bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-8 py-4 rounded-2xl font-bold transition shadow-lg whitespace-nowrap">
+              Request Estimate
+              <i class="fas fa-arrow-right text-sm"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var service = params.get('service');
+  var select = document.getElementById('service-select');
+  if (service && select) {
+    var normalized = service.toLowerCase();
+    var allowed = Array.prototype.some.call(select.options, function (option) {
+      return option.value === normalized;
+    });
+    if (allowed) select.value = normalized;
+  }
+})();
+</script>
+
+</body>
+</html>

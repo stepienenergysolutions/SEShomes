@@ -16,7 +16,7 @@ html { scroll-behavior: smooth; }
 body { font-family: 'Inter', system-ui, sans-serif; }
 .hero-bg {
   background:
-    linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.58)),
+    linear-gradient(90deg, rgba(0,0,0,.38), rgba(0,0,0,.18) 48%, rgba(0,0,0,.08)),
     url('hero.jpg') center/cover no-repeat fixed;
 }
 </style>
@@ -31,52 +31,55 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 
 <!-- ═══════════════════════
      HERO
-     pt-20 offsets the fixed nav so items-center visually centers
-     the content within the visible area below the header.
+     Left-side premium card over the shared hero image.
 ═══════════════════════ -->
-<section class="hero-bg text-white min-h-screen flex items-center pt-20">
-  <div class="max-w-5xl mx-auto px-6 w-full py-16 text-center">
+<section class="hero-bg min-h-screen flex items-center pt-24 pb-10 md:pt-28 md:pb-16">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 w-full">
 
-    <p class="uppercase tracking-[4px] text-amber-300 text-xs font-semibold">
-      Virginia • West Virginia • North Carolina
-    </p>
+    <div class="max-w-xl bg-[#fffaf0]/95 backdrop-blur-sm text-[#0a2540] rounded-3xl shadow-2xl border border-white/70 p-6 sm:p-8 md:p-10">
+      <div class="h-1 w-20 bg-[#c9a96b] rounded-full"></div>
 
-    <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mt-5">
-      Family Owned.<br>
-      <span class="text-amber-300">Customizing Forever Homes</span><br>
-      Since 2013.
-    </h1>
+      <p class="mt-6 uppercase tracking-[3px] text-[#b38c4f] text-xs font-black">
+        Virginia • West Virginia • North Carolina
+      </p>
 
-    <p class="mt-6 text-lg md:text-xl text-gray-200 leading-relaxed max-w-xl mx-auto">
-      Premium windows, roofing, siding, decks, porches, additions, patios &amp; complete
-      custom builds — crafted with pride for families across the region.
-    </p>
+      <h1 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+        Family Owned.<br>
+        Building Forever Homes<br>
+        Since 2013.
+      </h1>
 
-    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="tel:5137064589"
-         class="inline-flex items-center justify-center gap-3 bg-white text-[#0a2540] hover:bg-amber-50 px-8 py-4 rounded-2xl text-lg font-bold transition shadow-lg whitespace-nowrap">
-        <i class="fas fa-phone text-sm"></i>
-        (513) 706-4589
-      </a>
-      <a href="#contact"
-         class="inline-flex items-center justify-center border-2 border-white/70 hover:bg-white/10 hover:border-white px-8 py-4 rounded-2xl text-lg font-semibold transition whitespace-nowrap">
-        Get Free Estimate
-      </a>
-    </div>
+      <p class="mt-5 text-base sm:text-lg text-gray-600 leading-relaxed">
+        Premium windows, roofing, siding, decks, porches, additions, patios &amp; complete
+        custom builds — crafted with pride for families across the region.
+      </p>
 
-    <div class="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-gray-300">
-      <span class="flex items-center gap-2">
-        <i class="fas fa-certificate text-amber-300 text-xs"></i>
-        Class A Licensed Contractor
-      </span>
-      <span class="flex items-center gap-2">
-        <i class="fas fa-heart text-amber-300 text-xs"></i>
-        Family Owned Since 2013
-      </span>
-      <span class="flex items-center gap-2">
-        <i class="fas fa-map-marker-alt text-amber-300 text-xs"></i>
-        Serving 3 States
-      </span>
+      <div class="mt-8 grid sm:grid-cols-2 gap-3">
+        <a href="tel:+15137064589"
+           class="inline-flex items-center justify-center gap-3 bg-[#0a2540] text-white hover:bg-[#12395d] px-6 py-4 rounded-2xl text-base font-bold transition shadow-lg whitespace-nowrap">
+          <i class="fas fa-phone text-sm"></i>
+          (513) 706-4589
+        </a>
+        <a href="estimate.html"
+           class="inline-flex items-center justify-center bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-6 py-4 rounded-2xl text-base font-bold transition shadow-lg whitespace-nowrap">
+          Get Free Estimate
+        </a>
+      </div>
+
+      <div class="mt-7 grid gap-3 text-sm text-gray-600">
+        <span class="flex items-center gap-3">
+          <i class="fas fa-certificate text-[#c9a96b] text-sm w-4"></i>
+          Class A Licensed Contractor
+        </span>
+        <span class="flex items-center gap-3">
+          <i class="fas fa-heart text-[#c9a96b] text-sm w-4"></i>
+          Family Owned Since 2013
+        </span>
+        <span class="flex items-center gap-3">
+          <i class="fas fa-map-marker-alt text-[#c9a96b] text-sm w-4"></i>
+          Serving 3 States
+        </span>
+      </div>
     </div>
 
   </div>
@@ -90,7 +93,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   <div class="grid grid-cols-2 lg:grid-cols-5">
 
     <!-- 1 · Windows -->
-    <a href="windows.html"
+    <a href="estimate.html?service=windows"
        class="group relative overflow-hidden h-48 sm:h-52 lg:h-56 flex flex-col justify-end">
       <img src="windows-hero.jpg" alt="Windows installation"
            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -106,7 +109,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     </a>
 
     <!-- 2 · Doors -->
-    <a href="doors.html"
+    <a href="estimate.html?service=doors"
        class="group relative overflow-hidden h-48 sm:h-52 lg:h-56 flex flex-col justify-end">
       <img src="doors-hero.jpg" alt="Door installation"
            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -122,7 +125,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     </a>
 
     <!-- 3 · Roofing -->
-    <a href="roofing.html"
+    <a href="estimate.html?service=roofing"
        class="group relative overflow-hidden h-48 sm:h-52 lg:h-56 flex flex-col justify-end">
       <img src="roofing-hero.jpg" alt="Roofing installation"
            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -138,7 +141,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     </a>
 
     <!-- 4 · Siding -->
-    <a href="siding.html"
+    <a href="estimate.html?service=siding"
        class="group relative overflow-hidden h-48 sm:h-52 lg:h-56 flex flex-col justify-end">
       <img src="siding-hero.jpg" alt="Siding installation"
            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -154,7 +157,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     </a>
 
     <!-- 5 · Decks — col-span-2 fills last row cleanly on mobile -->
-    <a href="decks.html"
+    <a href="estimate.html?service=decks"
        class="group relative overflow-hidden col-span-2 lg:col-span-1 h-48 sm:h-52 lg:h-56 flex flex-col justify-end">
       <img src="decks-hero.jpg" alt="Deck construction"
            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -288,10 +291,10 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   <div class="grid lg:grid-cols-2 gap-12 mt-14 items-center">
 
     <div class="space-y-5 text-gray-600 leading-8">
-      <p>Our journey began in <strong class="text-gray-900">2013</strong>, starting in the window industry and learning construction from the ground up.</p>
-      <p>Working directly with homeowners taught us the importance of honesty, craftsmanship, communication, and treating every project like it belongs to our own family.</p>
-      <p>In <strong class="text-gray-900">2020</strong>, we earned our <strong class="text-gray-900">Class A Contractor License</strong>, transforming years of hands-on experience into a full-service custom home company.</p>
-      <p>Today, SES Custom Homes builds custom dream homes around the families who live inside them — forever homes designed to last for generations.</p>
+      <p>Our journey began in <strong class="text-gray-900">2013</strong>, starting in the window industry and learning construction from the ground up. Those early years shaped the way we still work today: show up prepared, explain every option clearly, and never treat a homeowner like just another job on the schedule.</p>
+      <p>Working directly with homeowners taught us the importance of honesty, craftsmanship, communication, and treating every project like it belongs to our own family. We saw how much trust it takes to invite a contractor into your home, and we built SES around earning that trust before, during, and after the work is complete.</p>
+      <p>In <strong class="text-gray-900">2020</strong>, we earned our <strong class="text-gray-900">Class A Contractor License</strong>, transforming years of hands-on experience into a full-service custom home company. That opened the door for larger renovations, additions, exterior transformations, and complete custom builds while keeping the same personal, family-owned approach.</p>
+      <p>Today, SES Custom Homes builds custom dream homes around the families who live inside them — forever homes designed to last for generations. Whether we are replacing windows, adding outdoor living space, or building from the ground up, our goal is always the same: deliver work that feels thoughtful, durable, and deeply personal.</p>
     </div>
 
     <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100">
@@ -321,7 +324,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       </div>
 
       <div class="relative">
-        <img src="journey.jpg" alt="SES Custom Homes — Building Forever Homes" class="w-full h-60 object-cover">
+        <img src="journey.jpg" alt="SES Custom Homes — Building Forever Homes" class="w-full h-80 md:h-96 object-cover object-top">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <div class="absolute bottom-5 left-6 text-white">
           <p class="uppercase tracking-[3px] text-amber-300 text-xs">Family Owned Since 2013</p>
@@ -359,7 +362,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     </div>
 
     <div class="shrink-0">
-      <a href="tel:5137064589"
+      <a href="tel:+15137064589"
          class="inline-flex items-center gap-3 bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] font-bold text-xl px-10 py-5 rounded-2xl transition shadow-lg whitespace-nowrap">
         <i class="fas fa-phone"></i>
         (513) 706-4589
