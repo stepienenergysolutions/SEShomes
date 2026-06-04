@@ -19,300 +19,10 @@ url('team.jpg') center/cover no-repeat fixed;
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-<!-- =========================
-     FULL HEADER
-========================= -->
-<header class="bg-[#0a2540] text-white sticky top-0 z-50 shadow-md">
+<div id="site-nav"></div>
+<!-- Tailwind CDN seed: pre-registers arbitrary classes used in partials/nav.html -->
+<div aria-hidden="true" class="hidden bg-[#0a2540] bg-[#0b2d4e] bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] max-w-[1600px] grid-cols-[auto_1fr_auto]"></div>
 
-  <div class="max-w-[1600px] mx-auto px-6 lg:px-10">
-
-    <!-- HEADER GRID -->
-    <div class="grid grid-cols-[auto_1fr_auto] items-center gap-8 py-4">
-
-      <!-- =========================
-           LOGO
-      ========================= -->
-      <div class="justify-self-start">
-
-        <a href="index.html" class="block">
-          <img 
-            src="logo.png"
-            alt="SES Custom Homes"
-            class="h-16 md:h-20 lg:h-24 w-auto drop-shadow-2xl"
-          >
-        </a>
-
-      </div>
-
-      <!-- =========================
-           DESKTOP NAVIGATION
-      ========================= -->
-      <nav class="hidden lg:flex items-center justify-center gap-8 xl:gap-12 text-lg font-medium">
-
-        <a href="index.html" class="hover:text-amber-300 transition">
-          Home
-        </a>
-
-        <!-- SERVICES DROPDOWN -->
-        <div class="relative group">
-
-          <button class="flex items-center gap-2 hover:text-amber-300 transition">
-            Services
-            <i class="fas fa-chevron-down text-xs"></i>
-          </button>
-
-          <!-- DROPDOWN -->
-          <div class="absolute left-1/2 top-full -translate-x-1/2 pt-4 hidden group-hover:block z-50">
-
-            <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-72">
-
-              <!-- WINDOWS -->
-              <div class="relative group/windows">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="windows.html" class="flex-1">
-                    Windows
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <!-- SUBMENU -->
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/windows:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="double-hung-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Double Hung Windows
-                    </a>
-
-                    <a href="picture-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Picture Windows
-                    </a>
-
-                    <a href="bay-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Bay Windows
-                    </a>
-
-                    <a href="bow-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Bow Windows
-                    </a>
-
-                    <a href="casement-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Casement Windows
-                    </a>
-
-                    <a href="slider-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Slider Windows
-                    </a>
-
-                    <a href="awning-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Awning Windows
-                    </a>
-
-                    <a href="hopper-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Hopper Windows
-                    </a>
-
-                    <a href="new-construction-windows.html" class="block px-6 py-3 hover:bg-gray-100">
-                      New Construction Windows
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- DOORS -->
-              <div class="relative group/doors">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="doors.html" class="flex-1">
-                    Doors
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/doors:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="fiberglass-doors.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Fiberglass Doors
-                    </a>
-
-                    <a href="steel-doors.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Steel Doors
-                    </a>
-
-                    <a href="wood-doors.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Wood Doors
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- SIDING -->
-              <div class="relative group/siding">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="siding.html" class="flex-1">
-                    Siding
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/siding:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="vinyl-siding.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Vinyl Siding
-                    </a>
-
-                    <a href="fiberglass-siding.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Fiberglass Siding
-                    </a>
-
-                    <a href="fiber-cement-siding.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Fiber Cement Siding
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- DECKS -->
-              <div class="relative group/decks">
-
-                <div class="flex items-center justify-between px-6 py-3 hover:bg-gray-100 cursor-pointer">
-                  <a href="decks.html" class="flex-1">
-                    Decks
-                  </a>
-                  <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-
-                <div class="absolute left-full top-0 ml-2 hidden group-hover/decks:block">
-
-                  <div class="bg-white rounded-3xl shadow-2xl py-4 w-64">
-
-                    <a href="wood-decks.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Wood Decks
-                    </a>
-
-                    <a href="composite-decks.html" class="block px-6 py-3 hover:bg-gray-100">
-                      Composite Decks
-                    </a>
-
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- SINGLE LINKS -->
-              <a href="roofing.html" class="block px-6 py-3 hover:bg-gray-100">
-                Roofing
-              </a>
-
-              <a href="porches.html" class="block px-6 py-3 hover:bg-gray-100">
-                Porches
-              </a>
-
-              <a href="additions.html" class="block px-6 py-3 hover:bg-gray-100">
-                Additions
-              </a>
-
-              <a href="patios.html" class="block px-6 py-3 hover:bg-gray-100">
-                Patios
-              </a>
-
-              <a href="fencing.html" class="block px-6 py-3 hover:bg-gray-100">
-                Fencing
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-        <a href="gallery.html" class="hover:text-amber-300 transition">
-          Gallery
-        </a>
-
-        <a href="design-studio.html" class="hover:text-amber-300 transition">
-          Design Studio
-        </a>
-
-        <a href="careers.html" class="hover:text-amber-300 transition">
-          Careers
-        </a>
-
-        <!-- ABOUT -->
-        <div class="relative group">
-
-          <button class="flex items-center gap-2 hover:text-amber-300 transition">
-            About
-            <i class="fas fa-chevron-down text-xs"></i>
-          </button>
-
-          <div class="absolute left-1/2 top-full -translate-x-1/2 pt-4 hidden group-hover:block z-50">
-
-            <div class="bg-white text-gray-900 rounded-3xl shadow-2xl py-4 w-64">
-
-              <a href="our-team.html" class="block px-6 py-3 hover:bg-gray-100">
-                Our Team
-              </a>
-
-              <a href="reviews.html" class="block px-6 py-3 hover:bg-gray-100">
-                Reviews
-              </a>
-
-              <a href="community-give-back.html" class="block px-6 py-3 hover:bg-gray-100">
-                Community Give Back
-              </a>
-
-              <a href="blog.html" class="block px-6 py-3 hover:bg-gray-100">
-                Blog
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-        <a href="index.html#contact" class="hover:text-amber-300 transition">
-          Contact
-        </a>
-
-      </nav>
-
-      <!-- =========================
-           CTA + MOBILE MENU
-      ========================= -->
-      <div class="flex items-center justify-self-end gap-4">
-
-        <!-- CTA -->
-        <a 
-          href="#quote"
-          class="hidden md:inline-flex bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-7 py-3 rounded-2xl font-semibold transition whitespace-nowrap text-base lg:text-lg shadow-lg"
-        >
-          Get Free Estimate
-        </a>
-
-        <!-- MOBILE MENU -->
-        <button class="lg:hidden text-3xl">
-          <i class="fas fa-bars"></i>
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</header>
 
 <!-- HERO -->
 <!-- SHORTER HERO - Our Team page -->
@@ -320,10 +30,10 @@ url('team.jpg') center/cover no-repeat fixed;
   <div class="max-w-6xl mx-auto px-6">
     <div class="max-w-3xl">
       <p class="uppercase tracking-[3px] text-amber-300">Our Team</p>
-      <h1 class="text-6xl md:text-7xl font-bold leading-none mt-6">
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold leading-none mt-6">
         Meet the Family Behind SES Custom Homes
       </h1>
-      <p class="mt-8 text-2xl text-gray-200">
+      <p class="mt-8 text-lg md:text-2xl text-gray-200">
         Since 2013, we've been building more than just homes — we're building relationships with every client and every project.
       </p>
     </div>
@@ -340,14 +50,14 @@ SES Custom Homes is a true family-owned and operated business. Every member of o
 </section>
 
 <!-- TEAM GRID -->
-<section class="py-24 bg-gray-100">
+<section class="py-20 bg-gray-100">
 <div class="max-w-6xl mx-auto px-6">
-<h2 class="text-5xl font-bold text-center text-[#0a2540] mb-16">Our Team</h2>
+<h2 class="text-4xl md:text-5xl font-bold text-center text-[#0a2540] mb-16">Our Team</h2>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
 
   <!-- Team Member 1 -->
-  <div class="bg-white rounded-3xl overflow-hidden shadow-md">
+  <div class="bg-white rounded-2xl overflow-hidden shadow-md">
     <img src="team-rick.jpg" alt="Rick Stepien" class="w-full h-80 object-cover">
     <div class="p-8">
       <h3 class="text-2xl font-bold">Rick Stepien</h3>
@@ -357,7 +67,7 @@ SES Custom Homes is a true family-owned and operated business. Every member of o
   </div>
 
   <!-- Team Member 2 -->
-  <div class="bg-white rounded-3xl overflow-hidden shadow-md">
+  <div class="bg-white rounded-2xl overflow-hidden shadow-md">
     <img src="team-madi.jpg" alt="Team Member" class="w-full h-80 object-cover">
     <div class="p-8">
       <h3 class="text-2xl font-bold">Madison Stepien</h3>
@@ -367,7 +77,7 @@ SES Custom Homes is a true family-owned and operated business. Every member of o
   </div>
 
   <!-- Team Member 3 -->
-  <div class="bg-white rounded-3xl overflow-hidden shadow-md">
+  <div class="bg-white rounded-2xl overflow-hidden shadow-md">
     <img src="team-kodey.jpg" alt="Team Member" class="w-full h-80 object-cover">
     <div class="p-8">
       <h3 class="text-2xl font-bold">Kodey Thompson</h3>
@@ -381,15 +91,23 @@ SES Custom Homes is a true family-owned and operated business. Every member of o
 </section>
 
 <!-- FINAL CTA -->
-<section class="bg-[#0a2540] text-white py-24">
+<section class="bg-[#0a2540] text-white py-20">
 <div class="max-w-4xl mx-auto text-center px-6">
-<h2 class="text-5xl font-bold">Want to join our team?</h2>
-<p class="mt-6 text-2xl text-amber-200">We're always looking for talented people who share our values.</p>
-<a href="careers.html" class="mt-10 inline-block bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-10 py-5 rounded-3xl font-semibold text-xl transition">
+<h2 class="text-4xl md:text-5xl font-bold">Want to join our team?</h2>
+<p class="mt-6 text-lg md:text-2xl text-amber-200">We're always looking for talented people who share our values.</p>
+<a href="careers.html" class="mt-10 inline-block bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-8 py-4 rounded-2xl font-semibold transition">
 View Open Positions
+</a>
+<a href="estimate.html" class="mt-4 sm:mt-10 sm:ml-4 inline-block border-2 border-white/70 hover:bg-white/10 hover:border-white text-white px-8 py-4 rounded-2xl font-semibold transition">
+Request Estimate
 </a>
 </div>
 </section>
+
+
+<div id="site-footer"></div>
+
+<script src="assets/js/site.js"></script>
 
 </body>
 </html>

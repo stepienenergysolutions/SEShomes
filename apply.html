@@ -39,7 +39,8 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         </div>
 
         <!-- TODO: Replace action="#" with a live form endpoint that emails submissions to rickstepien@sescustomhomes.com and eventually creates a CRM recruiting/application record. -->
-        <form action="#" method="POST" class="p-6 sm:p-8">
+        <form action="https://api.web3forms.com/submit" method="POST" class="p-6 sm:p-8">
+          <input type="hidden" name="access_key" value="44ed6524-fe33-49e2-b4c1-81cfd80e62b7">
           <input type="hidden" name="form_type" value="career_application">
           <input type="hidden" name="lead_source" value="website_careers">
           <input type="hidden" name="_subject" value="New SES Custom Homes Career Application">

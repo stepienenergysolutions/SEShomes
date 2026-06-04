@@ -46,11 +46,13 @@ body { font-family: 'Inter', system-ui, sans-serif; }
           </p>
         </div>
 
-        <!-- TODO: Replace action="#" with a live form endpoint that emails submissions to rickstepien@sescustomhomes.com and eventually creates a CRM lead/appointment. -->
-        <form action="#" method="POST" class="p-6 sm:p-8">
+        <!-- TODO: Connect Web3Forms notifications to the final scheduling/CRM workflow after launch. -->
+        <form action="https://api.web3forms.com/submit" method="POST" class="p-6 sm:p-8">
+          <input type="hidden" name="access_key" value="44ed6524-fe33-49e2-b4c1-81cfd80e62b7">
           <input type="hidden" name="form_type" value="estimate_request">
           <input type="hidden" name="lead_source" value="website">
           <input type="hidden" name="_subject" value="New SES Custom Homes Estimate Request">
+          <input type="hidden" name="redirect" value="https://web3forms.com/success">
 
           <div class="grid md:grid-cols-2 gap-5">
             <label class="block">
@@ -114,7 +116,34 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 
             <label class="block">
               <span class="text-sm font-semibold text-[#0a2540]">Preferred appointment time</span>
-              <input type="time" name="preferred_appointment_time" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+              <div class="mt-2 grid grid-cols-[1fr_1fr_auto] gap-3">
+                <select name="preferred_appointment_hour" aria-label="Preferred appointment hour" class="w-full rounded-xl border border-gray-200 px-4 py-3 bg-white focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+                  <option value="">Hour</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+                <select name="preferred_appointment_minutes" aria-label="Preferred appointment minutes" class="w-full rounded-xl border border-gray-200 px-4 py-3 bg-white focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+                  <option value="">Min</option>
+                  <option value="00">00</option>
+                  <option value="15">15</option>
+                  <option value="30">30</option>
+                  <option value="45">45</option>
+                </select>
+                <select name="preferred_appointment_ampm" aria-label="Preferred appointment AM or PM" class="rounded-xl border border-gray-200 px-4 py-3 bg-white focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </div>
             </label>
 
             <label class="block">
