@@ -46,6 +46,50 @@
     });
   }
 
+  // ── Dropdown hover delay ─────────────────────────────────────────────────
+  //
+  // CSS-only group-hover closes the panel the instant the cursor leaves the
+  // trigger button, even if the mouse is heading straight for the panel.
+  // This adds a 180 ms grace period so diagonal movement doesn't close it.
+
+  function initDropdownDelay() {
+    var DELAY = 180;
+
+    function bindDropdown(group, panel) {
+      var timer = null;
+
+      function open() {
+        clearTimeout(timer);
+        timer = null;
+        panel.style.display = 'block';
+      }
+
+      function scheduleClose() {
+        timer = setTimeout(function () {
+          panel.style.display = '';
+          timer = null;
+        }, DELAY);
+      }
+
+      group.addEventListener('mouseenter', open);
+      group.addEventListener('mouseleave', scheduleClose);
+      panel.addEventListener('mouseenter', function () { clearTimeout(timer); timer = null; });
+      panel.addEventListener('mouseleave', scheduleClose);
+    }
+
+    // Top-level dropdowns (Services, About)
+    document.querySelectorAll('#site-nav nav > div.group').forEach(function (g) {
+      var p = g.querySelector(':scope > div.absolute');
+      if (p) bindDropdown(g, p);
+    });
+
+    // Sub-menu dropdowns (Windows, Doors, Siding, Decks)
+    document.querySelectorAll('#site-nav div[class*="group/"]').forEach(function (g) {
+      var p = g.querySelector(':scope > div.absolute');
+      if (p) bindDropdown(g, p);
+    });
+  }
+
   // ── Active page highlight ─────────────────────────────────────────────────
 
   function setActiveLink() {
@@ -53,20 +97,45 @@
     if (!filename) filename = 'index.html';
 
     document.querySelectorAll('#site-nav nav a[href]').forEach(function (link) {
-      var href = link.getAttribute('href').split('#')[0];
-      if (href === filename) {
+      var raw = link.getAttribute('href');
+      if (raw.includes('#')) return; // anchor links are never page-active
+      if (raw === filename) {
         link.classList.add('text-amber-300');
         link.classList.remove('hover:text-amber-300');
       }
     });
   }
 
+  // ── Body offset for fixed header ──────────────────────────────────────────
+  //
+  // Because the header is now position:fixed it is removed from normal flow.
+  // Full-viewport heroes (hero-bg + min-h-screen) are intentionally designed
+  // to fill the screen with the transparent nav overlaying the top — those
+  // pages need no body padding.
+  // All other pages (compact heroes, no hero, etc.) need padding equal to
+  // the header height so content is not hidden underneath the nav.
+
+  function adjustBodyForFixedNav() {
+    var header = document.querySelector('#site-nav header');
+    if (!header) return;
+    var firstSection = document.querySelector('body section');
+    var isFullScreenHero = firstSection &&
+                           firstSection.classList.contains('hero-bg') &&
+                           firstSection.classList.contains('min-h-screen');
+    if (isFullScreenHero) return;
+    document.body.style.paddingTop = header.offsetHeight + 'px';
+  }
+
   // ── Boot ──────────────────────────────────────────────────────────────────
 
   loadPartial('site-nav', 'partials/nav.html', function () {
     initMobileMenu();
+    initDropdownDelay();
     setActiveLink();
+    adjustBodyForFixedNav();
   });
+
+  window.addEventListener('resize', adjustBodyForFixedNav);
 
   loadPartial('site-footer', 'partials/footer.html', null);
 

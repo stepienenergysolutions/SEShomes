@@ -5,494 +5,370 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SES Custom Homes | Family Owned Since 2013</title>
+<meta name="description" content="SES Custom Homes — family-owned custom home builders serving Virginia, West Virginia, and North Carolina since 2013. Windows, roofing, siding, decks, porches, additions & more.">
 
 <script src="https://cdn.tailwindcss.com"></script>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-html{
-scroll-behavior:smooth;
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', system-ui, sans-serif; }
+.hero-bg {
+  background:
+    linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.58)),
+    url('hero.jpg') center/cover no-repeat fixed;
 }
-
-body{
-font-family:'Inter',system-ui,sans-serif;
-}
-
-.hero-bg{
-background:
-linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.65)),
-url('hero.jpg')
-center/cover no-repeat fixed;
-}
-
 </style>
 
 </head>
 
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-white text-gray-900">
 
 <div id="site-nav"></div>
 <!-- Tailwind CDN seed: pre-registers arbitrary classes used in partials/nav.html -->
 <div aria-hidden="true" class="hidden bg-[#0a2540] bg-[#0b2d4e] bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] max-w-[1600px] grid-cols-[auto_1fr_auto]"></div>
 
-<!-- HERO -->
-<section class="hero-bg text-white min-h-screen flex items-center">
-  <div class="max-w-6xl mx-auto px-3 w-full">
-    <div class="max-w-3xl mx-auto text-center -translate-y-16">
+<!-- ═══════════════════════
+     HERO
+     pt-20 offsets the fixed nav so items-center visually centers
+     the content within the visible area below the header.
+═══════════════════════ -->
+<section class="hero-bg text-white min-h-screen flex items-center pt-20">
+  <div class="max-w-5xl mx-auto px-6 w-full py-16 text-center">
 
-      <p class="uppercase tracking-[3px] text-amber-300 text-sm font-medium">
-        Virginia • West Virginia • North Carolina
-      </p>
+    <p class="uppercase tracking-[4px] text-amber-300 text-xs font-semibold">
+      Virginia • West Virginia • North Carolina
+    </p>
 
-      <h1 class="text-6xl md:text-7xl font-bold leading-none mt-6">
-        Family Owned.<br>
-        Customizing Forever Homes
-        Since 2013
-      </h1>
+    <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mt-5">
+      Family Owned.<br>
+      <span class="text-amber-300">Customizing Forever Homes</span><br>
+      Since 2013.
+    </h1>
 
-      <p class="mt-8 text-xl md:text-2xl text-gray-200 leading-relaxed max-w-2xl mx-auto">
-        Energy-efficient windows, roofing, siding, decks, porches, additions,
-        patios & complete custom homes — built with pride and craftsmanship
-        you can trust.
-      </p>
+    <p class="mt-6 text-lg md:text-xl text-gray-200 leading-relaxed max-w-xl mx-auto">
+      Premium windows, roofing, siding, decks, porches, additions, patios &amp; complete
+      custom builds — crafted with pride for families across the region.
+    </p>
 
-      <div class="mt-12 flex flex-col sm:flex-row gap-6 justify-center">
-        <a href="tel:5137064589"
-           class="bg-white text-[#0a2540] hover:bg-amber-100 px-12 py-6 rounded-3xl text-2xl font-semibold transition whitespace-nowrap">
-          <i class="fas fa-phone mr-2"></i>
-          (513) 706-4589
-        </a>
-
-        <a href="#contact"
-           class="border-2 border-white hover:bg-white/10 px-12 py-6 rounded-3xl text-xl md:text-2xl font-semibold transition whitespace-nowrap">
-          Get Free Design and Estimate
-        </a>
-      </div>
-
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="tel:5137064589"
+         class="inline-flex items-center justify-center gap-3 bg-white text-[#0a2540] hover:bg-amber-50 px-8 py-4 rounded-2xl text-lg font-bold transition shadow-lg whitespace-nowrap">
+        <i class="fas fa-phone text-sm"></i>
+        (513) 706-4589
+      </a>
+      <a href="#contact"
+         class="inline-flex items-center justify-center border-2 border-white/70 hover:bg-white/10 hover:border-white px-8 py-4 rounded-2xl text-lg font-semibold transition whitespace-nowrap">
+        Get Free Estimate
+      </a>
     </div>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-gray-300">
+      <span class="flex items-center gap-2">
+        <i class="fas fa-certificate text-amber-300 text-xs"></i>
+        Class A Licensed Contractor
+      </span>
+      <span class="flex items-center gap-2">
+        <i class="fas fa-heart text-amber-300 text-xs"></i>
+        Family Owned Since 2013
+      </span>
+      <span class="flex items-center gap-2">
+        <i class="fas fa-map-marker-alt text-amber-300 text-xs"></i>
+        Serving 3 States
+      </span>
+    </div>
+
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ═══════════════════════
+     PROMO BAR
+     Full-width image tiles with dark overlay and 20% OFF badge
+═══════════════════════ -->
+<section>
+  <div class="grid grid-cols-2 lg:grid-cols-5">
 
-<section id="services" class="py-20 bg-white">
+    <!-- 1 · Windows -->
+    <a href="windows.html"
+       class="group relative overflow-hidden h-48 sm:h-52 lg:h-56 flex flex-col justify-end">
+      <img src="windows-hero.jpg" alt="Windows installation"
+           class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10"></div>
+      <div class="relative px-4 pb-4 pt-3 sm:px-5 sm:pb-5">
+        <span class="inline-block bg-[#c9a96b] text-[#0a2540] text-xs font-black uppercase tracking-wide px-2.5 py-0.5 rounded mb-1.5">20% OFF</span>
+        <h3 class="text-white text-base font-bold leading-tight">Windows</h3>
+        <p class="text-white/65 text-xs mt-1 leading-snug hidden sm:block">Ask about current installation offers.</p>
+        <span class="mt-2 inline-flex items-center gap-1.5 text-amber-300 text-xs font-bold uppercase tracking-wide group-hover:gap-3 transition-all">
+          Get a Quote <i class="fas fa-arrow-right text-xs"></i>
+        </span>
+      </div>
+    </a>
 
-<div class="max-w-6xl mx-auto px-6">
+    <!-- 2 · Doors -->
+    <a href="doors.html"
+       class="group relative overflow-hidden h-48 sm:h-52 lg:h-56 flex flex-col justify-end">
+      <img src="doors-hero.jpg" alt="Door installation"
+           class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10"></div>
+      <div class="relative px-4 pb-4 pt-3 sm:px-5 sm:pb-5">
+        <span class="inline-block bg-[#c9a96b] text-[#0a2540] text-xs font-black uppercase tracking-wide px-2.5 py-0.5 rounded mb-1.5">20% OFF</span>
+        <h3 class="text-white text-base font-bold leading-tight">Doors</h3>
+        <p class="text-white/65 text-xs mt-1 leading-snug hidden sm:block">Entry and patio door upgrades.</p>
+        <span class="mt-2 inline-flex items-center gap-1.5 text-amber-300 text-xs font-bold uppercase tracking-wide group-hover:gap-3 transition-all">
+          Get a Quote <i class="fas fa-arrow-right text-xs"></i>
+        </span>
+      </div>
+    </a>
 
-<h2
-class="text-5xl
-font-bold
-text-center
-text-[#0a2540]">
+    <!-- 3 · Roofing -->
+    <a href="roofing.html"
+       class="group relative overflow-hidden h-48 sm:h-52 lg:h-56 flex flex-col justify-end">
+      <img src="roofing-hero.jpg" alt="Roofing installation"
+           class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10"></div>
+      <div class="relative px-4 pb-4 pt-3 sm:px-5 sm:pb-5">
+        <span class="inline-block bg-[#c9a96b] text-[#0a2540] text-xs font-black uppercase tracking-wide px-2.5 py-0.5 rounded mb-1.5">20% OFF</span>
+        <h3 class="text-white text-base font-bold leading-tight">Roofing</h3>
+        <p class="text-white/65 text-xs mt-1 leading-snug hidden sm:block">Protect your home before next season.</p>
+        <span class="mt-2 inline-flex items-center gap-1.5 text-amber-300 text-xs font-bold uppercase tracking-wide group-hover:gap-3 transition-all">
+          Get a Quote <i class="fas fa-arrow-right text-xs"></i>
+        </span>
+      </div>
+    </a>
 
-Our Services
+    <!-- 4 · Siding -->
+    <a href="siding.html"
+       class="group relative overflow-hidden h-48 sm:h-52 lg:h-56 flex flex-col justify-end">
+      <img src="siding-hero.jpg" alt="Siding installation"
+           class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10"></div>
+      <div class="relative px-4 pb-4 pt-3 sm:px-5 sm:pb-5">
+        <span class="inline-block bg-[#c9a96b] text-[#0a2540] text-xs font-black uppercase tracking-wide px-2.5 py-0.5 rounded mb-1.5">20% OFF</span>
+        <h3 class="text-white text-base font-bold leading-tight">Siding</h3>
+        <p class="text-white/65 text-xs mt-1 leading-snug hidden sm:block">Exterior upgrade event now available.</p>
+        <span class="mt-2 inline-flex items-center gap-1.5 text-amber-300 text-xs font-bold uppercase tracking-wide group-hover:gap-3 transition-all">
+          Get a Quote <i class="fas fa-arrow-right text-xs"></i>
+        </span>
+      </div>
+    </a>
 
-</h2>
+    <!-- 5 · Decks — col-span-2 fills last row cleanly on mobile -->
+    <a href="decks.html"
+       class="group relative overflow-hidden col-span-2 lg:col-span-1 h-48 sm:h-52 lg:h-56 flex flex-col justify-end">
+      <img src="decks-hero.jpg" alt="Deck construction"
+           class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10"></div>
+      <div class="relative px-4 pb-4 pt-3 sm:px-5 sm:pb-5">
+        <span class="inline-block bg-[#c9a96b] text-[#0a2540] text-xs font-black uppercase tracking-wide px-2.5 py-0.5 rounded mb-1.5">20% OFF</span>
+        <h3 class="text-white text-base font-bold leading-tight">Decks &amp; Outdoors</h3>
+        <p class="text-white/65 text-xs mt-1 leading-snug hidden sm:block">Design your dream outdoor living space.</p>
+        <span class="mt-2 inline-flex items-center gap-1.5 text-amber-300 text-xs font-bold uppercase tracking-wide group-hover:gap-3 transition-all">
+          Get a Quote <i class="fas fa-arrow-right text-xs"></i>
+        </span>
+      </div>
+    </a>
 
-<p
-class="text-center
-text-gray-600
-mt-4
-max-w-2xl
-mx-auto">
-
-From premium windows to complete
-custom home builds —
-we do it all with quality and care.
-
-</p>
-
-<div
-class="grid
-md:grid-cols-2
-lg:grid-cols-4
-gap-8
-mt-12">
-
-<a
-href="windows.html"
-class="bg-gray-50
-p-8
-rounded-3xl
-hover:shadow-xl
-transition
-block">
-
-<i class="fas fa-window-maximize text-6xl text-[#0a2540] mb-6"></i>
-
-<h3 class="text-2xl font-semibold">
-Windows
-</h3>
-
-<p class="mt-3 text-gray-600">
-Energy-efficient replacement windows that lower bills and beautify your home.
-</p>
-
-<p class="mt-6 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
-Learn More →
-</p>
-
-</a>
-
-<a
-href="doors.html"
-class="bg-gray-50
-p-8
-rounded-3xl
-hover:shadow-xl
-transition
-block">
-
-<i class="fas fa-door-open text-6xl text-[#0a2540] mb-6"></i>
-
-<h3 class="text-2xl font-semibold">
-Doors
-</h3>
-
-<p class="mt-3 text-gray-600">
-
-Entry doors and sliding glass doors
-built for beauty, efficiency,
-and durability.
-
-</p>
-
-<p class="mt-6 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
-
-Learn More →
-
-</p>
-
-</a>
-
-<a
-href="roofing.html"
-class="bg-gray-50
-p-8
-rounded-3xl
-hover:shadow-xl
-transition
-block">
-
-<i class="fas fa-house-chimney text-6xl text-[#0a2540] mb-6"></i>
-
-<h3 class="text-2xl font-semibold">
-
-Roofing
-
-</h3>
-
-<p class="mt-3 text-gray-600">
-
-Premium asphalt shingles built for
-durability, protection,
-and curb appeal.
-
-</p>
-
-<p class="mt-6 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
-
-Learn More →
-
-</p>
-
-</a>
-
-<a
-href="siding.html"
-class="bg-gray-50
-p-8
-rounded-3xl
-hover:shadow-xl
-transition
-block">
-
-<i class="fas fa-layer-group text-6xl text-[#0a2540] mb-6"></i>
-
-<h3 class="text-2xl font-semibold">
-
-Siding
-
-</h3>
-
-<p class="mt-3 text-gray-600">
-
-Premium siding solutions built for
-beauty, efficiency,
-and protection.
-
-</p>
-
-<p class="mt-6 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
-
-Learn More →
-
-</p>
-
-</a>
-
-<div class="bg-gray-50 p-8 rounded-3xl hover:shadow-xl transition">
-  <i class="fas fa-tree text-6xl text-[#0a2540] mb-6"></i>
-  <h3 class="text-2xl font-semibold">Decks</h3>
-  <p class="mt-3 text-gray-600">Custom wood and composite decks designed for your lifestyle.</p>
-  <a href="decks.html" class="mt-6 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
-    Learn more →
-  </a>
-</div>
-
-<div class="bg-gray-50 p-8 rounded-3xl hover:shadow-xl transition">
-  <i class="fas fa-archway text-6xl text-[#0a2540] mb-6"></i>
-  <h3 class="text-2xl font-semibold">Porches</h3>
-  <p class="mt-3 text-gray-600">Covered porches and screened-in porches that expand your living space.</p>
-  <a href="porches.html" class="mt-6 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
-    Learn more →
-  </a>
-</div>
-
-<div class="bg-gray-50 p-8 rounded-3xl hover:shadow-xl transition">
-  <i class="fas fa-home text-6xl text-[#0a2540] mb-6"></i>
-  <h3 class="text-2xl font-semibold">Additions</h3>
-  <p class="mt-3 text-gray-600">Room additions, sunrooms, and home expansions built to match your style.</p>
-  <a href="additions.html" class="mt-8 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
-    Learn more →
-  </a>
-</div>
-
-<div class="bg-gray-50 p-8 rounded-3xl hover:shadow-xl transition">
-  <i class="fas fa-umbrella-beach text-6xl text-[#0a2540] mb-6"></i>
-  <h3 class="text-2xl font-semibold">Patios</h3>
-  <p class="mt-3 text-gray-600">Concrete, paver, and stone patios for outdoor living at its best.</p>
-  <a href="patios.html" class="mt-8 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
-    Learn more →
-  </a>
-</div>
-
-<div class="bg-gray-50 p-8 rounded-3xl hover:shadow-xl transition">
-  <i class="fas fa-bars text-6xl text-[#0a2540] mb-6"></i>
-  <h3 class="text-2xl font-semibold">Fencing</h3>
-  <p class="mt-3 text-gray-600">Custom privacy, decorative, and security fencing for your property.</p>
-  <a href="fencing.html" class="mt-8 inline-flex items-center text-[#0a2540] hover:text-amber-600 font-semibold">
-    Learn more →
-  </a>
-</div>
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ═══════════════════════
+     SERVICES
+═══════════════════════ -->
+<section id="services" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-6 lg:px-10">
 
-<section id="about" class="py-24 bg-gray-100">
+  <div class="text-center max-w-2xl mx-auto">
+    <p class="uppercase tracking-[4px] text-amber-500 text-xs font-semibold">What We Do</p>
+    <h2 class="text-4xl md:text-5xl font-bold text-[#0a2540] mt-3">Our Services</h2>
+    <p class="mt-4 text-gray-500">
+      From premium windows to complete custom home builds —
+      we do it all with craftsmanship you can trust.
+    </p>
+  </div>
 
-<div class="max-w-6xl mx-auto px-6">
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5 mt-12">
 
-<div class="text-center max-w-3xl mx-auto">
+    <a href="windows.html" class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-amber-200 transition block">
+      <i class="fas fa-window-maximize text-3xl text-[#0a2540] mb-4 block"></i>
+      <h3 class="font-bold text-gray-900">Windows</h3>
+      <p class="mt-2 text-sm text-gray-500 leading-relaxed">Energy-efficient replacement windows that lower bills and beautify your home.</p>
+      <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0a2540] group-hover:text-amber-600 transition">Learn more →</span>
+    </a>
 
-<p class="uppercase tracking-[4px] text-amber-500 font-semibold">
-Our Journey
-</p>
+    <a href="doors.html" class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-amber-200 transition block">
+      <i class="fas fa-door-open text-3xl text-[#0a2540] mb-4 block"></i>
+      <h3 class="font-bold text-gray-900">Doors</h3>
+      <p class="mt-2 text-sm text-gray-500 leading-relaxed">Entry doors and sliding glass doors built for beauty, efficiency, and durability.</p>
+      <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0a2540] group-hover:text-amber-600 transition">Learn more →</span>
+    </a>
 
-<h2 class="text-5xl font-bold mt-4 text-[#0a2540]">
-Built From Hard Work.<br>
-Built For Families.
-</h2>
+    <a href="roofing.html" class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-amber-200 transition block">
+      <i class="fas fa-house-chimney text-3xl text-[#0a2540] mb-4 block"></i>
+      <h3 class="font-bold text-gray-900">Roofing</h3>
+      <p class="mt-2 text-sm text-gray-500 leading-relaxed">Premium asphalt shingles built for durability, protection, and curb appeal.</p>
+      <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0a2540] group-hover:text-amber-600 transition">Learn more →</span>
+    </a>
 
-</div>
+    <a href="siding.html" class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-amber-200 transition block">
+      <i class="fas fa-layer-group text-3xl text-[#0a2540] mb-4 block"></i>
+      <h3 class="font-bold text-gray-900">Siding</h3>
+      <p class="mt-2 text-sm text-gray-500 leading-relaxed">Premium siding solutions built for beauty, efficiency, and long-term protection.</p>
+      <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0a2540] group-hover:text-amber-600 transition">Learn more →</span>
+    </a>
 
-<div class="grid lg:grid-cols-2 gap-16 mt-20 items-center">
+    <a href="decks.html" class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-amber-200 transition block">
+      <i class="fas fa-tree text-3xl text-[#0a2540] mb-4 block"></i>
+      <h3 class="font-bold text-gray-900">Decks</h3>
+      <p class="mt-2 text-sm text-gray-500 leading-relaxed">Custom wood and composite decks designed for your outdoor lifestyle.</p>
+      <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0a2540] group-hover:text-amber-600 transition">Learn more →</span>
+    </a>
 
-<div>
+    <a href="porches.html" class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-amber-200 transition block">
+      <i class="fas fa-archway text-3xl text-[#0a2540] mb-4 block"></i>
+      <h3 class="font-bold text-gray-900">Porches</h3>
+      <p class="mt-2 text-sm text-gray-500 leading-relaxed">Covered and screened-in porches that expand your living and entertaining space.</p>
+      <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0a2540] group-hover:text-amber-600 transition">Learn more →</span>
+    </a>
 
-<p class="text-lg leading-9 text-gray-700">
-Our journey began in <strong>2013</strong>,
-starting in the window industry and learning
-construction from the ground up.
-</p>
+    <a href="additions.html" class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-amber-200 transition block">
+      <i class="fas fa-home text-3xl text-[#0a2540] mb-4 block"></i>
+      <h3 class="font-bold text-gray-900">Additions</h3>
+      <p class="mt-2 text-sm text-gray-500 leading-relaxed">Room additions, sunrooms, and home expansions built to match your existing style.</p>
+      <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0a2540] group-hover:text-amber-600 transition">Learn more →</span>
+    </a>
 
-<p class="text-lg leading-9 text-gray-700 mt-6">
-Working directly with homeowners taught us
-the importance of honesty, craftsmanship,
-communication, and treating every project
-like it belongs to our own family.
-</p>
+    <a href="patios.html" class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-amber-200 transition block">
+      <i class="fas fa-umbrella-beach text-3xl text-[#0a2540] mb-4 block"></i>
+      <h3 class="font-bold text-gray-900">Patios</h3>
+      <p class="mt-2 text-sm text-gray-500 leading-relaxed">Concrete, paver, and stone patios for outdoor living at its finest.</p>
+      <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0a2540] group-hover:text-amber-600 transition">Learn more →</span>
+    </a>
 
-<p class="text-lg leading-9 text-gray-700 mt-6">
-As experience grew, so did the vision.
-What began with windows expanded into
-larger renovations, additions, roofing,
-outdoor living spaces, and complete
-home transformations.
-</p>
+    <a href="fencing.html" class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-amber-200 transition block">
+      <i class="fas fa-bars text-3xl text-[#0a2540] mb-4 block"></i>
+      <h3 class="font-bold text-gray-900">Fencing</h3>
+      <p class="mt-2 text-sm text-gray-500 leading-relaxed">Custom privacy, decorative, and security fencing designed for your property.</p>
+      <span class="mt-4 inline-flex items-center text-sm font-semibold text-[#0a2540] group-hover:text-amber-600 transition">Learn more →</span>
+    </a>
 
-<p class="text-lg leading-9 text-gray-700 mt-6">
-In <strong>2020</strong>, we earned our
-<strong>Class A Contractor License</strong>,
-transforming years of hands-on experience
-into a full-service custom home company.
-</p>
-
-<p class="text-lg leading-9 text-gray-700 mt-6">
-Today, SES Custom Homes specializes in
-custom dream homes built around the
-families who live inside them —
-creating forever homes designed to last
-for generations.
-</p>
-
-</div>
-
-<div class="bg-white rounded-3xl shadow-xl overflow-hidden">
-
-<div class="p-10">
-
-<div class="space-y-10">
-
-<div>
-
-<h3 class="font-bold text-2xl text-[#0a2540]">
-2013
-</h3>
-
-<p class="text-gray-600 mt-2">
-Started serving homeowners through premium windows.
-</p>
-
-</div>
-
-<div>
-
-<h3 class="font-bold text-2xl text-[#0a2540]">
-2020
-</h3>
-
-<p class="text-gray-600 mt-2">
-Earned Class A licensing and expanded services.
-</p>
+  </div>
 
 </div>
-
-<div>
-
-<h3 class="font-bold text-2xl text-[#0a2540]">
-Today
-</h3>
-
-<p class="text-gray-600 mt-2">
-Custom homes designed around your family.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- IMAGE -->
-
-<div class="relative">
-
-<img
-src="journey.jpg"
-alt="SES Custom Homes Family Journey"
-class="w-full h-[320px] object-cover">
-
-<div
-class="absolute inset-0 bg-gradient-to-t
-from-black/70 to-transparent">
-</div>
-
-<div
-class="absolute bottom-6 left-6 text-white">
-
-<p
-class="uppercase tracking-[3px]
-text-amber-300 text-sm">
-
-Family Owned Since 2013
-
-</p>
-
-<h3
-class="text-3xl font-bold mt-2">
-
-Building Forever Homes
-
-</h3>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </section>
 
-<!-- CONTACT -->
+<!-- ═══════════════════════
+     ABOUT
+═══════════════════════ -->
+<section id="about" class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-6 lg:px-10">
 
-<section
-id="contact"
-class="bg-[#0a2540]
-text-white
-py-20">
+  <div class="text-center max-w-2xl mx-auto">
+    <p class="uppercase tracking-[4px] text-amber-500 text-xs font-semibold">Our Story</p>
+    <h2 class="text-4xl md:text-5xl font-bold mt-3 text-[#0a2540]">
+      Built From Hard Work.<br>Built For Families.
+    </h2>
+  </div>
 
-<div
-class="max-w-4xl
-mx-auto
-px-6
-text-center">
+  <div class="grid grid-cols-3 gap-6 mt-10 max-w-sm mx-auto text-center">
+    <div>
+      <p class="text-3xl font-bold text-[#0a2540]">13+</p>
+      <p class="text-xs text-gray-400 mt-1 uppercase tracking-wide">Years</p>
+    </div>
+    <div>
+      <p class="text-3xl font-bold text-[#0a2540]">A</p>
+      <p class="text-xs text-gray-400 mt-1 uppercase tracking-wide">Class A Licensed</p>
+    </div>
+    <div>
+      <p class="text-3xl font-bold text-[#0a2540]">3</p>
+      <p class="text-xs text-gray-400 mt-1 uppercase tracking-wide">States Served</p>
+    </div>
+  </div>
 
-<h2 class="text-5xl font-bold">
+  <div class="grid lg:grid-cols-2 gap-12 mt-14 items-center">
 
-Ready To Build Or Upgrade?
+    <div class="space-y-5 text-gray-600 leading-8">
+      <p>Our journey began in <strong class="text-gray-900">2013</strong>, starting in the window industry and learning construction from the ground up.</p>
+      <p>Working directly with homeowners taught us the importance of honesty, craftsmanship, communication, and treating every project like it belongs to our own family.</p>
+      <p>In <strong class="text-gray-900">2020</strong>, we earned our <strong class="text-gray-900">Class A Contractor License</strong>, transforming years of hands-on experience into a full-service custom home company.</p>
+      <p>Today, SES Custom Homes builds custom dream homes around the families who live inside them — forever homes designed to last for generations.</p>
+    </div>
 
-</h2>
+    <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100">
 
-<p
-class="mt-6
-text-2xl
-text-amber-200">
+      <div class="p-8 space-y-6">
+        <div class="flex gap-4 items-start">
+          <div class="w-1 self-stretch bg-amber-300 rounded-full shrink-0"></div>
+          <div>
+            <h3 class="font-bold text-xl text-[#0a2540]">2013</h3>
+            <p class="text-sm text-gray-500 mt-1">Started serving homeowners through premium windows.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-1 self-stretch bg-amber-300 rounded-full shrink-0"></div>
+          <div>
+            <h3 class="font-bold text-xl text-[#0a2540]">2020</h3>
+            <p class="text-sm text-gray-500 mt-1">Earned Class A licensing and expanded to full-service builds.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-1 self-stretch bg-amber-300 rounded-full shrink-0"></div>
+          <div>
+            <h3 class="font-bold text-xl text-[#0a2540]">Today</h3>
+            <p class="text-sm text-gray-500 mt-1">Custom homes designed around your family — built to last generations.</p>
+          </div>
+        </div>
+      </div>
 
-Call or text today for your FREE consultation.
+      <div class="relative">
+        <img src="journey.jpg" alt="SES Custom Homes — Building Forever Homes" class="w-full h-60 object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <div class="absolute bottom-5 left-6 text-white">
+          <p class="uppercase tracking-[3px] text-amber-300 text-xs">Family Owned Since 2013</p>
+          <h3 class="text-xl font-bold mt-1">Building Forever Homes</h3>
+        </div>
+      </div>
 
-</p>
+    </div>
 
-<div class="mt-12">
-
-<a
-href="tel:5137064589"
-class="text-4xl hover:text-amber-300">
-
-<i class="fas fa-phone"></i>
-
-(513) 706-4589
-
-</a>
+  </div>
 
 </div>
+</section>
 
-<p class="mt-16 text-amber-200">
+<!-- ═══════════════════════
+     CONTACT — compact horizontal CTA band
+═══════════════════════ -->
+<section id="contact" class="bg-[#0a2540] text-white py-14 md:py-16">
+<div class="max-w-7xl mx-auto px-6 lg:px-10">
 
-SES Custom Homes
+  <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
 
-<br>
+    <div>
+      <p class="uppercase tracking-[4px] text-amber-300 text-xs font-semibold">Get In Touch</p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-3">
+        Ready To Build Or Upgrade?
+      </h2>
+      <p class="mt-4 text-gray-300 text-base md:text-lg leading-relaxed max-w-lg">
+        Call or text today for your FREE consultation.
+        We respond quickly and love talking to homeowners.
+      </p>
+      <p class="mt-4 text-gray-500 text-sm">
+        SES Custom Homes &nbsp;&middot;&nbsp; Virginia &bull; West Virginia &bull; North Carolina
+      </p>
+    </div>
 
-Virginia • West Virginia • North Carolina
+    <div class="shrink-0">
+      <a href="tel:5137064589"
+         class="inline-flex items-center gap-3 bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] font-bold text-xl px-10 py-5 rounded-2xl transition shadow-lg whitespace-nowrap">
+        <i class="fas fa-phone"></i>
+        (513) 706-4589
+      </a>
+    </div>
 
-</p>
+  </div>
 
 </div>
-
 </section>
 
 <div id="site-footer"></div>
