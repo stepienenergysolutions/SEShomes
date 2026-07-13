@@ -46,13 +46,14 @@ body { font-family: 'Inter', system-ui, sans-serif; }
           </p>
         </div>
 
-        <!-- TODO: Connect Web3Forms notifications to the final scheduling/CRM workflow after launch. -->
-        <form action="https://api.web3forms.com/submit" method="POST" class="p-6 sm:p-8">
+        <form id="estimate-form" action="https://api.web3forms.com/submit" method="POST" class="p-6 sm:p-8">
           <input type="hidden" name="access_key" value="44ed6524-fe33-49e2-b4c1-81cfd80e62b7">
           <input type="hidden" name="form_type" value="estimate_request">
           <input type="hidden" name="lead_source" value="website">
           <input type="hidden" name="_subject" value="New SES Custom Homes Estimate Request">
           <input type="hidden" name="redirect" value="https://web3forms.com/success">
+          <!-- Honeypot for bots; real visitors never see or fill this. -->
+          <input type="text" name="company_website" value="" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
 
           <div class="grid md:grid-cols-2 gap-5">
             <label class="block">
@@ -197,6 +198,33 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     });
     if (allowed) select.value = normalized;
   }
+})();
+
+// Send each submission to the SES CRM (creates a prospect + marketing
+// opportunity) in addition to the Web3Forms email notification.
+(function () {
+  var CRM_ENDPOINT = 'https://ses-crm.vercel.app/api/web-leads';
+  var form = document.getElementById('estimate-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function () {
+    var data = {};
+    new FormData(form).forEach(function (value, key) {
+      if (key === 'access_key' || key === 'redirect' || key.charAt(0) === '_') return;
+      data[key] = value;
+    });
+
+    try {
+      // text/plain avoids a CORS preflight, and keepalive lets the request
+      // finish while the page navigates to the Web3Forms success page.
+      fetch(CRM_ENDPOINT, {
+        method: 'POST',
+        keepalive: true,
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(data)
+      });
+    } catch (e) { /* never block the email submission */ }
+  });
 })();
 </script>
 
