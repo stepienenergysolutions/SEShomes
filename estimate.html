@@ -149,7 +149,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 
             <label class="block">
               <span class="text-sm font-semibold text-[#0a2540]">Preferred contact method</span>
-              <select name="preferred_contact_method" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 bg-white focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
+              <select id="preferred-contact-method" name="preferred_contact_method" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 bg-white focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100">
                 <option value="">Select a contact method</option>
                 <option value="phone">Phone call</option>
                 <option value="text">Text message</option>
@@ -168,9 +168,31 @@ body { font-family: 'Inter', system-ui, sans-serif; }
             <textarea name="project_details" rows="6" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-[#c9a96b] focus:outline-none focus:ring-4 focus:ring-amber-100"></textarea>
           </label>
 
+          <div class="mt-6 rounded-2xl border border-gray-200 bg-gray-50 p-5">
+            <div class="flex items-start gap-3">
+              <input
+                id="sms-consent"
+                type="checkbox"
+                name="sms_consent"
+                value="yes"
+                class="mt-1 h-5 w-5 shrink-0 rounded border-gray-300 text-[#0a2540] focus:ring-[#c9a96b]"
+              >
+              <label for="sms-consent" class="text-sm text-gray-700 leading-relaxed">
+                <span class="font-bold text-[#0a2540]">Yes, I agree to receive text messages from SES Custom Homes.</span>
+                By checking this box, I consent to receive recurring SMS messages about my estimate request, appointments, scheduling, project updates, service follow-ups, invoices, payment links, and customer support. Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to opt out. Consent is not a condition of purchase. View our
+                <a href="privacy-policy.html" target="_blank" rel="noopener" class="font-bold text-[#0a2540] underline">Privacy Policy</a>
+                and
+                <a href="terms-and-conditions.html" target="_blank" rel="noopener" class="font-bold text-[#0a2540] underline">Terms &amp; Conditions</a>.
+              </label>
+            </div>
+            <p id="sms-consent-help" class="mt-3 pl-8 text-xs text-gray-500">
+              This checkbox is optional unless you select “Text message” as your preferred contact method. It is unchecked by default.
+            </p>
+          </div>
+
           <div class="mt-8 border-t border-gray-100 pt-6 flex flex-col lg:flex-row lg:items-center gap-5 lg:justify-between">
             <p class="text-sm text-gray-500 leading-relaxed max-w-2xl">
-              After launch, this form will send your request to our scheduling team. We will contact you to confirm appointment availability.
+              This form sends your request to our scheduling team. We will contact you to confirm appointment availability.
             </p>
             <button type="submit" class="inline-flex items-center justify-center gap-3 bg-[#c9a96b] hover:bg-[#b38c4f] text-[#0a2540] px-8 py-4 rounded-2xl font-bold transition shadow-lg whitespace-nowrap">
               Request Estimate
@@ -198,6 +220,23 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     });
     if (allowed) select.value = normalized;
   }
+})();
+
+// Text-message contact requires separate, active SMS consent. The checkbox is
+// intentionally optional and unchecked for all other contact preferences.
+(function () {
+  var contactMethod = document.getElementById('preferred-contact-method');
+  var smsConsent = document.getElementById('sms-consent');
+  if (!contactMethod || !smsConsent) return;
+
+  function syncSmsConsentRequirement() {
+    var textSelected = contactMethod.value === 'text';
+    smsConsent.required = textSelected;
+    smsConsent.setAttribute('aria-required', textSelected ? 'true' : 'false');
+  }
+
+  contactMethod.addEventListener('change', syncSmsConsentRequirement);
+  syncSmsConsentRequirement();
 })();
 
 // Send each submission to the SES CRM (creates a prospect + marketing
