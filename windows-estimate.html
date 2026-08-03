@@ -93,10 +93,11 @@
   <footer class="legal"><div class="wrap legal-inner"><div>© 2026 SES Custom Homes • Class A Licensed Contractor • Family Owned Since 2013</div><div><a href="privacy-policy.html">Privacy Policy</a> • <a href="terms-and-conditions.html">Terms &amp; Conditions</a></div></div></footer>
   <div class="mobile"><a class="mobile-call" href="tel:+18044084663" data-track="phone_mobile">Call SES</a><a class="mobile-quote" href="#estimate-card" data-track="mobile_quote">Start My Estimate</a></div>
 
+  <script src="assets/js/google-ads-session-tracking.js"></script>
   <script>
   (function(){
     var form=document.getElementById('window-form'),one=form.querySelector('[data-step="1"]'),two=form.querySelector('[data-step="2"]'),progress=document.getElementById('progress'),error=document.getElementById('step-error'),started=false,bookingToken='',bookingDates=[],selectedTime='',submittedLeadData={};
-    function track(name,data){if(typeof window.gtag==='function')window.gtag('event',name,data||{})}
+    function track(name,data){if(typeof window.gtag==='function')window.gtag('event',name,data||{});if(name!=='form_start'&&typeof window.sesTrackEvent==='function')window.sesTrackEvent(name,data||{})}
     function start(){if(!started){started=true;track('form_start',{form_name:'windows_estimate'})}}
     form.addEventListener('input',start,{once:true});form.addEventListener('change',start,{once:true});
     document.getElementById('continue').addEventListener('click',function(){var fields=Array.from(one.querySelectorAll('[required]')),valid=fields.every(function(f){return f.type==='radio'?!!one.querySelector('[name="'+f.name+'"]:checked'):f.checkValidity()});if(!valid){error.hidden=false;var bad=fields.find(function(f){return f.type==='radio'?!one.querySelector('[name="'+f.name+'"]:checked'):!f.checkValidity()});if(bad&&bad.type!=='radio')bad.reportValidity();return}error.hidden=true;one.classList.remove('active');two.classList.add('active');progress.style.width='100%';track('form_step_complete',{form_name:'windows_estimate',step:1});document.getElementById('estimate-card').scrollIntoView({behavior:'smooth',block:'start'})});

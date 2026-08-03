@@ -1,6 +1,13 @@
 (function () {
   'use strict';
 
+  // Load first-party behavior tracking only for sessions attributed to Google Ads.
+  // The tracker exits immediately for organic, direct, and referral visitors.
+  var trackingScript = document.createElement('script');
+  trackingScript.src = 'assets/js/google-ads-session-tracking.js';
+  trackingScript.async = true;
+  document.head.appendChild(trackingScript);
+
   function loadPartial(containerId, url, onLoaded) {
     var el = document.getElementById(containerId);
     if (!el) return;
