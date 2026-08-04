@@ -8,6 +8,13 @@
   trackingScript.async = true;
   document.head.appendChild(trackingScript);
 
+  // Load Meta Pixel on the main website so Facebook and Instagram website
+  // campaigns can measure page views and downstream conversions.
+  var metaPixelScript = document.createElement('script');
+  metaPixelScript.src = 'assets/js/meta-pixel.js';
+  metaPixelScript.async = true;
+  document.head.appendChild(metaPixelScript);
+
   function loadPartial(containerId, url, onLoaded) {
     var el = document.getElementById(containerId);
     if (!el) return;

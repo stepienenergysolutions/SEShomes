@@ -1,4 +1,9 @@
 (function () {
+  var metaPixelScript = document.createElement('script');
+  metaPixelScript.src = 'assets/js/meta-pixel.js';
+  metaPixelScript.async = true;
+  document.head.appendChild(metaPixelScript);
+
   var key = window.SES_CAMPAIGN_KEY;
   var config = window.SES_CAMPAIGNS && window.SES_CAMPAIGNS[key];
   var root = document.getElementById('campaign-page');
@@ -77,6 +82,11 @@
     var details = data || {};
     if (typeof window.gtag === 'function') window.gtag('event', name, details);
     if (name !== 'form_start' && typeof window.sesTrackEvent === 'function') window.sesTrackEvent(name, details);
+    if (typeof window.sesMetaTrack === 'function') {
+      if (name === 'form_start') window.sesMetaTrack('InitiateCheckout', { content_name: config.serviceName + ' Estimate', content_category: config.serviceSlug });
+      if (name === 'generate_lead') window.sesMetaTrack('Lead', { content_name: config.serviceName + ' Estimate', content_category: config.serviceSlug });
+      if (name === 'appointment_scheduled') window.sesMetaTrack('Schedule', { content_name: config.serviceName + ' Consultation', content_category: config.serviceSlug });
+    }
   }
   function start() {
     if (started) return;
@@ -163,7 +173,7 @@
     event.preventDefault(); if (!form.reportValidity()) return;
     var button = document.getElementById('submit'); button.disabled = true; button.textContent = 'Sending…'; var data = Object.fromEntries(new FormData(form).entries()); var params = new URLSearchParams(location.search);
     if (data.contact_zip) data.zip = data.contact_zip; data.page_url = location.href; data.referrer = document.referrer; data.visitor_session_id = sessionId();
-    ['gclid', 'gbraid', 'wbraid', 'dclid', 'msclkid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(function (parameter) { data[parameter] = params.get(parameter) || sessionStorage.getItem('ses_' + parameter) || ''; if (params.get(parameter)) sessionStorage.setItem('ses_' + parameter, params.get(parameter)); });
+    ['gclid', 'gbraid', 'wbraid', 'dclid', 'msclkid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(function (parameter) { data[parameter] = params.get(parameter) || sessionStorage.getItem('ses_' + parameter) || ''; if (params.get(parameter)) sessionStorage.setItem('ses_' + parameter, params.get(parameter)); });
     submittedLeadData = data;
     try {
       var response = await fetch(CRM_URL + '/api/web-leads', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(data) }); var payload = await response.json();
