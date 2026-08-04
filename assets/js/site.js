@@ -153,4 +153,13 @@
 
   loadPartial('site-footer', 'partials/footer.html', null);
 
+  // Continue a paid-ad visitor's first-party session as they move beyond the
+  // campaign landing page. The tracker records interaction events, never field values.
+  if (!window.__sesPaidAdsTrackingLoaded && !window.__sesGoogleAdsTrackingLoaded) {
+    var paidAdsTracker = document.createElement('script');
+    paidAdsTracker.src = '/assets/js/google-ads-session-tracking.js';
+    paidAdsTracker.async = true;
+    document.head.appendChild(paidAdsTracker);
+  }
+
 })();

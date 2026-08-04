@@ -1,11 +1,12 @@
 (function () {
   'use strict';
 
-  if (window.__sesGoogleAdsTrackingLoaded) return;
+  if (window.__sesPaidAdsTrackingLoaded || window.__sesGoogleAdsTrackingLoaded) return;
+  window.__sesPaidAdsTrackingLoaded = true;
   window.__sesGoogleAdsTrackingLoaded = true;
 
   var ENDPOINT = 'https://ses-crm.vercel.app/api/website-tracking';
-  var ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'dclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  var ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'dclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
   var params = new URLSearchParams(window.location.search);
 
   ATTRIBUTION_KEYS.forEach(function (key) {
@@ -17,13 +18,29 @@
     return params.get(key) || sessionStorage.getItem('ses_' + key) || '';
   }
 
+  function cookie(name) {
+    var prefix = name + '=';
+    var values = document.cookie ? document.cookie.split(';') : [];
+    for (var index = 0; index < values.length; index += 1) {
+      var value = values[index].trim();
+      if (value.indexOf(prefix) === 0) return decodeURIComponent(value.slice(prefix.length));
+    }
+    return '';
+  }
+
   var source = saved('utm_source').toLowerCase();
   var medium = saved('utm_medium').toLowerCase();
   var isGoogleAdsVisit = Boolean(
     saved('gclid') || saved('gbraid') || saved('wbraid') || saved('dclid') ||
     (source === 'google' && (!medium || ['cpc', 'ppc', 'paid', 'paid-search'].indexOf(medium) >= 0))
   );
-  if (!isGoogleAdsVisit) return;
+  var isMetaAdsVisit = Boolean(
+    saved('fbclid') || cookie('_fbc') ||
+    (['meta', 'facebook', 'instagram', 'fb', 'ig'].indexOf(source) >= 0 &&
+      (!medium || ['cpc', 'ppc', 'paid', 'paid-social', 'paidsocial', 'social'].indexOf(medium) >= 0))
+  );
+  if (!isGoogleAdsVisit && !isMetaAdsVisit) return;
+  var trafficSource = isMetaAdsVisit ? 'meta' : 'google';
 
   function randomId() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
@@ -38,11 +55,17 @@
   var trackedForms = [];
 
   function attribution() {
+    var fbclid = saved('fbclid');
+    var fbc = cookie('_fbc') || (fbclid ? 'fb.1.' + Date.now() + '.' + fbclid : '');
     return {
+      trafficSource: trafficSource,
       gclid: saved('gclid'),
       gbraid: saved('gbraid'),
       wbraid: saved('wbraid'),
       dclid: saved('dclid'),
+      fbclid: fbclid,
+      fbc: fbc,
+      fbp: cookie('_fbp'),
       utmSource: saved('utm_source'),
       utmMedium: saved('utm_medium'),
       utmCampaign: saved('utm_campaign'),
