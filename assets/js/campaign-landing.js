@@ -84,8 +84,8 @@
     if (name !== 'form_start' && typeof window.sesTrackEvent === 'function') window.sesTrackEvent(name, details);
     if (typeof window.sesMetaTrack === 'function') {
       if (name === 'form_start') window.sesMetaTrack('InitiateCheckout', { content_name: config.serviceName + ' Estimate', content_category: config.serviceSlug });
-      if (name === 'generate_lead') window.sesMetaTrack('Lead', { content_name: config.serviceName + ' Estimate', content_category: config.serviceSlug });
-      if (name === 'appointment_scheduled') window.sesMetaTrack('Schedule', { content_name: config.serviceName + ' Consultation', content_category: config.serviceSlug });
+      if (name === 'generate_lead') window.sesMetaTrack('Lead', { content_name: config.serviceName + ' Estimate', content_category: config.serviceSlug }, details.event_id);
+      if (name === 'appointment_scheduled') window.sesMetaTrack('Schedule', { content_name: config.serviceName + ' Consultation', content_category: config.serviceSlug }, details.event_id);
     }
   }
   function start() {
@@ -100,6 +100,15 @@
       sessionStorage.setItem('ses_visitor_session_id', id);
     }
     return id;
+  }
+  function cookie(name) {
+    var prefix = name + '=';
+    var match = document.cookie.split(';').map(function (part) { return part.trim(); }).find(function (part) { return part.indexOf(prefix) === 0; });
+    return match ? decodeURIComponent(match.slice(prefix.length)) : '';
+  }
+  function metaEventId(prefix) {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+    return prefix + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
   }
   function scrollToForm() { document.getElementById('estimate-card').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 
@@ -157,12 +166,13 @@
     for (var index = 0; index < addressFields.length; index += 1) if (!addressFields[index].reportValidity()) { document.getElementById('schedule-status').textContent = 'Please complete the project address to schedule online.'; return; }
     button.disabled = true; button.textContent = 'Scheduling…';
     try {
-      var response = await fetch(CRM_URL + '/api/public-booking', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ bookingToken: bookingToken, appointmentDate: date, appointmentTime: selectedTime, address: addressFields[0].value, city: addressFields[1].value, state: addressFields[2].value, zip: addressFields[3].value }) });
+      var scheduleEventId = metaEventId('meta-schedule');
+      var response = await fetch(CRM_URL + '/api/public-booking', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ bookingToken: bookingToken, appointmentDate: date, appointmentTime: selectedTime, address: addressFields[0].value, city: addressFields[1].value, state: addressFields[2].value, zip: addressFields[3].value, pageUrl: location.href, fbp: cookie('_fbp'), fbc: cookie('_fbc'), metaEventId: scheduleEventId }) });
       var payload = await response.json(); if (!response.ok || !payload.ok) throw new Error(payload.error || 'booking_failed');
       document.getElementById('schedule-controls').hidden = true; document.getElementById('schedule-status').textContent = 'Your appointment time has been selected.';
       var selectedDate = bookingDates.find(function (item) { return item.date === date; }); var slot = selectedDate.slots.find(function (item) { return item.time === selectedTime; }); var result = document.getElementById('booking-result');
       result.textContent = 'You chose ' + selectedDate.label + ' at ' + slot.label + '. An SES Custom Homes team member will contact you to confirm the details.'; result.hidden = false;
-      track('appointment_scheduled', { service: config.serviceSlug, appointment_date: date, appointment_time: selectedTime });
+      track('appointment_scheduled', { service: config.serviceSlug, appointment_date: date, appointment_time: selectedTime, event_id: scheduleEventId });
     } catch (err) {
       button.disabled = false; button.textContent = 'Schedule This Appointment';
       if (err.message === 'appointment_time_unavailable') { document.getElementById('schedule-status').textContent = 'That time was just booked. Please choose another available time.'; loadScheduler(); }
@@ -172,13 +182,13 @@
   form.addEventListener('submit', async function (event) {
     event.preventDefault(); if (!form.reportValidity()) return;
     var button = document.getElementById('submit'); button.disabled = true; button.textContent = 'Sending…'; var data = Object.fromEntries(new FormData(form).entries()); var params = new URLSearchParams(location.search);
-    if (data.contact_zip) data.zip = data.contact_zip; data.page_url = location.href; data.referrer = document.referrer; data.visitor_session_id = sessionId();
+    if (data.contact_zip) data.zip = data.contact_zip; data.page_url = location.href; data.referrer = document.referrer; data.visitor_session_id = sessionId(); data.meta_event_id = metaEventId('meta-lead'); data.fbp = cookie('_fbp'); data.fbc = cookie('_fbc');
     ['gclid', 'gbraid', 'wbraid', 'dclid', 'msclkid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(function (parameter) { data[parameter] = params.get(parameter) || sessionStorage.getItem('ses_' + parameter) || ''; if (params.get(parameter)) sessionStorage.setItem('ses_' + parameter, params.get(parameter)); });
     submittedLeadData = data;
     try {
       var response = await fetch(CRM_URL + '/api/web-leads', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(data) }); var payload = await response.json();
       if (!response.ok || !payload.ok) throw new Error(payload.error || 'request_failed');
-      bookingToken = payload.bookingToken || ''; track('generate_lead', { form_name: formName, service: config.serviceSlug }); form.hidden = true; document.querySelector('.progress').hidden = true; document.getElementById('success').hidden = false; loadScheduler();
+      bookingToken = payload.bookingToken || ''; track('generate_lead', { form_name: formName, service: config.serviceSlug, event_id: data.meta_event_id }); form.hidden = true; document.querySelector('.progress').hidden = true; document.getElementById('success').hidden = false; loadScheduler();
     } catch (err) { button.disabled = false; button.textContent = 'Request My Free Estimate →'; window.alert('We could not send your request. Please call (804) 408-4663 and we will help you right away.'); }
   });
 })();
