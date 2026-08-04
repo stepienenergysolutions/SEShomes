@@ -1,8 +1,10 @@
 (function () {
-  var metaPixelScript = document.createElement('script');
-  metaPixelScript.src = 'assets/js/meta-pixel.js';
-  metaPixelScript.async = true;
-  document.head.appendChild(metaPixelScript);
+  if (!window.SES_TRACKING_DISABLED) {
+    var metaPixelScript = document.createElement('script');
+    metaPixelScript.src = 'assets/js/meta-pixel.js';
+    metaPixelScript.async = true;
+    document.head.appendChild(metaPixelScript);
+  }
 
   var key = window.SES_CAMPAIGN_KEY;
   var config = window.SES_CAMPAIGNS && window.SES_CAMPAIGNS[key];
@@ -79,6 +81,7 @@
   var submittedLeadData = {};
 
   function track(name, data) {
+    if (window.SES_TRACKING_DISABLED) return;
     var details = data || {};
     if (typeof window.gtag === 'function') window.gtag('event', name, details);
     if (name !== 'form_start' && typeof window.sesTrackEvent === 'function') window.sesTrackEvent(name, details);

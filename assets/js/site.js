@@ -3,17 +3,21 @@
 
   // Load first-party behavior tracking only for sessions attributed to Google Ads.
   // The tracker exits immediately for organic, direct, and referral visitors.
-  var trackingScript = document.createElement('script');
-  trackingScript.src = 'assets/js/google-ads-session-tracking.js';
-  trackingScript.async = true;
-  document.head.appendChild(trackingScript);
+  if (!window.SES_TRACKING_DISABLED) {
+    var trackingScript = document.createElement('script');
+    trackingScript.src = 'assets/js/google-ads-session-tracking.js';
+    trackingScript.async = true;
+    document.head.appendChild(trackingScript);
+  }
 
   // Load Meta Pixel on the main website so Facebook and Instagram website
   // campaigns can measure page views and downstream conversions.
-  var metaPixelScript = document.createElement('script');
-  metaPixelScript.src = 'assets/js/meta-pixel.js';
-  metaPixelScript.async = true;
-  document.head.appendChild(metaPixelScript);
+  if (!window.SES_TRACKING_DISABLED) {
+    var metaPixelScript = document.createElement('script');
+    metaPixelScript.src = 'assets/js/meta-pixel.js';
+    metaPixelScript.async = true;
+    document.head.appendChild(metaPixelScript);
+  }
 
   function loadPartial(containerId, url, onLoaded) {
     var el = document.getElementById(containerId);
@@ -155,7 +159,7 @@
 
   // Continue a paid-ad visitor's first-party session as they move beyond the
   // campaign landing page. The tracker records interaction events, never field values.
-  if (!window.__sesPaidAdsTrackingLoaded && !window.__sesGoogleAdsTrackingLoaded) {
+  if (!window.SES_TRACKING_DISABLED && !window.__sesPaidAdsTrackingLoaded && !window.__sesGoogleAdsTrackingLoaded) {
     var paidAdsTracker = document.createElement('script');
     paidAdsTracker.src = '/assets/js/google-ads-session-tracking.js';
     paidAdsTracker.async = true;

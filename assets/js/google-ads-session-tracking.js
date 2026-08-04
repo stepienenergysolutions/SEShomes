@@ -1,6 +1,7 @@
 (function () {
   'use strict';
 
+  if (window.SES_TRACKING_DISABLED) return;
   if (window.__sesPaidAdsTrackingLoaded || window.__sesGoogleAdsTrackingLoaded) return;
   window.__sesPaidAdsTrackingLoaded = true;
   window.__sesGoogleAdsTrackingLoaded = true;

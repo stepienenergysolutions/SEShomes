@@ -1,6 +1,7 @@
 (function () {
   'use strict';
 
+  if (window.SES_TRACKING_DISABLED) return;
   if (window.__sesMetaPixelLoaded) return;
   window.__sesMetaPixelLoaded = true;
 
