@@ -191,7 +191,11 @@
     try {
       var response = await fetch(CRM_URL + '/api/web-leads', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(data) }); var payload = await response.json();
       if (!response.ok || !payload.ok) throw new Error(payload.error || 'request_failed');
-      bookingToken = payload.bookingToken || ''; track('generate_lead', { form_name: formName, service: config.serviceSlug, event_id: data.meta_event_id }); form.hidden = true; document.querySelector('.progress').hidden = true; document.getElementById('success').hidden = false; loadScheduler();
+      bookingToken = payload.bookingToken || ''; track('generate_lead', { form_name: formName, service: config.serviceSlug, event_id: data.meta_event_id });
+      if (!window.SES_TRACKING_DISABLED && typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', { send_to: 'AW-18358647895/1gCfCLaood0cENf4irJE' });
+      }
+      form.hidden = true; document.querySelector('.progress').hidden = true; document.getElementById('success').hidden = false; loadScheduler();
     } catch (err) { button.disabled = false; button.textContent = 'Request My Free Estimate →'; window.alert('We could not send your request. Please call (804) 408-4663 and we will help you right away.'); }
   });
 })();
