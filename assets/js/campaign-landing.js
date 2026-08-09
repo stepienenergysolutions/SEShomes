@@ -31,7 +31,7 @@
     </div></header>
     <main>
       <section class="hero"><div class="wrap hero-grid">
-        <div class="hero-message"><p class="eyebrow">${config.eyebrow}</p><h1>${config.headline}</h1><p class="hero-copy">${config.intro}</p><div class="offer">${config.offer}</div>
+        <div class="hero-message"><p class="eyebrow">${config.eyebrow}</p><h1>${config.headline}</h1><p class="hero-copy">${config.intro}</p><div class="offer">50% Off All Installations</div>
           <ul class="checks"><li>Free project consultation</li><li>Class A licensed contractor</li><li>Family owned since 2013</li><li>Serving VA, WV &amp; NC</li></ul>
         </div>
         <div class="card" id="estimate-card">
@@ -61,6 +61,8 @@
         </div>
       </div></section>
       <section class="trust"><div class="wrap trust-grid"><div class="trust-item"><strong>Class A</strong><span>Licensed contractor</span></div><div class="trust-item"><strong>Since 2013</strong><span>Family owned</span></div><div class="trust-item"><strong>3 States</strong><span>VA • WV • NC</span></div><div class="trust-item"><strong>Free Estimate</strong><span>No obligation</span></div></div></section>
+      <section class="campaign-highlight" id="installation-offer"><div class="wrap highlight-grid"><div><p class="eyebrow">Current installation offer</p><h2>50% Off All Installations</h2><p>Ask our team how the current installation offer applies to your ${config.serviceName.toLowerCase()} project. Offer availability and terms may vary by project.</p></div><a href="#estimate-card" data-track="offer_quote">Claim My Free Estimate →</a></div></section>
+      <section class="campaign-highlight finance-highlight" id="financing"><div class="wrap highlight-grid"><div><p class="eyebrow">Flexible payment options</p><h2>Financing Options Available</h2><p>Ask about financing options that may help make your ${config.serviceName.toLowerCase()} project more manageable. Financing is subject to credit approval and lender terms.</p></div><a href="#estimate-card" data-track="financing_quote">Ask About Financing →</a></div></section>
       <section class="section soft"><div class="wrap"><div class="title"><p class="eyebrow">Plan with confidence</p><h2>${config.benefitsTitle}</h2><p>${config.benefitsIntro}</p></div><div class="benefits">${list(config.benefits, function (benefit, index) { return '<article class="benefit"><div class="num">0' + (index + 1) + '</div><h3>' + benefit[0] + '</h3><p>' + benefit[1] + '</p></article>'; })}</div></div></section>
       <section class="section"><div class="wrap"><div class="title"><p class="eyebrow">Project inspiration</p><h2>${config.galleryTitle}</h2></div><div class="gallery${config.gallery.length === 1 ? ' single' : ''}">${list(config.gallery, function (image, index) { return '<img src="' + image + '" alt="' + config.serviceName + ' project by SES Custom Homes"' + (index ? ' loading="lazy"' : '') + '>'; })}</div></div></section>
       <section class="section soft"><div class="wrap"><div class="title"><p class="eyebrow">Common questions</p><h2>Before Your Free ${config.serviceName} Consultation</h2></div><div class="faq">${list(config.faqs, function (faq) { return '<details><summary>' + faq[0] + '</summary><p>' + faq[1] + '</p></details>'; })}</div></div></section>
