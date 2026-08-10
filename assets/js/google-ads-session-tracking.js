@@ -8,12 +8,37 @@
 
   var ENDPOINT = 'https://ses-crm.vercel.app/api/website-tracking';
   var ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'dclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  var CLICK_ID_KEYS = ['gclid', 'gbraid', 'wbraid', 'dclid', 'fbclid'];
+  var FINGERPRINT_KEY = 'ses_paid_ads_attribution_fingerprint';
   var params = new URLSearchParams(window.location.search);
+
+  function attributionFingerprint(readValue) {
+    for (var index = 0; index < CLICK_ID_KEYS.length; index += 1) {
+      var clickKey = CLICK_ID_KEYS[index];
+      var clickValue = readValue(clickKey);
+      if (clickValue) return clickKey + ':' + clickValue;
+    }
+    var sourceValue = String(readValue('utm_source') || '').toLowerCase();
+    var mediumValue = String(readValue('utm_medium') || '').toLowerCase();
+    var paidMedium = !mediumValue || ['cpc', 'ppc', 'paid', 'paid-search', 'paid-social', 'paidsocial', 'social'].indexOf(mediumValue) >= 0;
+    if (!sourceValue || !paidMedium) return '';
+    return 'utm:' + [sourceValue, mediumValue, readValue('utm_campaign'), readValue('utm_term'), readValue('utm_content')].join('|');
+  }
+
+  var incomingFingerprint = attributionFingerprint(function (key) { return params.get(key) || ''; });
+  var storedFingerprint = sessionStorage.getItem(FINGERPRINT_KEY) || attributionFingerprint(function (key) {
+    return sessionStorage.getItem('ses_' + key) || '';
+  });
+  if (incomingFingerprint && storedFingerprint && incomingFingerprint !== storedFingerprint) {
+    sessionStorage.removeItem('ses_visitor_session_id');
+    ATTRIBUTION_KEYS.forEach(function (key) { sessionStorage.removeItem('ses_' + key); });
+  }
 
   ATTRIBUTION_KEYS.forEach(function (key) {
     var value = params.get(key);
     if (value) sessionStorage.setItem('ses_' + key, value);
   });
+  if (incomingFingerprint) sessionStorage.setItem(FINGERPRINT_KEY, incomingFingerprint);
 
   function saved(key) {
     return params.get(key) || sessionStorage.getItem('ses_' + key) || '';
