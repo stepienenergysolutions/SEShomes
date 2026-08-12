@@ -47,10 +47,11 @@
             </section>
             <section class="step" data-step="2"><p class="step-label">Step 2 of 2 — How should we contact you?</p>
               <label class="field"><span>First and last name</span><input name="full_name" autocomplete="name" placeholder="First and last name" pattern="\\s*\\S+(?:\\s+\\S+)+\\s*" title="Please enter your first and last name." required></label>
-              <label class="field"><span>Phone number</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label><label class="field"><span>Email address <small>(optional)</small></span><input type="email" name="email" autocomplete="email"></label>
+              <label class="field"><span>Phone number</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" required><small class="field-hint">Used only to discuss your estimate and scheduling.</small></label><label class="field"><span>Email address <small>(optional)</small></span><input type="email" name="email" autocomplete="email"></label>
               <details class="more-details"><summary>Add project address or details (optional)</summary><label class="field"><span>Project street address</span><input name="project_address" autocomplete="street-address"></label><div class="three"><label class="field"><span>City</span><input name="city" autocomplete="address-level2"></label><label class="field"><span>State</span><input name="state" autocomplete="address-level1" maxlength="2"></label><label class="field"><span>ZIP</span><input name="contact_zip" autocomplete="postal-code" inputmode="numeric" maxlength="10"></label></div><label class="field"><span>Anything else we should know?</span><input name="project_details" placeholder="${config.detailPlaceholder}"></label></details>
               <div class="consent"><input id="sms" type="checkbox" name="sms_consent" value="yes"><label for="sms">Yes, I agree to receive recurring text messages from SES Custom Homes about my estimate request, appointments, scheduling and project updates. Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to opt out. Consent is not a condition of purchase. View our <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms-and-conditions.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</label></div>
               <div class="actions"><button class="back" id="back" type="button">Back</button><button class="primary" id="submit" type="submit">Request My Free Estimate →</button></div><p class="note">No obligation. SES Custom Homes will contact you about this request.</p>
+              <aside class="contact-rescue" aria-label="Call SES Custom Homes instead"><div class="contact-rescue-divider"><span>Prefer not to fill this out?</span></div><p class="contact-rescue-kicker">Talk to a local project specialist</p><h3>Prefer to talk it through?</h3><p>Call Rick at SES Custom Homes. I’m happy to discuss ballpark pricing, design ideas, timelines or any questions—no form required and no obligation.</p><div class="contact-rescue-actions"><a href="tel:+18044084663" data-track="phone_contact_rescue">☎ Call Rick Now</a><span>Local help from a real person</span></div></aside>
             </section>
           </form>
           <div class="success" id="success" hidden><div class="success-mark">✓</div><h2>Thank you—we received your request!</h2><p>An SES Custom Homes team member will contact you about your ${config.serviceName.toLowerCase()} project. You can choose an appointment time below or skip this step—we’ll reach out either way.</p>
@@ -133,7 +134,13 @@
     track('form_step_complete', { form_name: formName, service: config.serviceSlug, step: 1 }); scrollToForm();
   });
   document.getElementById('back').addEventListener('click', function () { stepTwo.classList.remove('active'); stepOne.classList.add('active'); progress.style.width = '50%'; scrollToForm(); });
-  document.querySelectorAll('[data-track]').forEach(function (element) { element.addEventListener('click', function () { track('landing_page_cta', { cta: element.dataset.track, service: config.serviceSlug }); }); });
+  document.querySelectorAll('[data-track]').forEach(function (element) {
+    element.addEventListener('click', function () {
+      var details = { cta: element.dataset.track, service: config.serviceSlug };
+      track('landing_page_cta', details);
+      if ((element.getAttribute('href') || '').indexOf('tel:') === 0) track('phone_call_click', details);
+    });
+  });
 
   var mobileBar = document.querySelector('.mobile');
   var estimateCard = document.getElementById('estimate-card');
