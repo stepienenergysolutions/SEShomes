@@ -30,6 +30,7 @@
       <form id="roof-estimator-form">
         <input type="text" name="company_website" value="" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true">
         <label class="field"><span>Full property address</span><input id="roof-address" name="address" autocomplete="street-address" placeholder="123 Main St, Richmond, VA 23220" minlength="8" maxlength="240" required></label>
+        <label class="field"><span>Should this estimate include another roof structure?</span><select id="roof-additional-structures" name="additional_structures" required><option value="">Choose one</option><option value="no">No — main house only</option><option value="yes">Yes — garage, addition, or another structure</option><option value="unsure">I’m not sure</option></select><small class="field-hint">Google measures one building at a time. Additional structures require manual verification.</small></label>
         <button class="primary" id="roof-estimate-submit" type="submit">Measure My Roof →</button>
         <p class="note">No contact information is required to see available results.</p>
       </form>
@@ -190,7 +191,7 @@
     var measurement = result.measurement;
     var confidence = measurement.confidence;
     var resultElement = document.getElementById('roof-estimator-result');
-    var confidenceLabel = confidence.status === 'manual_review' ? 'Manual review' : confidence.status.charAt(0).toUpperCase() + confidence.status.slice(1) + ' confidence';
+    var confidenceLabel = confidence.status === 'manual_review' ? 'Completeness: Review' : 'Completeness: ' + confidence.status.charAt(0).toUpperCase() + confidence.status.slice(1);
     var price = result.pricing
       ? '<div class="roof-price"><span>Preliminary price range</span><strong>' + formatCurrency(result.pricing.lower) + '–' + formatCurrency(result.pricing.upper) + '</strong><small>Includes a ' + escapeHtml(result.pricing.wastePercent) + '% waste allowance (' + escapeHtml(result.pricing.installSquares) + ' install squares).</small></div>'
       : '<div class="roof-price manual"><span>Pricing status</span><strong>Manual review needed</strong><small>We will verify the address and available imagery before providing a price range.</small></div>';
@@ -228,6 +229,7 @@
       event.preventDefault();
       if (!roofEstimatorForm.reportValidity()) return;
       var address = document.getElementById('roof-address').value.trim();
+      var additionalStructures = document.getElementById('roof-additional-structures').value;
       roofButton.disabled = true;
       roofButton.textContent = 'Checking available imagery…';
       roofStatus.hidden = false;
@@ -235,7 +237,7 @@
       roofStatus.textContent = 'Locating the property and measuring available roof segments. This usually takes a few seconds.';
       document.getElementById('roof-estimator-result').hidden = true;
       try {
-        var response = await fetch(CRM_URL + '/api/roof-estimate', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ address: address, company_website: roofEstimatorForm.elements.company_website.value }) });
+        var response = await fetch(CRM_URL + '/api/roof-estimate', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ address: address, additionalStructures: additionalStructures, company_website: roofEstimatorForm.elements.company_website.value }) });
         var payload = await response.json();
         if (!response.ok || !payload.ok) throw new Error(payload.message || 'We could not prepare a remote estimate.');
         roofStatus.hidden = true;
