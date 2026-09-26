@@ -19,6 +19,25 @@
   function choiceId(index) { return 'project-choice-' + index; }
   function description() { return 'Request a free ' + config.serviceName.toLowerCase() + ' consultation from SES Custom Homes. No obligation.'; }
 
+  var isRoofing = key === 'roofing';
+  var roofEstimatorMarkup = isRoofing ? `
+    <section class="roof-estimator" id="roof-estimator">
+      <div class="roof-estimator-intro">
+        <p class="step-label">Instant preliminary roof estimate</p>
+        <h3>Start with your property address</h3>
+        <p>We’ll check available aerial roof measurements, pitch, and current SES pricing rules.</p>
+      </div>
+      <form id="roof-estimator-form">
+        <input type="text" name="company_website" value="" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true">
+        <label class="field"><span>Full property address</span><input id="roof-address" name="address" autocomplete="street-address" placeholder="123 Main St, Richmond, VA 23220" minlength="8" maxlength="240" required></label>
+        <button class="primary" id="roof-estimate-submit" type="submit">Measure My Roof →</button>
+        <p class="note">No contact information is required to see available results.</p>
+      </form>
+      <div class="roof-estimator-status" id="roof-estimator-status" role="status" aria-live="polite" hidden></div>
+      <div class="roof-estimator-result" id="roof-estimator-result" hidden></div>
+      <button class="manual-review-link" id="manual-review-link" type="button">Skip remote measurement and request a manual review</button>
+    </section>` : '';
+
   document.title = config.title + ' | SES Custom Homes';
   var meta = document.querySelector('meta[name="description"]');
   if (meta) meta.setAttribute('content', description());
@@ -35,11 +54,13 @@
           <ul class="checks"><li>Free project consultation</li><li>Class A licensed contractor</li><li>Family owned since 2013</li><li>Serving VA, WV &amp; NC</li></ul>
         </div>
         <div class="card" id="estimate-card">
-          <div class="card-head"><h2>Get Your Free ${config.serviceName} Estimate</h2><p>Answer a few quick questions. There is no obligation.</p></div>
-          <div class="progress"><span id="progress"></span></div>
-          <form id="campaign-form">
+          <div class="card-head"><h2>${isRoofing ? 'Get a Preliminary Roof Estimate' : 'Get Your Free ' + config.serviceName + ' Estimate'}</h2><p>${isRoofing ? 'See available roof measurements and a preliminary price range.' : 'Answer a few quick questions. There is no obligation.'}</p></div>
+          <div class="progress"${isRoofing ? ' hidden' : ''}><span id="progress"></span></div>
+          ${roofEstimatorMarkup}
+          <form id="campaign-form"${isRoofing ? ' hidden' : ''}>
             <input type="text" name="company_website" value="" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
             <input type="hidden" name="form_type" value="${formName}"><input type="hidden" name="lead_source" value="website_${formName}"><input type="hidden" name="service_interested_in" value="${config.serviceSlug}"><input type="hidden" name="landing_page" value="${pageName}">
+            <input type="hidden" name="roof_estimate_request_id"><input type="hidden" name="roof_estimate_squares"><input type="hidden" name="roof_estimate_confidence"><input type="hidden" name="roof_estimate_price_range">
             <section class="step active" data-step="1"><p class="step-label">Step 1 of 2 — Your project</p><div id="step-error" class="error" role="alert" hidden>Please complete each project question.</div>
               <div class="field"><span>${config.question}</span><div class="choices">${list(config.options, function (option, index) { return '<div class="choice"><input id="' + choiceId(index) + '" type="radio" name="project_scope" value="' + option + '"' + (index === 0 ? ' required' : '') + '><label for="' + choiceId(index) + '">' + option + '</label></div>'; })}</div></div>
               <div class="two"><label class="field"><span>When would you like to start?</span><select name="project_timeline" required><option value="">Choose a timeframe</option><option value="as-soon-as-possible">As soon as possible</option><option value="1-3-months">Within 1–3 months</option><option value="3-6-months">Within 3–6 months</option><option value="researching">Just researching</option></select></label><label class="field"><span>Project ZIP code</span><input name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="10" placeholder="ZIP code" required></label></div>
@@ -118,6 +139,119 @@
     return prefix + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
   }
   function scrollToForm() { document.getElementById('estimate-card').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+
+  function escapeHtml(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, function (character) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[character];
+    });
+  }
+  function formatNumber(value, digits) {
+    return Number(value).toLocaleString('en-US', { minimumFractionDigits: digits || 0, maximumFractionDigits: digits || 0 });
+  }
+  function formatCurrency(value) {
+    return Number(value).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  }
+  function showRoofLeadForm(address, note) {
+    if (!isRoofing) return;
+    form.hidden = false;
+    document.querySelector('.progress').hidden = false;
+    var details = form.querySelector('.more-details');
+    var addressInput = form.querySelector('[name="project_address"]');
+    var zipInput = form.querySelector('[name="zip"]');
+    var contactZipInput = form.querySelector('[name="contact_zip"]');
+    var projectDetailsInput = form.querySelector('[name="project_details"]');
+    var zipMatch = String(address || '').match(/\b\d{5}(?:-\d{4})?\b/);
+    if (details) details.open = true;
+    if (addressInput && address && !addressInput.value) addressInput.value = address;
+    if (zipMatch) {
+      if (zipInput && !zipInput.value) zipInput.value = zipMatch[0];
+      if (contactZipInput && !contactZipInput.value) contactZipInput.value = zipMatch[0];
+    }
+    if (projectDetailsInput && note && !projectDetailsInput.value) projectDetailsInput.value = note;
+    var manualLink = document.getElementById('manual-review-link');
+    if (manualLink) manualLink.hidden = true;
+  }
+  function saveRoofEstimateToLead(result) {
+    var measurement = result.measurement || {};
+    var confidence = measurement.confidence || {};
+    var priceText = result.pricing ? formatCurrency(result.pricing.lower) + '–' + formatCurrency(result.pricing.upper) : 'Manual review required';
+    var values = {
+      roof_estimate_request_id: result.requestId || '',
+      roof_estimate_squares: measurement.roofSquares == null ? '' : String(measurement.roofSquares),
+      roof_estimate_confidence: confidence.status || '',
+      roof_estimate_price_range: priceText
+    };
+    Object.keys(values).forEach(function (name) {
+      var input = form.querySelector('[name="' + name + '"]');
+      if (input) input.value = values[name];
+    });
+  }
+  function renderRoofEstimate(result) {
+    var measurement = result.measurement;
+    var confidence = measurement.confidence;
+    var resultElement = document.getElementById('roof-estimator-result');
+    var confidenceLabel = confidence.status === 'manual_review' ? 'Manual review' : confidence.status.charAt(0).toUpperCase() + confidence.status.slice(1) + ' confidence';
+    var price = result.pricing
+      ? '<div class="roof-price"><span>Preliminary price range</span><strong>' + formatCurrency(result.pricing.lower) + '–' + formatCurrency(result.pricing.upper) + '</strong><small>Includes a ' + escapeHtml(result.pricing.wastePercent) + '% waste allowance (' + escapeHtml(result.pricing.installSquares) + ' install squares).</small></div>'
+      : '<div class="roof-price manual"><span>Pricing status</span><strong>Manual review needed</strong><small>We will verify the address and available imagery before providing a price range.</small></div>';
+    var segments = measurement.segments.map(function (segment) {
+      return '<tr><td>' + escapeHtml(segment.orientation) + '</td><td>' + escapeHtml(segment.pitchLabel) + '</td><td>' + formatNumber(segment.areaSquareFeet) + ' sq ft</td><td>' + escapeHtml(segment.roofSquares) + '</td></tr>';
+    }).join('');
+    var notes = confidence.reasons.map(function (reason) { return '<li>' + escapeHtml(reason) + '</li>'; }).join('');
+    resultElement.innerHTML = `
+      <div class="roof-result-heading"><div><p class="step-label">Remote roof measurement</p><h3>Your preliminary roof estimate</h3></div><span class="confidence confidence-${escapeHtml(confidence.status)}">${escapeHtml(confidenceLabel)}</span></div>
+      <div class="roof-metrics"><div><span>Estimated roof area</span><strong>${formatNumber(measurement.estimatedSlopedAreaSquareFeet)} sq ft</strong></div><div><span>Estimated roof squares</span><strong>${formatNumber(measurement.roofSquares, 1)}</strong></div><div><span>Predominant pitch</span><strong>${escapeHtml(measurement.predominantPitch ? measurement.predominantPitch.label : 'Review needed')}</strong></div><div><span>Imagery</span><strong>${escapeHtml(measurement.imageryQuality)}</strong><small>${escapeHtml(measurement.imageryDate || 'Date unavailable')}</small></div></div>
+      ${price}
+      <details class="roof-breakdown" open><summary>Pitch and area by roof segment</summary><div class="roof-table-wrap"><table><thead><tr><th>Orientation</th><th>Pitch</th><th>Area</th><th>Squares</th></tr></thead><tbody>${segments}</tbody></table></div></details>
+      <div class="roof-confidence-notes"><strong>Confidence notes</strong><ul>${notes}</ul></div>
+      <p class="roof-limitations">${escapeHtml(result.limitations)}</p>
+      <p class="roof-disclaimer">${escapeHtml(result.disclaimer)}</p>
+      <button class="primary" id="roof-result-continue" type="button">${result.manualReview ? 'Send for Manual Verification →' : 'Request Final Field Verification →'}</button>`;
+    resultElement.hidden = false;
+    document.getElementById('roof-result-continue').addEventListener('click', function () {
+      showRoofLeadForm(result.address.submitted, 'Remote roof estimate ' + result.requestId + ' — ' + measurement.roofSquares + ' measured squares, ' + confidenceLabel + '.');
+      scrollToForm();
+    });
+    saveRoofEstimateToLead(result);
+    if (result.manualReview) showRoofLeadForm(result.address.submitted, 'Remote measurement needs manual review. Estimate reference: ' + result.requestId + '.');
+  }
+
+  if (isRoofing) {
+    var roofEstimatorForm = document.getElementById('roof-estimator-form');
+    var roofStatus = document.getElementById('roof-estimator-status');
+    var roofButton = document.getElementById('roof-estimate-submit');
+    document.getElementById('manual-review-link').addEventListener('click', function () {
+      showRoofLeadForm(document.getElementById('roof-address').value, 'Homeowner requested a manual roof review.');
+      scrollToForm();
+    });
+    roofEstimatorForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      if (!roofEstimatorForm.reportValidity()) return;
+      var address = document.getElementById('roof-address').value.trim();
+      roofButton.disabled = true;
+      roofButton.textContent = 'Checking available imagery…';
+      roofStatus.hidden = false;
+      roofStatus.className = 'roof-estimator-status loading';
+      roofStatus.textContent = 'Locating the property and measuring available roof segments. This usually takes a few seconds.';
+      document.getElementById('roof-estimator-result').hidden = true;
+      try {
+        var response = await fetch(CRM_URL + '/api/roof-estimate', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ address: address, company_website: roofEstimatorForm.elements.company_website.value }) });
+        var payload = await response.json();
+        if (!response.ok || !payload.ok) throw new Error(payload.message || 'We could not prepare a remote estimate.');
+        roofStatus.hidden = true;
+        renderRoofEstimate(payload);
+        track('roof_estimate_generated', { service: config.serviceSlug, confidence: payload.measurement.confidence.status });
+      } catch (err) {
+        roofStatus.className = 'roof-estimator-status error';
+        roofStatus.textContent = err.message || 'We could not prepare a remote estimate. Please request a manual review.';
+        showRoofLeadForm(address, 'Automatic roof measurement was unavailable. Please complete a manual review.');
+        track('roof_estimate_manual_review', { service: config.serviceSlug });
+      } finally {
+        roofButton.disabled = false;
+        roofButton.textContent = 'Measure My Roof →';
+      }
+    });
+  }
 
   form.addEventListener('input', start, { once: true });
   form.addEventListener('change', start, { once: true });
