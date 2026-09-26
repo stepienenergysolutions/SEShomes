@@ -29,10 +29,12 @@
       </div>
       <form id="roof-estimator-form">
         <input type="text" name="company_website" value="" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true">
+        <label class="field"><span>First and last name</span><input id="roof-full-name" name="full_name" autocomplete="name" placeholder="First and last name" pattern="\\s*\\S+(?:\\s+\\S+)+\\s*" title="Please enter your first and last name." maxlength="120" required></label>
+        <label class="field"><span>Phone number</span><input id="roof-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" minlength="10" maxlength="40" required><small class="field-hint">Used to deliver and verify your roof estimate. SMS consent is not implied.</small></label>
         <label class="field"><span>Full property address</span><input id="roof-address" name="address" autocomplete="street-address" placeholder="123 Main St, Richmond, VA 23220" minlength="8" maxlength="240" required></label>
         <label class="field"><span>Should this estimate include another roof structure?</span><select id="roof-additional-structures" name="additional_structures" required><option value="">Choose one</option><option value="no">No — main house only</option><option value="yes">Yes — garage, addition, or another structure</option><option value="unsure">I’m not sure</option></select><small class="field-hint">Google measures one building at a time. Additional structures require manual verification.</small></label>
-        <button class="primary" id="roof-estimate-submit" type="submit">Measure My Roof →</button>
-        <p class="note">No contact information is required to see available results.</p>
+        <button class="primary" id="roof-estimate-submit" type="submit">Get My Roof Estimate →</button>
+        <p class="note">Submitting creates an SES estimate request. We may contact you about measurement verification or your roofing project.</p>
       </form>
       <div class="roof-estimator-status" id="roof-estimator-status" role="status" aria-live="polite" hidden></div>
       <div class="roof-estimator-result" id="roof-estimator-result" hidden></div>
@@ -105,6 +107,7 @@
   var bookingDates = [];
   var selectedTime = '';
   var submittedLeadData = {};
+  var createdRoofOpportunityKeys = {};
 
   function track(name, data) {
     if (window.SES_TRACKING_DISABLED) return;
@@ -152,36 +155,6 @@
   function formatCurrency(value) {
     return Number(value).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
   }
-  function showRoofLeadForm(address, note, manualReviewReason) {
-    if (!isRoofing) return;
-    form.hidden = false;
-    document.querySelector('.progress').hidden = false;
-    var cardHeading = document.querySelector('#estimate-card .card-head h2');
-    var cardDescription = document.querySelector('#estimate-card .card-head p');
-    var details = form.querySelector('.more-details');
-    var addressInput = form.querySelector('[name="project_address"]');
-    var zipInput = form.querySelector('[name="zip"]');
-    var contactZipInput = form.querySelector('[name="contact_zip"]');
-    var projectDetailsInput = form.querySelector('[name="project_details"]');
-    var zipMatch = String(address || '').match(/\b\d{5}(?:-\d{4})?\b/);
-    if (details) details.open = true;
-    if (addressInput && address && !addressInput.value) addressInput.value = address;
-    if (zipMatch) {
-      if (zipInput && !zipInput.value) zipInput.value = zipMatch[0];
-      if (contactZipInput && !contactZipInput.value) contactZipInput.value = zipMatch[0];
-    }
-    if (projectDetailsInput && note && !projectDetailsInput.value) projectDetailsInput.value = note;
-    if (manualReviewReason) {
-      var manualRequiredInput = form.querySelector('[name="roof_manual_review_required"]');
-      var manualReasonInput = form.querySelector('[name="roof_manual_review_reason"]');
-      if (manualRequiredInput) manualRequiredInput.value = 'yes';
-      if (manualReasonInput && !manualReasonInput.value) manualReasonInput.value = manualReviewReason;
-      if (cardHeading) cardHeading.textContent = 'Request a Manual Roof Review';
-      if (cardDescription) cardDescription.textContent = 'Submit your contact information and this property will become a high-priority CRM opportunity for the SES team to review.';
-    }
-    var manualLink = document.getElementById('manual-review-link');
-    if (manualLink) manualLink.hidden = true;
-  }
   function saveRoofEstimateToLead(result) {
     var measurement = result.measurement || {};
     var confidence = measurement.confidence || {};
@@ -198,6 +171,59 @@
       var input = form.querySelector('[name="' + name + '"]');
       if (input) input.value = values[name];
     });
+  }
+  function saveRoofManualReviewToLead(reason, requestId) {
+    var values = {
+      roof_estimate_request_id: requestId || '',
+      roof_estimate_confidence: 'manual_review',
+      roof_estimate_price_range: 'Manual review required',
+      roof_manual_review_required: 'yes',
+      roof_manual_review_reason: reason || 'remote_measurement_unavailable'
+    };
+    Object.keys(values).forEach(function (name) {
+      var input = form.querySelector('[name="' + name + '"]');
+      if (input) input.value = values[name];
+    });
+  }
+  async function createRoofOpportunity(address, manualReason, requestId) {
+    var opportunityKey = requestId || 'manual:' + String(address || '').toLowerCase();
+    if (createdRoofOpportunityKeys[opportunityKey]) return;
+    var zipMatch = String(address || '').match(/\b\d{5}(?:-\d{4})?\b/);
+    var data = {
+      form_type: formName,
+      lead_source: 'website_' + formName,
+      service_interested_in: config.serviceSlug,
+      landing_page: pageName,
+      full_name: document.getElementById('roof-full-name').value.trim(),
+      phone: document.getElementById('roof-phone').value.trim(),
+      project_address: address,
+      zip: zipMatch ? zipMatch[0] : '',
+      project_scope: manualReason ? 'Manual roof measurement review' : 'Preliminary roof estimate',
+      project_details: manualReason ? 'Automatic roof measurement requires manual verification.' : 'Homeowner requested a preliminary remote roof estimate.',
+      roof_estimate_request_id: form.querySelector('[name="roof_estimate_request_id"]').value,
+      roof_estimate_squares: form.querySelector('[name="roof_estimate_squares"]').value,
+      roof_estimate_confidence: form.querySelector('[name="roof_estimate_confidence"]').value,
+      roof_estimate_price_range: form.querySelector('[name="roof_estimate_price_range"]').value,
+      roof_manual_review_required: manualReason ? 'yes' : 'no',
+      roof_manual_review_reason: manualReason || '',
+      page_url: location.href,
+      referrer: document.referrer,
+      visitor_session_id: sessionId(),
+      meta_event_id: metaEventId('meta-roof-lead'),
+      fbp: cookie('_fbp'),
+      fbc: cookie('_fbc')
+    };
+    var params = new URLSearchParams(location.search);
+    ['gclid', 'gbraid', 'wbraid', 'dclid', 'msclkid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(function (parameter) {
+      data[parameter] = params.get(parameter) || sessionStorage.getItem('ses_' + parameter) || '';
+      if (params.get(parameter)) sessionStorage.setItem('ses_' + parameter, params.get(parameter));
+    });
+    var response = await fetch(CRM_URL + '/api/web-leads', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(data) });
+    var payload = await response.json();
+    if (!response.ok || !payload.ok) throw new Error(payload.error || 'lead_request_failed');
+    createdRoofOpportunityKeys[opportunityKey] = true;
+    bookingToken = payload.bookingToken || '';
+    track('generate_lead', { form_name: formName, service: config.serviceSlug, event_id: data.meta_event_id });
   }
   function renderRoofEstimate(result) {
     var measurement = result.measurement;
@@ -218,29 +244,51 @@
       <details class="roof-breakdown" open><summary>Pitch and area by roof segment</summary><div class="roof-table-wrap"><table><thead><tr><th>Orientation</th><th>Pitch</th><th>Area</th><th>Squares</th></tr></thead><tbody>${segments}</tbody></table></div></details>
       <div class="roof-confidence-notes"><strong>Confidence notes</strong><ul>${notes}</ul></div>
       <p class="roof-limitations">${escapeHtml(result.limitations)}</p>
-      <p class="roof-disclaimer">${escapeHtml(result.disclaimer)}</p>
-      <button class="primary" id="roof-result-continue" type="button">${result.manualReview ? 'Send for Manual Verification →' : 'Request Final Field Verification →'}</button>`;
+      <p class="roof-disclaimer">${escapeHtml(result.disclaimer)}</p>`;
     resultElement.hidden = false;
-    document.getElementById('roof-result-continue').addEventListener('click', function () {
-      showRoofLeadForm(result.address.submitted, 'Remote roof estimate ' + result.requestId + ' — ' + measurement.roofSquares + ' measured squares, ' + confidenceLabel + '.', result.manualReview ? 'remote_measurement_incomplete' : '');
-      scrollToForm();
-    });
     saveRoofEstimateToLead(result);
-    if (result.manualReview) showRoofLeadForm(result.address.submitted, 'Remote measurement needs manual review. Estimate reference: ' + result.requestId + '.', 'remote_measurement_incomplete');
   }
 
   if (isRoofing) {
     var roofEstimatorForm = document.getElementById('roof-estimator-form');
     var roofStatus = document.getElementById('roof-estimator-status');
     var roofButton = document.getElementById('roof-estimate-submit');
-    document.getElementById('manual-review-link').addEventListener('click', function () {
-      showRoofLeadForm(document.getElementById('roof-address').value, 'Homeowner requested a manual roof review.', 'homeowner_requested_manual_review');
-      scrollToForm();
+    var manualReviewLink = document.getElementById('manual-review-link');
+    var roofPhone = document.getElementById('roof-phone');
+    function validRoofContact() {
+      var phoneDigits = roofPhone.value.replace(/\D/g, '');
+      roofPhone.setCustomValidity(phoneDigits.length >= 10 && phoneDigits.length <= 15 ? '' : 'Enter a valid phone number with at least 10 digits.');
+      return roofEstimatorForm.reportValidity();
+    }
+    roofPhone.addEventListener('input', function () { roofPhone.setCustomValidity(''); });
+    manualReviewLink.addEventListener('click', async function () {
+      if (!validRoofContact()) return;
+      var address = document.getElementById('roof-address').value.trim();
+      var reason = 'homeowner_requested_manual_review';
+      manualReviewLink.disabled = true;
+      roofStatus.hidden = false;
+      roofStatus.className = 'roof-estimator-status loading';
+      roofStatus.textContent = 'Creating your manual roof review request…';
+      saveRoofManualReviewToLead(reason, '');
+      try {
+        await createRoofOpportunity(address, reason, '');
+        roofStatus.className = 'roof-estimator-status';
+        roofStatus.textContent = 'Your manual roof review is in the SES work queue. A team member can now measure and verify the property.';
+        roofEstimatorForm.hidden = true;
+        manualReviewLink.hidden = true;
+        track('roof_estimate_manual_review', { service: config.serviceSlug, reason: reason });
+      } catch (err) {
+        roofStatus.className = 'roof-estimator-status error';
+        roofStatus.textContent = 'We could not save the request. Please call (804) 408-4663 and we will help you right away.';
+        manualReviewLink.disabled = false;
+      }
     });
     roofEstimatorForm.addEventListener('submit', async function (event) {
       event.preventDefault();
-      if (!roofEstimatorForm.reportValidity()) return;
+      if (!validRoofContact()) return;
       var address = document.getElementById('roof-address').value.trim();
+      var fullName = document.getElementById('roof-full-name').value.trim();
+      var phone = document.getElementById('roof-phone').value.trim();
       var additionalStructures = document.getElementById('roof-additional-structures').value;
       roofButton.disabled = true;
       roofButton.textContent = 'Checking available imagery…';
@@ -250,24 +298,41 @@
       document.getElementById('roof-estimator-result').hidden = true;
       var failurePayload = null;
       try {
-        var response = await fetch(CRM_URL + '/api/roof-estimate', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ address: address, additionalStructures: additionalStructures, company_website: roofEstimatorForm.elements.company_website.value }) });
+        var response = await fetch(CRM_URL + '/api/roof-estimate', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ fullName: fullName, phone: phone, address: address, additionalStructures: additionalStructures, company_website: roofEstimatorForm.elements.company_website.value }) });
         var payload = await response.json();
         failurePayload = payload;
         if (!response.ok || !payload.ok) throw new Error(payload.message || 'We could not prepare a remote estimate.');
-        roofStatus.hidden = true;
         renderRoofEstimate(payload);
+        var resultManualReason = payload.manualReview ? (payload.measurement.confidence.reasons || []).join(' | ') || 'remote_measurement_incomplete' : '';
+        try {
+          await createRoofOpportunity(address, resultManualReason, payload.requestId);
+          roofStatus.className = 'roof-estimator-status';
+          roofStatus.textContent = payload.manualReview
+            ? 'Your manual roof review is in the SES work queue. A team member can now verify the measurements.'
+            : 'Your preliminary estimate and roofing request were saved. The SES team can now follow up with you.';
+        } catch (leadError) {
+          roofStatus.className = 'roof-estimator-status error';
+          roofStatus.textContent = 'Your measurement is shown below, but we could not save the CRM request. Please call (804) 408-4663.';
+        }
         track('roof_estimate_generated', { service: config.serviceSlug, confidence: payload.measurement.confidence.status });
       } catch (err) {
-        roofStatus.className = 'roof-estimator-status error';
-        roofStatus.textContent = err.message || 'We could not prepare a remote estimate. Please request a manual review.';
         var manualReason = failurePayload && failurePayload.error ? failurePayload.error : 'remote_measurement_unavailable';
-        var requestIdInput = form.querySelector('[name="roof_estimate_request_id"]');
-        if (requestIdInput && failurePayload && failurePayload.requestId) requestIdInput.value = failurePayload.requestId;
-        showRoofLeadForm(address, 'Automatic roof measurement was unavailable. Manual review reason: ' + manualReason + '.', manualReason);
-        track('roof_estimate_manual_review', { service: config.serviceSlug });
+        var failedRequestId = failurePayload && failurePayload.requestId ? failurePayload.requestId : '';
+        saveRoofManualReviewToLead(manualReason, failedRequestId);
+        try {
+          await createRoofOpportunity(address, manualReason, failedRequestId);
+          roofStatus.className = 'roof-estimator-status';
+          roofStatus.textContent = 'Automatic measurement was unavailable, but your property is now in the SES manual roof-review queue.';
+          roofEstimatorForm.hidden = true;
+          manualReviewLink.hidden = true;
+        } catch (leadError) {
+          roofStatus.className = 'roof-estimator-status error';
+          roofStatus.textContent = 'We could not save the roof review request. Please call (804) 408-4663 and we will help you right away.';
+        }
+        track('roof_estimate_manual_review', { service: config.serviceSlug, reason: manualReason });
       } finally {
         roofButton.disabled = false;
-        roofButton.textContent = 'Measure My Roof →';
+        roofButton.textContent = 'Get My Roof Estimate →';
       }
     });
   }
