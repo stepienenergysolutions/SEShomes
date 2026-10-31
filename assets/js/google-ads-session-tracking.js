@@ -65,8 +65,12 @@
     (['meta', 'facebook', 'instagram', 'fb', 'ig'].indexOf(source) >= 0 &&
       (!medium || ['cpc', 'ppc', 'paid', 'paid-social', 'paidsocial', 'social'].indexOf(medium) >= 0))
   );
-  if (!isGoogleAdsVisit && !isMetaAdsVisit) return;
-  var trafficSource = isMetaAdsVisit ? 'meta' : 'google';
+  // Visitors who did not arrive from an ad are tracked in forms-only mode:
+  // just form activity (start, progress, abandon, submit) — no page views,
+  // scrolling, clicks, or engagement time.
+  var formsOnly = !isGoogleAdsVisit && !isMetaAdsVisit;
+  var FORM_EVENTS = ['form_start', 'form_step_complete', 'form_progress', 'form_abandon', 'form_submit', 'generate_lead'];
+  var trafficSource = isMetaAdsVisit ? 'meta' : isGoogleAdsVisit ? 'google' : 'website';
 
   function randomId() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
@@ -123,6 +127,7 @@
   }
 
   function send(eventName, options, beacon) {
+    if (formsOnly && FORM_EVENTS.indexOf(eventName) === -1) return;
     var body = JSON.stringify(payload(eventName, options));
     if (beacon && navigator.sendBeacon) {
       navigator.sendBeacon(ENDPOINT, new Blob([body], { type: 'text/plain' }));
@@ -165,9 +170,21 @@
     send(String(name).slice(0, 80), { metadata: metadata || {} }, false);
   };
 
-  send('page_view', {}, false);
+  // Estimate-form abandonment capture (assets/js/form-abandonment.js) posts the
+  // fields entered so far and the current step through this session.
+  window.sesTrackFormCapture = function (eventName, form, beacon) {
+    if (eventName !== 'form_progress' && eventName !== 'form_abandon') return;
+    var data = payload(eventName, { metadata: { capture: 'form_abandonment' } });
+    data.form = form || {};
+    var body = JSON.stringify(data);
+    if (beacon && navigator.sendBeacon && navigator.sendBeacon(ENDPOINT, new Blob([body], { type: 'text/plain' }))) return;
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: body, keepalive: true }).catch(function () {});
+  };
+
+  if (!formsOnly) send('page_view', {}, false);
 
   document.addEventListener('click', function (event) {
+    if (formsOnly) return;
     var element = event.target && event.target.closest ? event.target.closest('a,button,[data-track]') : null;
     if (!element) return;
     var href = element.getAttribute('href') || '';
@@ -197,7 +214,7 @@
     send('form_submit', { metadata: { form: form.id || form.getAttribute('name') || 'website_form' } }, false);
   });
 
-  window.addEventListener('scroll', function () {
+  if (!formsOnly) window.addEventListener('scroll', function () {
     var depth = scrollDepth();
     [25, 50, 75, 90].forEach(function (threshold) {
       if (depth >= threshold && !sentScrollDepths[threshold]) {
@@ -207,7 +224,7 @@
     });
   }, { passive: true });
 
-  document.addEventListener('visibilitychange', function () {
+  if (!formsOnly) document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'hidden') {
       flushEngagement('engagement', true);
       visibleStartedAt = null;
@@ -216,6 +233,7 @@
     }
   });
 
+  if (formsOnly) return;
   window.setInterval(function () { flushEngagement('engagement', false); }, 15000);
   window.addEventListener('pagehide', function () { flushEngagement('page_exit', true); });
 })();
